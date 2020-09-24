@@ -3,13 +3,14 @@ body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
 
+/* estilização da barra de menu */
 header {
   width: 100%;
   height: 60px;
   background-color: #24292e;
   background-size: cover;
 
-  position: fixed;
+  /* position: fixed; */
 }
 
 header div {
@@ -60,5 +61,15 @@ header a:hover {
   color: rgb(158, 157, 157);
 }
 
+/* estilização do banner */
 
+main div {
+  display: flex;
+  padding: 20px 0 ;
+}
 
+.banner img {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
