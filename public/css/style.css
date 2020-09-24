@@ -58,18 +58,23 @@ header a:visited {
 }
 
 header a:hover {
-  color: rgb(158, 157, 157);
+  color: rgb(194, 194, 194);
 }
 
 /* estilização do banner */
 
 main div {
   display: flex;
-  padding: 20px 0 ;
+  padding: 20px 0;
+  border-bottom: 3px solid rgba(119, 118, 118, 0.3);
 }
 
 .banner img {
   width: 400px;
   height: 400px;
-  margin: 0 auto;
+  margin: 0 0;
+}
+
+h1 {
+  display: inline;
 }
