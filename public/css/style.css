@@ -9,8 +9,7 @@ header {
   height: 60px;
   background-color: #24292e;
   background-size: cover;
-
-  /* position: fixed; */
+  position: fixed;
 }
 
 header div {
@@ -63,18 +62,65 @@ header a:hover {
 
 /* estilização do banner */
 
-main div {
+main div.banner {
   display: flex;
-  padding: 20px 0;
-  border-bottom: 3px solid rgba(119, 118, 118, 0.3);
+  padding: 20px;
+  border-bottom: 3px solid rgba(119, 118, 118, 0.4);
+  display: flex;
 }
 
 .banner img {
-  width: 400px;
-  height: 400px;
-  margin: 0 0;
+  width: 500px;
+  height: 500px;
+  margin: 40px 10%;
 }
 
-h1 {
-  display: inline;
+div.texto1 {
+  font-size: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+div.texto1 h1 {
+  margin-top: 130px;
+  margin-bottom: 0;
+  color: rgb(190, 56, 7);
+}
+
+p {
+  margin: 0 0 0 80px;
+  color: rgb(190, 56, 7);
+}
+
+.imagem-prof {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding: 30px 60px;
+  border-bottom: 3px solid rgba(119, 118, 118, 0.4);
+}
+
+.imagem-prof img {
+  width: 500px;
+  height: 500px;
+}
+
+.imagem-aluno {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  padding: 30px 60px;
+}
+
+.imagem-aluno img {
+  width: 500px;
+  height: 500px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: gray;
+  color: white;
 }
