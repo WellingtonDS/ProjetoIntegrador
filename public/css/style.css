@@ -66,7 +66,6 @@ main div.banner {
   display: flex;
   padding: 20px;
   border-bottom: 3px solid rgba(119, 118, 118, 0.4);
-  display: flex;
 }
 
 .banner img {
@@ -95,8 +94,8 @@ div.banner p {
   margin-top: 0;
 }
 
-
 /* estilização: conteúdo professor */
+
 .imagem-prof {
   display: flex;
   flex-direction: row;
@@ -110,7 +109,6 @@ div.professor h1 {
   font-size: 3rem;
   padding: 0 30px;
   color: rgb(75, 74, 74);
-
 }
 
 div.paragrafo-prof p {
@@ -118,7 +116,6 @@ div.paragrafo-prof p {
   line-height: 1.5;
   text-align: justify;
   color: rgb(75, 74, 74);
-  /* margin-right: 20px; */
   font-size: 1.5rem;
 }
 
@@ -141,7 +138,6 @@ div.paragrafo-prof p {
   margin-right: 45px;
   width: 500px;
   height: 500px;
-
 }
 
 .footer {
@@ -165,4 +161,126 @@ div.paragrafo-aluno p {
   text-align: justify;
   color: rgb(75, 74, 74);
   font-size: 1.5rem;
+}
+
+@media (max-width: 1168px) {
+
+  main div.banner {
+    padding: 0;
+  }
+
+  .banner img {
+    width: 420px;
+    height: 420px;
+    margin-left: 0;
+  }
+
+  div.texto1 h1 {
+    font-size: 2em;
+    margin-left: 0;
+  }
+
+  .imagem-prof img {
+    margin-left: 30px;
+    width: 430px;
+    height: 430px;
+  }
+
+  .imagem-aluno img {
+    margin-right: 30px;
+    width: 430px;
+    height: 430px;
+  }
+  
+}
+
+@media (max-width: 975px) {
+
+  .banner img {
+    width: 400px;
+    height: 400px;
+    margin: 50px 5% 0;
+  }
+
+  div.texto1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.texto1 h1 {
+    margin-top: 150px;
+    text-align: center;
+  }
+
+  div.paragrafo-prof p {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  div.professor h1 {
+    font-size: 2.5em;
+    margin: 0;
+  }
+
+  .imagem-prof img {
+    margin-left: 30px;
+    width: 400px;
+    height: 400px;
+  }
+
+  div.aluno h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  div.paragrafo-aluno p {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .imagem-aluno img {
+    margin-right: 30px;
+    width: 400px;
+    height: 400px;
+  }
+
+}
+
+@media (max-width: 890px) {
+
+  div.texto1 h1 {
+    margin-top: 150px;
+    text-align: center;
+    font-size: 1.8em;
+  }
+
+
+  div.paragrafo-prof p {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  div.professor h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+  .imagem-prof img {
+    width: 300px;
+    height: 300px;
+  }
+
+  div.aluno h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  div.paragrafo-aluno p {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .imagem-aluno img {
+    width: 300px;
+    height: 300px;
+  }
 }
