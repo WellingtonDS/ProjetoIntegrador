@@ -1,3 +1,7 @@
+body {
+    background-color: #f3f4f7;
+}
+
 main div.calendario-bg {
     background-image: url('../images/calendar_cover.jpg');
     background-size: cover;
@@ -28,13 +32,16 @@ section {
 }
 
 div.calendario {
+    padding: 20px;
+    border-radius: 3px;
     width: 50%;
     margin: 0 auto 20px;
     border-bottom: 1px solid rgb(199, 198, 198);
+    background-color: white;
 }
 
 div.dia-semana {
-    background-color: orangered;
+    background-color: rgb(247, 67, 1);
     color: white;
     padding: 10px;
     width: max-content;
@@ -46,5 +53,5 @@ section p.descricao {
     line-height: 1.5;
     text-align: justify;
     font-size: 1.2em;
-    color: rgb(66, 66, 66);
+    color: #172b4d;
 }
