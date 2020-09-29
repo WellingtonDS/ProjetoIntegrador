@@ -1,0 +1,22 @@
+main div.calendario-bg {
+    background-image: url('../images/calendar_cover.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 320px;
+}
+
+main div span {
+    margin-top: 240px;
+    font-size: 3rem;
+    margin-left: 100px;
+    font-weight: bold;
+}
+
+main div.mes {
+    padding: 50px;
+    text-align: center;
+}
+
+main div.mes h1 {
+    color: #1f3748;
+}
