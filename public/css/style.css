@@ -263,10 +263,6 @@ div.paragrafo-aluno p {
     padding: 20px;
   }
 
-  div.imagem-prof {
-    padding: 5px 8px;
-  }
-
   div.banner img {
     margin-right: 0;
     width: 380px;
@@ -304,8 +300,8 @@ div.paragrafo-aluno p {
   }
 
   .imagem-aluno img {
-    width: 300px;
-    height: 300px;
+    width: 380px;
+    height: 380px;
   }
 }
 
@@ -326,12 +322,12 @@ div.paragrafo-aluno p {
   }
 
   div.professor h1 {
-    margin-top: 5px;
+    margin-top: 30px;
     font-size: 1.6em;
   }
 
   div.paragrafo-prof p {
-    margin-left: 0;
+    margin-left: 5px;
     padding-right: 0;
     font-size: 1.1rem;
   }
@@ -341,12 +337,12 @@ div.paragrafo-aluno p {
   }
 
   div.aluno h1 {
-    margin-top: 5px;
+    margin-top: 30px;
     font-size: 1.6em;
   }
 
   div.paragrafo-aluno p {
-    padding-right: 0;
+    padding-right: 10px;
     margin-top: 0;
     font-size: 1.1rem;
   }
@@ -361,6 +357,23 @@ div.paragrafo-aluno p {
 
 @media (max-width: 660px) {
 
+  div.banner img {
+    width: 80%;
+    height: 80%;
+  }
+
+  .imagem-prof img {
+    margin-left: 10px;
+    width: 75%;
+    height: 75%;
+  }
+
+  .imagem-aluno img {
+    margin-right: 10px;
+    width: 75%;
+    height: 75%;
+  }
+
   div.texto1 {
     margin: 0 auto;
   }
@@ -373,9 +386,44 @@ div.paragrafo-aluno p {
     display: block;
   }
 
-  .banner img,
-  .imagem-prof img,
-  .imagem-aluno img {
-    display: none;
+  .banner {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
+
+  div.banner img {
+    margin: 50px auto 0;
+  }
+
+  div.texto1 h1 {
+    margin-top: 0;
+  } 
+
+  .imagem-prof {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  div.imagem-prof img {
+    margin: 0 auto;
+  }
+
+  div.imagem-prof p {
+    padding: 10px;
+  }
+
+  .imagem-aluno {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.imagem-aluno img {
+    margin: 0 auto;
+  }
+
+  div.imagem-aluno p {
+    padding: 10px;
+  }
+
 }
