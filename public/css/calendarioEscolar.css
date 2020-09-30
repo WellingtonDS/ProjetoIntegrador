@@ -55,3 +55,15 @@ section p.descricao {
     font-size: 1.2em;
     color: rgb(56, 56, 56);
 }
+
+@media (max-width: 660px) {
+    div.calendario-bg {
+        display: flex;
+        justify-content: center;
+    }
+
+    div.calendario-bg span {
+        margin-left: 0;
+        font-size: 2.5rem;
+    }
+}
