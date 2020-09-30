@@ -22,7 +22,7 @@ main div.mes {
 }
 
 main div.mes h1 {
-    color: #1f3748;
+    color: rgb(56, 56, 56);
 }
 
 /* estilização da area do calendário */
@@ -53,5 +53,5 @@ section p.descricao {
     line-height: 1.5;
     text-align: justify;
     font-size: 1.2em;
-    color: #172b4d;
+    color: rgb(56, 56, 56);
 }

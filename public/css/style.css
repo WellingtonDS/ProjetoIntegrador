@@ -248,15 +248,32 @@ div.paragrafo-aluno p {
 
 @media (max-width: 890px) {
 
+  .banner img {
+    margin-left: 0;
+  }
+
+  div.banner {
+    padding: 20px;
+  }
+
+  div.imagem-prof {
+    padding: 5px 8px;
+  }
+
+  div.banner img {
+    margin-right: 0;
+    width: 380px;
+    height: 380px;
+  }
+
   div.texto1 h1 {
     margin-top: 150px;
     text-align: center;
     font-size: 1.8em;
   }
 
-
   div.paragrafo-prof p {
-    margin: 0;
+    margin-left: 10px;
     font-size: 1.2rem;
   }
 
@@ -265,8 +282,8 @@ div.paragrafo-aluno p {
     margin: 0;
   }
   .imagem-prof img {
-    width: 300px;
-    height: 300px;
+    width: 380px;
+    height: 380px;
   }
 
   div.aluno h1 {
@@ -283,4 +300,32 @@ div.paragrafo-aluno p {
     width: 300px;
     height: 300px;
   }
+}
+
+@media (max-width: 720px) {
+
+  div.texto1 h1 {
+    font-size: 1.6em;
+  }
+
+  div.imagem-prof {
+    padding: 5px 8px;
+  }
+
+  div.imagem-prof img {
+    margin-left: 10px;
+    width: 320px;
+    height: 320px;
+  }
+
+  div.professor h1 {
+    margin-top: 5px;
+    font-size: 1.6em;
+  }
+
+  div.paragrafo-prof p {
+    font-size: 1.1rem;
+    
+  }
+
 }
