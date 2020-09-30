@@ -163,6 +163,13 @@ div.paragrafo-aluno p {
   font-size: 1.5rem;
 }
 
+.header-menu li:first-child {
+  margin-top: -15px;
+  display: none;
+  color: white;
+  font-size: 40px;
+}
+
 @media (max-width: 1168px) {
 
   main div.banner {
@@ -309,10 +316,10 @@ div.paragrafo-aluno p {
   }
 
   div.imagem-prof {
-    padding: 5px 8px;
+    padding: 10px 10px;
   }
 
-  div.imagem-prof img {
+  .imagem-prof img {
     margin-left: 10px;
     width: 320px;
     height: 320px;
@@ -325,7 +332,47 @@ div.paragrafo-aluno p {
 
   div.paragrafo-prof p {
     font-size: 1.1rem;
-    
   }
 
+  div.imagem-aluno {
+    padding: 10px 10px;
+  }
+
+  div.aluno h1 {
+    margin-top: 5px;
+    font-size: 1.6em;
+  }
+
+  div.paragrafo-aluno p {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .imagem-aluno img {
+    margin-right: 10px;
+    width: 320px;
+    height: 320px;
+  }
+
+}
+
+@media (max-width: 660px) {
+
+  div.texto1 {
+    margin: 0 auto;
+  }
+
+  .header-menu li:not(:first-child) {
+    display: none;
+  }
+
+  .header-menu li:first-child {
+    display: block;
+  }
+
+  .banner img,
+  .imagem-prof img,
+  .imagem-aluno img {
+    display: none;
+  }
 }
