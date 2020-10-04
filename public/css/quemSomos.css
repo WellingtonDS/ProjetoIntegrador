@@ -32,15 +32,12 @@ div.conteudo-img img {
   width: 500px;
   height: 500px;
   padding: 30px 60px;
-  
-
 }
 
 .conteudo-texto h1 {
   text-align: center;
   font-size: 50px;
   color: rgb(56, 56, 56);
-  
 }
 
 p {
@@ -49,16 +46,13 @@ p {
 
 .conteudo2 {
   display: flex;
-  flex-direction: row-reverse;
-  
-  
+  flex-direction: row-reverse; 
 }
 
 div.conteudo2-img img {
   width: 500px;
   height: 500px;
   padding: 30px 60px;
-  
 }
 
 div.conteudo2 .conteudo-texto p {
