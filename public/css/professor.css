@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  background-image: url('../images/background.png'); 
+  background-size: 55%;
+}
+
+/* estilização da barra de menu */
+.menu {
+  width: 80%;
+  height: 50px;
+  background-color: #e4610f;
+  background-size: cover;
+  position: fixed;
+  margin-left: -40px;
+  margin-top: 10px;
+  border-radius: 50px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+li {
+  list-style: none;
+}
+
+header a:link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.973)
+}
+
+.logo span {
+    position: absolute;
+    color:  rgba(255, 255, 255, 0.973);
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  margin-left:80%;
+}
+
+.principal {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.principal img {
+  width: 40%;
+  height: 40%;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-radius: 30px;
+}
+
+.quadro{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.bloco {
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  padding: 8px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.titulo {
+  text-align: center;
+  font-weight: bold;
+  height: 40px;
+}
+
+.bloco td{
+  padding: 5px;
+  vertical-align: top;
+  font-size: 13px;
+}
+
+.bloco2 {
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.bloco2 td{
+  padding: 15px;
+  font-size: 15px;
+}
