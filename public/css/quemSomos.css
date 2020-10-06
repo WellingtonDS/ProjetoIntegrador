@@ -1,14 +1,12 @@
-body {
-    margin: 0;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-  }
+/*estilizacão do span e da imagem do topo */
 
 main div.quemSomos-bg {
-  background-image: url('../images/qSTopo.jpeg');
+  background-image: url('../images/quemSomos3.jpg');
+  background-position: 0%;
   background-size: cover;
   width: 100%;
   height: 320px;
-  background-color: rgba(119, 118, 118, 0.4);
+  
 }
 
 main div span {
@@ -16,44 +14,53 @@ main div span {
   font-size: 3rem;
   margin-left: 100px;
   font-weight: bold;
+  color: black;
 }
-
+/* padding definido no conteúdo main */ 
 main {
   padding: 50px;
 }
 
+/* definindo posicão de texto e imagem */
 .conteudo {
   display: flex;
   flex-direction: row-reverse;
   border-bottom: 3px solid rgba(119, 118, 118, 0.4);
 }
-  
+
+/* estilizacão da imagem do primeiro conteúdo da página*/
 div.conteudo-img img {
+  margin-left: 45px;
   width: 500px;
   height: 500px;
-  padding: 30px 60px;
-  
-
 }
 
+/* estilizacão do título do primeiro conteúdo */
 .conteudo-texto h1 {
   text-align: center;
-  font-size: 50px;
-  color: rgb(56, 56, 56);
-  
+  font-size: 3rem;
+  padding: 0 30px;
+  color: rgb(75, 74, 74);
+  margin-top: 100px;
 }
 
+/* estilizacão do texto dos dois parágrafos*/
 p {
-  font-size: 1.5rem;
+padding: 20px 20px 0 0;
+line-height: 1.5;
+text-align: justify;
+color: rgb(75, 74, 74);
+font-size: 1.5rem;
 }
-
+/* definindo posicão de texto e imagem */
 .conteudo2 {
   display: flex;
   flex-direction: row-reverse;
-  
+  border-bottom: 3px solid rgba(119, 118, 118, 0.4);
   
 }
 
+/* estilizacão da imagem do segundo conteúdo da página*/
 div.conteudo2-img img {
   width: 500px;
   height: 500px;
@@ -61,7 +68,10 @@ div.conteudo2-img img {
   
 }
 
-div.conteudo2 .conteudo-texto p {
-  text-align: left;
-  margin-top: 100px;
+/* estilizacão do título do segundo conteúdo */
+div.conteudo2 .conteudo-texto {
+  text-align: center;
+  font-size: 3rem;
+  padding: 0 30px;
+  color: rgb(75, 74, 74);
 }
