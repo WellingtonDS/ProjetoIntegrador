@@ -33,6 +33,7 @@ div.conteudo-img img {
   margin-left: 45px;
   width: 500px;
   height: 500px;
+  padding: 30px 60px;
 }
 
 /* estilizacão do título do primeiro conteúdo */
@@ -42,6 +43,8 @@ div.conteudo-img img {
   padding: 0 30px;
   color: rgb(75, 74, 74);
   margin-top: 100px;
+  font-size: 50px;
+  color: rgb(56, 56, 56);
 }
 
 /* estilizacão do texto dos dois parágrafos*/
@@ -57,7 +60,7 @@ font-size: 1.5rem;
   display: flex;
   flex-direction: row-reverse;
   border-bottom: 3px solid rgba(119, 118, 118, 0.4);
-  
+  flex-direction: row-reverse;
 }
 
 /* estilizacão da imagem do segundo conteúdo da página*/
@@ -65,7 +68,6 @@ div.conteudo2-img img {
   width: 500px;
   height: 500px;
   padding: 30px 60px;
-  
 }
 
 /* estilizacão do título do segundo conteúdo */
