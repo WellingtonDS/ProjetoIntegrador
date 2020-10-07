@@ -1,21 +1,15 @@
 main {
     display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    height: 100%;
-}
+    flex-direction: row-reverse;
 
-div.imagem-login img {
-    width: 100%;
-    min-height: 100%;
-}
-
-div.imagem-login {
-    width: 45%;
+    padding-right: 10%;
+    height: 94vh;
+    background-image: url('../images/login-editado.png');
+    background-size: 555px;
+    background-repeat: no-repeat;
 }
 
 div.formulario {
-    margin: 0 auto;
     align-self: center;
     color: rgb(56, 56, 56);
 }
@@ -29,12 +23,6 @@ label{
 }
 input {
     width: 96%;
-}
-
-
-#checkbox {
-    width: 40px;
-    
 }
 
 span {
