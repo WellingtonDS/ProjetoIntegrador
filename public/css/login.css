@@ -1,0 +1,79 @@
+*{
+    box-sizing: border-box;
+}
+
+header {
+    margin-top: -60px;
+}
+
+main {
+    height: calc(100vh - 121px);
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+}
+
+.conteudo-img{
+    width: 35%;
+    background-image: url("../images/login1.png") ;
+    background-size: 110% 105%;
+    background-repeat:no-repeat;
+}
+
+.conteudo-login {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login {
+    width: 34%;
+}
+
+.form-login input{
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid orangered;
+    margin-bottom: 9px;
+    
+}
+
+.form-login h1 {
+    margin-bottom: 0;
+    color: rgb(75, 74, 74);
+    font-size: 40px;
+
+}
+
+.form-login span{
+    display: block;
+    position: relative;
+    color:  black;
+    font-size: 15px;
+    margin: 0px
+}
+
+.form-submeter {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-submeter a{
+    font-size: 14px;
+    color: rgb(71, 77, 88);
+    align-self: center;
+}
+
+.form-submeter button{
+    width: 115px;
+    height: 35px;
+    /* background-color: orangered; */
+    color: rgb(0,0,0);
+    border: 1px solid #1f3748;
+    border-radius: 40px;
+    font-size: 14px;
+}

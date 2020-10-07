@@ -5,8 +5,7 @@ main div.quemSomos-bg {
   background-position: 0%;
   background-size: cover;
   width: 100%;
-  height: 320px;
-  
+  height: 320px; 
 }
 
 main div span {
@@ -49,11 +48,11 @@ div.conteudo-img img {
 
 /* estilizacão do texto dos dois parágrafos*/
 p {
-padding: 20px 20px 0 0;
-line-height: 1.5;
-text-align: justify;
-color: rgb(75, 74, 74);
-font-size: 1.5rem;
+  padding: 20px 20px 0 0;
+  line-height: 1.5;
+  text-align: justify;
+  color: rgb(75, 74, 74);
+  font-size: 1.5rem;
 }
 /* definindo posicão de texto e imagem */
 .conteudo2 {
@@ -77,3 +76,4 @@ div.conteudo2 .conteudo-texto {
   padding: 0 30px;
   color: rgb(75, 74, 74);
 }
+
