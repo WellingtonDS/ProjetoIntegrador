@@ -9,13 +9,13 @@ header {
       display: flex;
   }
   
-  .gerenciamento {
-      /* background-color: teal; */
-      width: 70%;
-      padding: 20px 40px;
-      }
+.gerenciamento {
+    /* background-color: teal; */
+    width: 70%;
+    padding: 20px 40px;
+}
   
-      .secao{
+.secao{
           /* background-color: thistle; */
           box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
           transition: 0.3s;
@@ -29,7 +29,7 @@ header {
               border-bottom: 1px solid  rgba(0,0,0,0.2);
             }
             .aulas-img{
-              background-image: url("../images/icone-calendario-300x300.png");
+              background-image: url("../images/incone-calendario-300x300.png");
               background-size: contain;
               width: 55px;
               height: 55px;
