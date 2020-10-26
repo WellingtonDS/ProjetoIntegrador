@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var QuemSomosRouter = require('./routes/QuemSomosRouter');
 var CalendarioEscolarRouter = require('./routes/CalendarioEscolarRouter');
+var LoginRouter = require('./routes/LoginRouter');
 
 var app = express();
 
@@ -22,7 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/quemSomos', QuemSomosRouter);
-app.use('/CalendarioEscolarRouter', CalendarioEscolarRouter)
+app.use('/CalendarioEscolarRouter', CalendarioEscolarRouter);
+app.use('/login', LoginRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
