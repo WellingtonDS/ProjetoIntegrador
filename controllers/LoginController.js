@@ -3,3 +3,5 @@ const LoginController = {
         res.render('login');
     }
 }
+
+module.exports = LoginController;  

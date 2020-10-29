@@ -4,4 +4,4 @@ const LoginController = require('../controllers/LoginController');
 
 router.get('/', LoginController.showLogin);
 
-module.export = router;
+module.exports = router;

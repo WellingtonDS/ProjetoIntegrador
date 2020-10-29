@@ -23,9 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/quemSomos', QuemSomosRouter);
-app.use('/CalendarioEscolarRouter', CalendarioEscolarRouter);
+app.use('/calendarioEscolar', CalendarioEscolarRouter);
 app.use('/login', LoginRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
