@@ -8,11 +8,12 @@ main {
 }
 
 .imagem {
-    width: 50%;
+    width: 600px;
+    height: 92vh;
 }
 
 .imagem img {
-    width: 100%;
+    width: 80%;
     height: 100%;
 }
 
@@ -56,4 +57,10 @@ button {
 
 button:hover {
     background-color: rgb(235, 63, 0);;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
