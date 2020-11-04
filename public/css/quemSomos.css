@@ -15,12 +15,11 @@ main div span {
   font-weight: bold;
   color: black;
 }
-/* padding definido no conteúdo main */ 
+
 main {
-  padding: 50px;
+  padding: 50px 0;
 }
 
-/* definindo posicão de texto e imagem */
 .conteudo {
   display: flex;
   flex-direction: row-reverse;

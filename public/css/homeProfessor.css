@@ -1,98 +1,95 @@
 /* estilizacão card, do perfil do professor*/
 
 header {
-    z-index: 20;
-  }
+  z-index: 20;
+}
   
-  .painel {
-      /* background-color: tomato; */
-      display: flex;
-  }
+.painel {
+  display: flex;
+}
   
 .gerenciamento {
-    /* background-color: teal; */
-    width: 70%;
-    padding: 20px 40px;
+  width: 70%;
+  padding: 20px 40px;
 }
   
 .secao{
-          /* background-color: thistle; */
-          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-          transition: 0.3s;
-          padding: 8px 18px;
-          border-radius: 20px;
-          margin-bottom: 20px;
-          }
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 8px 18px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
   
-          .aulas-titulo{
-              display: flex;
-              border-bottom: 1px solid  rgba(0,0,0,0.2);
-            }
-            .aulas-img{
-              background-image: url("./images/incone-calendario-300x300.png");
-              background-size: contain;
-              width: 55px;
-              height: 55px;
-            }
-            .aulas-titulo-secao {
-              margin-left: 40px;
-              margin-right: 40px;
-            }
+.aulas-titulo{
+  display: flex;
+  border-bottom: 1px solid  rgba(0,0,0,0.2);
+}
+
+.aulas-img{
+  background-image: url("./images/incone-calendario-300x300.png");
+  background-size: contain;
+  width: 55px;
+  height: 55px;
+}
+
+.aulas-titulo-secao {
+  margin-left: 40px;
+  margin-right: 40px;
+}
   
-  
-      .aulas-secao-selecionar {
-        border-bottom: 1px solid  rgba(0,0,0,0.2);
-       }
-        .aulas-secao-selecionar span{
-          display: block;
-          position: relative;
-          color:  black;
-          font-size: 15px;
-          margin-bottom: 10px;
-  
-        }
+.aulas-secao-selecionar {
+  border-bottom: 1px solid  rgba(0,0,0,0.2);
+}
+
+.aulas-secao-selecionar span{
+  display: block;
+  position: relative;
+  color:  black;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
               
   
-  .card {
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      transition: 0.3s;
-      width: 14%;
-      margin-left: 45px;
-      padding: 30px 60px;
-      font-weight: bold;
-      color: black;
-      background-color: rgb(248, 248, 248);
-      position: relative;
-      top: -120px;
-      }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 14%;
+  height: 260px;
+  margin-left: 45px;
+  padding: 30px 60px;
+  font-weight: bold;
+  color: black;
+  background-color: rgb(248, 248, 248);
+  position: relative;
+  top: -120px; 
+}
     
-    .card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
-    
-    .container {
-      padding: 2px 16px;
-    }
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+ 
+main div.professor-bg {
+  background-image: url('../images/homeprofessor.jpg');
+  background-position: 70%;
+  background-size: cover;
+  width: 100%;
+  height: 320px;
+}
+
+.conteudo-texto {
+  text-align: center;
+  font-size: 3rem;
+  padding: 0 30px;
+  color: rgb(75, 74, 74);
+}
   
-  
-  main div.professor-bg {
-      background-image: url('../images/homeprofessor.jpg');
-      background-position: 70%;
-      background-size: contain;
-      width: 100%;
-      height: 320px;
-      
-    }
-  
-    .conteudo-texto {
-          text-align: center;
-          font-size: 3rem;
-          padding: 0 30px;
-          color: rgb(75, 74, 74);
-      }
-    
-  
-  hr {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
+
+hr {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
