@@ -1,5 +1,3 @@
-const { sequelize } = require(".");
-
 module.exports = (sequelize, DataTypes) => {
     const aluno = sequelize.define(
         'Aluno',
@@ -16,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             usuario_id: DataTypes.INTEGER   
         },
         {
-            tableName: 'alunos',
+            tableName: "alunos",
             timestamps: false
         }
     );

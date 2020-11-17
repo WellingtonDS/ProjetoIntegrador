@@ -1,5 +1,3 @@
-const { sequelize, Sequelize } = require("../models");
-
 module.exports = (sequelize, DataTypes) => {
     const professor = sequelize.define(
         'Professor',
