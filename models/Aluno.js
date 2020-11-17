@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
             usuario_id: DataTypes.INTEGER   
         },
         {
-            tableName: "alunos",
+            tableName: 'alunos',
             timestamps: false
         }
     );
