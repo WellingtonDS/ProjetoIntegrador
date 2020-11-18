@@ -1,12 +1,9 @@
 const {sequelize, Professor} = require("../models");
 
-Professor.findOne({
-    where:{
-        nome: "Juliana"
-    }
-}).then(
+Professor.findByPk(32,{include: 'usuario'}).then(
     professores => {
-        console.log(professores);
+        console.log(professores.dataValues);
+        console.log(professores.usuario.dataValues);
         sequelize.close();
     }
 );
