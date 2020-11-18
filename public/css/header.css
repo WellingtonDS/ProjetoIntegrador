@@ -1,0 +1,38 @@
+body {
+    /* font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;  */
+    /* font-family: 'Epilogue', sans-serif; */
+    color: rgb(56, 56, 56);
+}
+
+nav.navbar{
+    background-image: url("../../images/bg-header.png");
+    background-size: contain;
+    box-shadow: 0 0 10px rgb(56, 56, 56);
+    margin-bottom: 30px;
+}
+
+.navbar-header span {
+    font-size: large;
+    color: white;
+}
+
+.navbar-header img {
+    width: 62px;
+    height: 62px;
+}
+
+nav.navbar a {
+    color: white;
+}
+
+nav.navbar a:hover {
+    text-decoration: none;
+    color: rgb(216, 210, 210);
+}
+
+nav.navbar li {
+    margin: 0 10px;
+    /* font-size: large; */
+    font-weight: 500;
+    line-height: 2;
+}

@@ -27,7 +27,7 @@ header {
 }
 
 .aulas-img{
-  background-image: url("./images/incone-calendario-300x300.png");
+  background-image: url("../public/images/incone-calendario-300x300.png");
   background-size: contain;
   width: 55px;
   height: 55px;

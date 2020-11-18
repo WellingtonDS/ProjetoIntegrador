@@ -1,13 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
 
-var indexRouter = require('./routes/index');
-var QuemSomosRouter = require('./routes/QuemSomosRouter');
-var CalendarioEscolarRouter = require('./routes/CalendarioEscolarRouter');
-var LoginRouter = require('./routes/LoginRouter');
+const indexRouter = require('./routes/index');
+const QuemSomosRouter = require('./routes/QuemSomosRouter');
+const CalendarioEscolarRouter = require('./routes/CalendarioEscolarRouter');
+const LoginRouter = require('./routes/LoginRouter');
+const ProfessorRouter = require('./routes/ProfessorRouter');
 
 var app = express();
 
@@ -20,11 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'Roceket School' }));
 
 app.use('/', indexRouter);
 app.use('/quemSomos', QuemSomosRouter);
 app.use('/calendarioEscolar', CalendarioEscolarRouter);
 app.use('/login', LoginRouter);
+
+app.use('/professor', ProfessorRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
