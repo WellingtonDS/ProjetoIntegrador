@@ -5,6 +5,7 @@ const LoginController = require('../controllers/LoginController');
 const validarSession = require('../middleware/auth')
 
 router.get('/', validarSession, ProfessorController.index);
+router.get('/perfil', validarSession, ProfessorController.perfil);
 // router.get('/', validarSession, ProfessorController.index);
 
 module.exports = router;

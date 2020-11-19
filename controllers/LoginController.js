@@ -1,45 +1,29 @@
 const {sequelize, Usuario, Professor, Aluno} = require('../models')
 
 const LoginController = {
-    showLogin: (req, res) => {
-        res.render('login');
+    showLoginProfessor: (req, res) => {
+        res.render('loginProfessor');
+    },
+    showLoginAluno: (req, res) => {
+        res.render('loginAluno');
     },
     logar: async (req, res) => {
-        let rota = null;
-        let {email} = req.body;
-
+        let {email, senha} = req.body;
         let usuario = await Usuario.findOne({
             where:{
-                email 
+                email
             }
         })
 
-        let usuarioFinal = null;
-
-        if(usuario){
-            req.session.usuario = usuario
-            if(usuario.tipo == 'P'){
-                usuarioFinal = Professor.findOne({
-                    where:{
-                        email
-                    },
-                    include: 'usuario'
-                })
-                
-            } else { 
-                usuarioFinal = Aluno.findOne({
-                    where:{
-                        email
-                    },
-                    include: 'usuario'
-                })
-                
-            }    
-        } else {
-            rota = '/login';
-        }
-
-        res.send(usuarioFinal);
+        let professor = await Professor.findOne({
+            where:{
+                usuario_id: usuario.id 
+            },
+            include: 'usuario'
+        })
+        req.session.usuario = professor;
+        res.redirect('/professor');
+        
         
     }
 

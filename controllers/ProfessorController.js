@@ -1,8 +1,11 @@
-const ProfessorController = {
-    
+const ProfessorController = {   
     index: (req, res) => {
-        let email = req.session.usuario.email;
-        res.render('./professor/index', {email}) 
+        // let professor = req.session.usuario
+        res.render('./professor/index', {usuario: req.session.usuario});
+    },
+    perfil:(req, res) => {
+        // let professor = req.session.usuario
+        res.render('./professor/perfil', {usuario: req.session.usuario});
     }
 }
 

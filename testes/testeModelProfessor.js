@@ -5,4 +5,4 @@ Professor.findByPk(33,{include: 'usuario'}).then(
         console.log(professores.toJSON());
         sequelize.close();
     }
-);
+); 
