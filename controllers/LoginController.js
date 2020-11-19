@@ -1,4 +1,4 @@
-const {sequelize, Usuario} = require('../models')
+const {sequelize, Usuario, Professor, Aluno} = require('../models')
 
 const LoginController = {
     showLogin: (req, res) => {
@@ -6,26 +6,40 @@ const LoginController = {
     },
     logar: async (req, res) => {
         let rota = null;
-        let {email, senha} = req.body;
+        let {email} = req.body;
 
         let usuario = await Usuario.findOne({
             where:{
                 email 
             }
         })
-        
+
+        let usuarioFinal = null;
+
         if(usuario){
             req.session.usuario = usuario
             if(usuario.tipo == 'P'){
-                rota = '/professor';
+                usuarioFinal = Professor.findOne({
+                    where:{
+                        email
+                    },
+                    include: 'usuario'
+                })
+                
             } else { 
-                rota = '/aluno';
+                usuarioFinal = Aluno.findOne({
+                    where:{
+                        email
+                    },
+                    include: 'usuario'
+                })
+                
             }    
         } else {
             rota = '/login';
         }
 
-        res.redirect(rota);
+        res.send(usuarioFinal);
         
     }
 

@@ -1,8 +1,8 @@
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
     if(req.session.usuario){
         next();
     }else{
-        res.send('Aao não autorizada!')
+        res.send('Ação não autorizada!')
     }
  
 }

@@ -4,6 +4,10 @@ body {
     color: rgb(56, 56, 56);
 }
 
+.header-menu {
+    margin-top: initial !important;
+}
+
 nav.navbar{
     background-image: url("../../images/bg-header.png");
     background-size: contain;
