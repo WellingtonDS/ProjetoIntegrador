@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const ProfessorController = require('../controllers/ProfessorController');
-const LoginController = require('../controllers/LoginController');
-const validarSession = require('../middleware/auth')
+const validarSession = require('../middlewares/auth')
 
 router.get('/', validarSession, ProfessorController.index);
 router.get('/perfil', validarSession, ProfessorController.perfil);
-// router.get('/', validarSession, ProfessorController.index);
+router.get('/horarios', validarSession, ProfessorController.horarios);
+router.get('/disciplinas', validarSession, ProfessorController.disciplinas);
+
 
 module.exports = router;
  

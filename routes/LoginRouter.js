@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const LoginController = require('../controllers/LoginController');
-const validarLogin = require('../middleware/auth');
+const validarLogin = require('../middlewares/auth');
 const {check, validationResult, body} = require('express-validator');
 
 router.get('/professor', LoginController.showLoginProfessor);
