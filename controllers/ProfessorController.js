@@ -1,6 +1,8 @@
 const ProfessorController = {
+    
     index: (req, res) => {
-        res.render('./professor/index')
+        let email = req.session.usuario.email;
+        res.render('./professor/index', {email}) 
     }
 }
 

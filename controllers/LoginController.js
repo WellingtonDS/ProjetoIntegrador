@@ -5,15 +5,28 @@ const LoginController = {
         res.render('login');
     },
     logar: async (req, res) => {
+        let rota = null;
         let {email, senha} = req.body;
+
         let usuario = await Usuario.findOne({
             where:{
-                email
+                email 
             }
         })
+        
+        if(usuario){
+            req.session.usuario = usuario
+            if(usuario.tipo == 'P'){
+                rota = '/professor';
+            } else { 
+                rota = '/aluno';
+            }    
+        } else {
+            rota = '/login';
+        }
 
-        req.session.usuario = usuario
-        res.redirect('/professor')
+        res.redirect(rota);
+        
     }
 
 }

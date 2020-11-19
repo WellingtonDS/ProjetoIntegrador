@@ -18,15 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     // cria relacionamento
     professor.associate = (models) => {
         professor.belongsTo(models.Usuario, {foreignKey: 'usuario_id', as: 'usuario'});
-        professor.belongsToMany(
-            models.Disciplina, 
-            {
-                as: 'disciplinas',
-                through: 'professores_disciplinas',
-                foreignKey: 'professor_id',
-                
-            }
-        );
+
     }
 
     return professor;
