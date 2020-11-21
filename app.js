@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
 const QuemSomosRouter = require('./routes/QuemSomosRouter');
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'Roceket School' }));
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/quemSomos', QuemSomosRouter);
