@@ -18,7 +18,7 @@
         <div class="container">
             <div class="navbar-header">
                 <img src="../../images/rocket.png" alt="">
-                <span>Olá, Professor(a) <%= usuario.nome %></span>
+                <span>Olá, Professor(a) <%= professor.nome %></span>
             </div>
 
             <div>
@@ -53,16 +53,16 @@
                 <form action="">
                     <div class="form-group">
                         <label for="">Nome</label>
-                        <input type="text" class="form-control" placeholder="">
+                        <input type="text" class="form-control" placeholder="" value="<%= professor.nome %>">
+                        <br>
+                        <label for="">Sobrenome</label>
+                        <input type="text" class="form-control" value="<%= professor.sobrenome %>">
                         <br>
                         <label for="">Email</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" value="<%= professor.email %>">
                         <br>
-                        <label for="">Endereço</label>
-                        <input type="text" class="form-control">
-                        <br>
-                        <label for="">Celular</label>
-                        <input type="text" class="form-control">
+                        <label for="">Telefone</label>
+                        <input type="text" class="form-control" value="<%= professor.telefone %>">
                         <br>
                         <button type="submit" class="btn btn-secondary">Alterar</button>
                     </div>

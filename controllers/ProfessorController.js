@@ -7,7 +7,7 @@ const ProfessorController = {
     },
     perfil:(req, res) => {
         // let professor = req.session.usuario
-        res.render('./professor/perfil', {usuario: req.session.usuario});
+        res.render('./professor/perfil', {professor: req.session.usuario});
     },
     horarios: (req, res) => {
         res.render('./professor/horarios', {usuario: req.session.usuario});
