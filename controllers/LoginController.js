@@ -14,27 +14,33 @@ const LoginController = {
         let {email, senha} = req.body;
         let listaDeErros = validationResult(req);
 
-        if(listaDeErros.isEmpty()){
-            usuario = await Usuario.findOne({
-                where:{
-                    email
-                }
-            });
+        if(!listaDeErros.isEmpty()){
+            return res.render('loginProfessor', {errors: listaDeErros.errors});
+        }
+        
+        usuario = await Usuario.findOne({
+            where:{
+                email
+            }
+        });
 
+        if(!usuario || usuario.senha !== senha){
+            listaDeErros.errors.push({msg: 'Usuário ou senha inválido.'});
+        }
+
+        if(listaDeErros.isEmpty()){
             professor = await Professor.findOne({
                 where:{
                     usuario_id: usuario.id 
                 },
                 include: 'usuario'
-            })
+            });
+
             req.session.usuario = professor;
-        }else{
-            res.render('loginProfessor', {errors: listaDeErros.errors})
+            res.redirect('/professor');
         }
 
-        res.redirect('/professor');
-        
-        
+        res.render('loginProfessor', {errors: listaDeErros.errors})
     }
 
 }
