@@ -41,6 +41,10 @@ const LoginController = {
         }
 
         res.render('loginProfessor', {errors: listaDeErros.errors})
+    },
+    logout: (req, res) => {
+        req.session.usuario = null;
+        res.redirect('/')
     }
 
 }
