@@ -1,5 +1,6 @@
 const {sequelize, Usuario, Professor, Aluno} = require('../models');
 const {check, validationResult, body} = require('express-validator');
+const bcrypt = require('bcrypt');
 
 const LoginController = {
     showLoginProfessor: (req, res) => {
@@ -24,7 +25,7 @@ const LoginController = {
             }
         });
 
-        if(!usuario || usuario.senha !== senha){
+        if(!usuario || !bcrypt.compareSync(senha, usuario.senha)){
             listaDeErros.errors.push({msg: 'Usuário ou senha inválido.'});
         }
 
