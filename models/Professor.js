@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const professor = sequelize.define(
         'Professor',
         {
+
             nome: DataTypes.STRING,
             sobrenome: DataTypes.STRING,
             email: DataTypes.STRING(100),
@@ -18,7 +19,12 @@ module.exports = (sequelize, DataTypes) => {
     // cria relacionamento
     professor.associate = (models) => {
         professor.belongsTo(models.Usuario, {foreignKey: 'usuario_id', as: 'usuario'});
-
+        professor.belongsToMany(models.Disciplina,
+            {
+                through: 'professores_disciplinas', 
+                foreignKey: 'disciplina_id',
+                as: 'disciplinas'               
+            })
     }
 
     return professor;
