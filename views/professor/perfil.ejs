@@ -21,43 +21,26 @@
             <h1>Perfil</h1>
         </div>
         <div class="row">
-            <!-- <div class="col-sm-3">
-                <img src="../../public/images/no-image.svg" class="img-fluid" alt="Imagem do professor">
-            </div> -->
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <h3>Dados pessoais</h3>
-                <form action="">
-                    <div class="form-group">
-                        <label for="">Nome</label>
-                        <input type="text" class="form-control" placeholder="" value="<%= professor.nome %>">
-                        <br>
-                        <label for="">Sobrenome</label>
-                        <input type="text" class="form-control" value="<%= professor.sobrenome %>">
-                        <br>
-                        <label for="">Email</label>
-                        <input type="email" class="form-control" value="<%= professor.email %>">
-                        <br>
-                        <label for="">Telefone</label>
-                        <input type="text" class="form-control" value="<%= professor.telefone %>">
-                        <br>
-                        <button type="submit" class="btn btn-secondary">Alterar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-sm-4">
-                <h3>Dados profissionais</h3>
                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Disciplina</th>
-                            <th scope="col">Turno</th>
-                        </tr>
-                    </thead>
                     <tbody>
-                        
+                        <tr>
+                            <th>Nome:</th><td><%= professor.nome%></td>                           
+                        </tr>
+                        <tr>
+                            <th>Sobrenome:</th><td><%= professor.sobrenome%></td>
+                        </tr>
+                        <tr>
+                            <th>E-mail:</th><td><%= professor.email%></td>
+                        </tr>
+                        <tr>
+                            <th>Telefone:</th><td><%= professor.telefone%></td>
+                        </tr>                        
                     </tbody>
                 </table>
             </div>
+            
         </div>
     </div>
     
