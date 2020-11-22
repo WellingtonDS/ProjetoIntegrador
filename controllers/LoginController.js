@@ -9,7 +9,7 @@ const LoginController = {
     showLoginAluno: (req, res) => {
         res.render('loginAluno');
     },
-    logar: async (req, res) => {
+    logarProfessor: async (req, res) => {
         let usuario = null;
         let professor = null;
         let {email, senha} = req.body;
