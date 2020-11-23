@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
                 as: 'turmas',
                 timestamps: false
             }    
-        )
+        );
+        professorDisciplina.belongsTo(models.Disciplina, {foreignKey: 'disciplina_id', as: 'disciplina'});
     }
 
     return professorDisciplina;
