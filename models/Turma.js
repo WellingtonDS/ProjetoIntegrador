@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         turma.belongsToMany(models.ProfessorDisciplina, {
             through: 'turmas_has_professores_disciplinas',
             foreignKey: 'turma_id',
-            as: 'professores_disciplinas'
+            as: 'turmas_professores_disciplinas'
         })
     }
 
