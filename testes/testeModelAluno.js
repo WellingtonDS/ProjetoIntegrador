@@ -1,6 +1,6 @@
-const {sequelize, Aluno} = require('../models');
+const {sequelize, Aluno, Turma} = require('../models');
 
-Aluno.findByPk(5, {include: 'usuario'}).then((aluno) => {
-    console.log(aluno.toJSON());
+Aluno.findAll({include: ['turma', 'usuario']}).then((aluno) => {
+    console.log(aluno[0].turma[0].dataValues);
     sequelize.close();
 })
