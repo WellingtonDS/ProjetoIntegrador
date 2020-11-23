@@ -17,5 +17,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
+    professorDisciplina.associate = (models) => {
+        professorDisciplina.belongsToMany(models.Turma, 
+            {
+                through: 'turmas_has_professores_disciplinas',
+                foreignKey: 'professores_disciplinas_id',
+                as: 'turmas',
+                timestamps: false
+            }    
+        )
+    }
+
     return professorDisciplina;
 }
