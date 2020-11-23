@@ -37,7 +37,7 @@ module.exports = {
         }
         
       }
-      console.log(turmas_has_professores_disciplinas)
+
       // inserindo os objetos no banco de dados
       await queryInterface.bulkInsert('turmas_has_professores_disciplinas', turmas_has_professores_disciplinas);
   },
