@@ -40,12 +40,13 @@
                     </thead>
                     <tbody>
                         <% disciplinas.forEach(disciplina => { %>
-                            <% disciplina = disciplina.dataValues %>
+                            <% disciplina = disciplina.toJSON() %>
+                            <% console.log(disciplina)%>
                             <tr>
                                 <td> <%= disciplina.disciplina_id %> </td>
                                 <td> <%= disciplina.nome %> </td>
                                 <td> 
-                                  <a class="btn btn-secondary btn-sm" href="/professor/formularioAula"> <strong> Aula </strong></a>
+                                  <a class="btn btn-secondary btn-sm" href="/professor/turmas/<%=turma.turma_id%>/<%= disciplina.professoresDisciplinas[0].id %>/aulas/registrar"> <strong> Aula </strong></a>
                                   <a class="btn btn-info btn-sm" href="/professor/formularioAvaliacao"><strong> Avaliação </strong></a>
                                   <a class="btn btn-success btn-sm" href="/professor/registroNota"><strong> Notas </strong></a> 
                                 </td>
