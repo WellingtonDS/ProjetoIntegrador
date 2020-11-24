@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: 'aluno_id',
                 as: 'turma',
                 timestamps: false
-            })
+            });
+        aluno.hasMany(models.Matricula, {as:'matricula', foreignKey:'aluno_id'});
     }
 
     return aluno;

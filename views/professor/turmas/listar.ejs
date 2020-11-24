@@ -17,7 +17,7 @@
     <%- include('../partialMenu', {professor}) %>
     <div class="container">
         <div class="page-header">
-            <h3>Essas são as disciplinas que você leciona</h3>
+            <h3>Turmas</h3>
         </div>
         <table class="table table-responsive-sm">
             <thead class="thead-dark">
@@ -26,7 +26,7 @@
                     <th scope="col">Série</th>
                     <th scope="col">Nível</th>
                     <th scope="col">Turno</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,9 +39,7 @@
                         <td><%= turma.turno %></td>
                         <td>
                             <a class="btn btn-light btn-sm" href="/professor/turmas/<%= turma.turma_id %>"> <strong> Detalhes </strong></a>
-                            <a class="btn btn-secondary btn-sm" href="/professor/formularioAula"> <strong> Aula </strong></a>
-                            <a class="btn btn-info btn-sm" href="/professor/formularioAvaliacao"><strong> Avaliação </strong></a>
-                            <a class="btn btn-success btn-sm" href="/professor/registroNota"><strong> Notas </strong></a>
+                            
                         </td>
                     </tr>
                 <% }) %>

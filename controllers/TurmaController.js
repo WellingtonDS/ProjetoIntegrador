@@ -1,5 +1,5 @@
 const session = require("express-session");
-const {sequelize, Turma, ProfessorDisciplina, Disciplina} = require('../models');
+const {sequelize, Aluno, Matricula, Turma, ProfessorDisciplina, Disciplina} = require('../models');
 
 const TurmaController = {
     listar: async (req, res) => {
@@ -46,7 +46,13 @@ const TurmaController = {
             }]
         })
 
-        res.render('./professor/turmas/detalhes', {professor, turma, disciplinas});
+        let alunos = await Aluno.findAll({include: [{
+            model: Matricula,
+            as: 'matricula',
+            where:{turma_id}
+        }]})
+
+        res.render('./professor/turmas/detalhes', {professor, turma, disciplinas, alunos});
     }
 }
 
