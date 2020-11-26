@@ -4,6 +4,7 @@ const ProfessorController = require('../controllers/ProfessorController');
 const TurmaController = require('../controllers/TurmaController');
 const AulaController = require('../controllers/AulaController');
 const validarSession = require('../middlewares/auth');
+const {check, validationResult, body} = require('express-validator');
 
 router.get('/', validarSession, ProfessorController.index);
 router.get('/perfil', validarSession, ProfessorController.perfil);

@@ -25,7 +25,7 @@ const AulaController = {
         let {turma_id, professor_disciplina_id} = req.params;
         let {data, descricao, frequencia} = req.body;
         
-        //seleciona frequencia de alunos presentes
+        // seleciona frequencia de alunos presentes
         let frequencias = frequencia.filter(freq => {
             return freq.frequencia == 'presente';
         });
@@ -38,7 +38,7 @@ const AulaController = {
             })
         })
 
-        //insere o registro de aula no banco
+        // insere o registro de aula no banco
         let aula = await Aula.create({
             data: data,
             descricao: descricao,
