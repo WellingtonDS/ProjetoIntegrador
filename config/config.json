@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
-    "database": "rocket_school",
+    "password": "",
+    "database": "rocket_school_1.0",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

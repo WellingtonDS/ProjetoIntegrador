@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
                 type:DataTypes.INTEGER,
                 primaryKey: true                
             },
-            nome: DataTypes.STRING,
-            sobrenome: DataTypes.STRING,
-            responsavel: DataTypes.STRING,
-            endereco: DataTypes.STRING,
-            telefone: DataTypes.STRING,
+            nome: DataTypes.STRING(100),
+            sobrenome: DataTypes.STRING(100),
+            responsavel: DataTypes.STRING(100),
+            endereco: DataTypes.STRING(100),
+            telefone: DataTypes.STRING(15),
             usuario_id: DataTypes.INTEGER   
         },
         {

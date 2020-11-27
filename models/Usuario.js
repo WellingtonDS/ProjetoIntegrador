@@ -7,7 +7,7 @@ module.exports = (sequelize, Datatypes) => {
             email: Datatypes.STRING(50),
             senha: Datatypes.STRING(256),
             tipo: Datatypes.STRING(1),
-            situacao: Datatypes.STRING(1)
+            situacao: Datatypes.STRING(10)
         },
         {
             tableName: 'usuarios',

@@ -2,10 +2,8 @@ module.exports = (sequelize, DataTypes) => {
     const professor = sequelize.define(
         'Professor',
         {
-
-            nome: DataTypes.STRING,
-            sobrenome: DataTypes.STRING,
-            email: DataTypes.STRING(100),
+            nome: DataTypes.STRING(100),
+            sobrenome: DataTypes.STRING(100),
             telefone: DataTypes.STRING(15),
             usuario_id: DataTypes.INTEGER
         },
