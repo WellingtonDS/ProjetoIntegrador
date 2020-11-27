@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 primaryKey: true
             },
-            nome: DataTypes.STRING,
-            descricao: DataTypes.STRING
+            nome: DataTypes.STRING(45),
+            descricao: DataTypes.STRING(140)
         },
         {
             tableName: 'disciplinas',
