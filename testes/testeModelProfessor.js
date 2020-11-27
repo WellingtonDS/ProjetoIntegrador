@@ -1,9 +1,9 @@
 const {sequelize, Professor, Disciplina} = require("../models");
 // const Disciplina = require("../models/Disciplina");
 
-Professor.findByPk(31,{include: ['disciplinas', 'usuario']}).then(
+Professor.findAll().then(
     professores => {
-        console.log(professores.toJSON());
+        console.log(professores[0].dataValues);
         sequelize.close();
     }
 ); 

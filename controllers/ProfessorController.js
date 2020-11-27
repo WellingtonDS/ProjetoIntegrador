@@ -14,7 +14,7 @@ const ProfessorController = {
     },
     disciplinas: (req, res) => {
         res.render('./professor/disciplinas', {professor: req.session.usuario});
-    }
+    }    
 }
 
 module.exports = ProfessorController;

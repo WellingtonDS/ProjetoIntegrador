@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false
         }
     );
+    frequencia.associate = (models) => {
+        frequencia.belongsTo(models.Aula);
+    }
 
     return frequencia;
 }

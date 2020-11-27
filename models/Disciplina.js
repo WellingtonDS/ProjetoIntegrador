@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: 'disciplina_id',
                 as: 'professores',
                 timestamps: false         
-            })
+            });
+        disciplina.hasMany(models.ProfessorDisciplina, { as: 'professoresDisciplinas', foreignKey: 'disciplina_id'})
 
     }
 

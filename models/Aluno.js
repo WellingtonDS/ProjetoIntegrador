@@ -21,6 +21,14 @@ module.exports = (sequelize, DataTypes) => {
 
     aluno.associate = (models) => {
         aluno.belongsTo(models.Usuario,{foreignKey: 'usuario_id', as:'usuario'});
+        aluno.belongsToMany(models.Turma, 
+            {
+                through: 'matriculas',
+                foreignKey: 'aluno_id',
+                as: 'turma',
+                timestamps: false
+            });
+        aluno.hasMany(models.Matricula, {as:'matricula', foreignKey:'aluno_id'});
     }
 
     return aluno;

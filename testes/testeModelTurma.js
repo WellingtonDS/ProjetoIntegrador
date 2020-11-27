@@ -1,5 +1,16 @@
-const {sequelize, Turma} = require('../models');
+const {sequelize, Turma, ProfessorDisciplina, Disciplina} = require('../models');
 
-Turma.findByPk(5).then((resultado) => {
-    console.log(resultado.dataValues.serie);
+Turma.findAll({
+    include: [{
+        model: ProfessorDisciplina, 
+        as: 'turmas_professores_disciplinas', 
+        where:{professor_id: 33},
+        include: [{
+            model: Disciplina,
+            as: 'disciplina'
+        }]
+    }],
+    
+}).then((resultado) => {
+    console.log(resultado[0].dataValues);
 })
