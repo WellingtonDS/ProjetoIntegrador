@@ -13,6 +13,7 @@ module.exports = {
       professor_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        foreignKey: true,
         references: {
           model: 'professores',
           key: 'id'
@@ -23,6 +24,7 @@ module.exports = {
       disciplina_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        foreignKey: true,
         references: {
           model: 'disciplinas',
           key: 'id'
