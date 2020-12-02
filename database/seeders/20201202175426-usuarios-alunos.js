@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 
 'use strict';
 
+
+// insere no BD usuarios do tipo aluno
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     
