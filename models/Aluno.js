@@ -2,10 +2,10 @@ module.exports = (sequelize, DataTypes) => {
     const aluno = sequelize.define(
         'Aluno',
         {
-            aluno_id:{
-                type:DataTypes.INTEGER,
-                primaryKey: true                
-            },
+            // aluno_id:{
+            //     type:DataTypes.INTEGER,
+            //     primaryKey: true                
+            // },
             nome: DataTypes.STRING(100),
             sobrenome: DataTypes.STRING(100),
             responsavel: DataTypes.STRING(100),
