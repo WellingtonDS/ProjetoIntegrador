@@ -27,7 +27,7 @@ module.exports = {
           allowNull: false,
           foreignKey: true,
           references: {
-            model: "professores",
+            model: "usuarios",
             key: "id"
           },
           onDelete: "CASCADE",
