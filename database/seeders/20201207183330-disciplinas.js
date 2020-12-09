@@ -18,7 +18,8 @@ module.exports = {
         { nome: 'Língua Portuguesa', descricao: null },
         { nome: 'Matemática', descricao: null },
         { nome: 'Química', descricao: null },
-        { nome: 'Sociologia', descricao: null }
+        { nome: 'Sociologia', descricao: null },
+        { nome: 'Música', descricao: null },
       ]
       , {});
 
