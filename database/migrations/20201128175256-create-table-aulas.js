@@ -11,12 +11,12 @@ module.exports = {
           primaryKey: true
         },
         descricao: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.STRING,
           allowNull: true,
-          data: {
-            type: Sequelize.DATE,
-            allowNull: false
-          }
+        },
+        data: {
+          type: Sequelize.DATE,
+          allowNull: false
         },
         turma_id: {
           type: Sequelize.INTEGER,
