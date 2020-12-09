@@ -1,5 +1,6 @@
 const session = require("express-session");
 const {sequelize, Aluno, Matricula, Turma, ProfessorDisciplina, Aula, Frequencia} = require('../models');
+const { disciplinas } = require("./ProfessorController");
 
 const AulaController = {
     registro: async (req, res) => {
@@ -12,12 +13,12 @@ const AulaController = {
         let alunos = await Aluno.findAll({include: [{
             model: Matricula,
             as: 'matricula',
-
             where:{turma_id}
         }]});
         // busca professor_disciplina
         let professorDisciplina = await ProfessorDisciplina.findByPk(professor_disciplina_id, 
             {include: 'disciplina'});
+        console.log(professorDisciplina)
         res.render('./professor/aulas/registro', {professor, turma, professorDisciplina, alunos});
     },
     registrar: async (req, res) => {
