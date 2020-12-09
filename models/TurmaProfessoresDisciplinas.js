@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             professores_disciplinas_id: DataTypes.INTEGER 
         },
         {   
-            tableName: 'turmas_has_professores_disciplinas',
+            tableName: 'turmas_professores_disciplinas',
             timestamps: false
         });
 
