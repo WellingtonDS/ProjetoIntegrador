@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <form action="/professor/turmas/<%=turma.turma_id%>/<%= professorDisciplina.id %>/aulas/registrar" method="POST">
+                <form action="/professor/turmas/<%=turma.id%>/<%= professorDisciplina.id %>/aulas/registrar" method="POST">
                     <div class="form-group">
                         <label for="">Disciplina:</label>
                         <br>
@@ -40,7 +40,7 @@
                         <br><br>
                         <label for="">Descrição (assunto da aula):</label>
                         <br>
-                        <textarea name="descricao" id="descricao" class="form-control" rows="5"></textarea>
+                        <input name="descricao" id="descricao" class="form-control" rows="5"></input>
                         <br> 
                         
                     </div>

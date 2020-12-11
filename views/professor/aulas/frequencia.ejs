@@ -15,33 +15,61 @@
     <!-- barra de navegação -->
     <%- include('../partialMenu', {professor}) %>
     <div class="container">
+        <div class="alert alert-success">
+            Aula registrada com sucesso!
+        </div>
         <div class="page-header">
-            <h3>Registro de Aula</h3>
+            <h3>Registro de Frequência</h3>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <form action="/professor/turmas/<%=turma.turma_id%>/<%= professorDisciplina.id %>/aulas/registrar" method="POST">
+                <form action="/professor/aulas/<%=aula.id%>/frequencia" method="POST">
                     <div class="form-group">
                         <label for="">Disciplina:</label>
                         <br>
-                        <input type="text" value="<%= professorDisciplina.disciplina.nome %>">
+                        <input type="text" value="<%= aula.professor_disciplina.disciplina.nome %>">
                         <br><br>
                         <label for="">Turma:</label>
                         <br>
-                        <input type="text" value="<%= turma.serie %>">
+                        <input type="text" value="<%= aula.turma.serie %>">
                         <br><br>
                         <label for="">Turno:</label>
                         <br>
-                        <input type="text" value="<%= turma.turno%>">
-                        <br><br>
-                        <label for="">Data:</label>
-                        <br>
-                        <input id="date" type="date" name="data">
+                        <input type="text" value="<%= aula.turma.turno%>">
                         <br><br>
                         <label for="">Descrição (assunto da aula):</label>
                         <br>
-                        <textarea name="descricao" id="descricao" class="form-control" rows="5"></textarea>
+                        <input name="descricao" id="descricao" class="form-control" rows="5" value="<%= aula.descricao%>"></input>
                         <br> 
+                        <h4>Alunos</h4>
+                        <table class="table table-responsive-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Matricula</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Sobrenome</th>                               
+                                    <th scope="col">Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% alunos.forEach(aluno => { %>
+                                    <% aluno = aluno.toJSON() %>  
+                                    <tr>
+                                        <td><%= aluno.matricula[0].id %></td>
+                                        <td><%= aluno.nome %></td>
+                                        <td><%= aluno.sobrenome %></td>
+                                        <td>
+                                            <input type="hidden" name="frequencia[<%=aluno.id%>][aluno_id]" value="<%=aluno.id%>">
+                                            <input type="radio" id="presente" name="frequencia[<%=aluno.id%>][frequencia]" value="presente">
+                                            Presente
+                                            <input type="radio" id="ausente" name="frequencia[<%=aluno.id%>][frequencia]" value="ausente">
+                                            Ausente  
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                                
+                            </tbody>
+                        </table> 
                         
                     </div>
                     
@@ -58,43 +86,3 @@
     
 </body>
 </html>
-
-
-
-<div class="container">
-    <div class="page-header">
-        <h3>Registro de Aula</h3>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table class="table table-responsive-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">Matricula</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Sobrenome</th>                               
-                        <th scope="col">Situação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% alunos.forEach(aluno => { %>
-                        <% aluno = aluno.toJSON() %>  
-                        <tr>
-                            <td><%= aluno.matricula[0].matricula_id %></td>
-                            <td><%= aluno.nome %></td>
-                            <td><%= aluno.sobrenome %></td>
-                            <td>
-                                <input type="hidden" name="frequencia[<%=aluno.aluno_id%>][aluno_id]" value="<%=aluno.aluno_id%>">
-                                <input type="radio" id="presente" name="frequencia[<%=aluno.aluno_id%>][frequencia]" value="presente">
-                                Presente
-                                <input type="radio" id="ausente" name="frequencia[<%=aluno.aluno_id%>][frequencia]" value="ausente">
-                                Ausente  
-                            </td>
-                        </tr>
-                    <% }) %>
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>

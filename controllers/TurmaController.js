@@ -10,7 +10,7 @@ const TurmaController = {
         let turmas = await Turma.findAll({
             include: [{
                 model: ProfessorDisciplina, 
-                as: 'turmas_professores_disciplinas', 
+                as: 'professores_disciplinas', 
                 where:{professor_id: professor.id},
                 include: [{
                     model: Disciplina,
@@ -40,7 +40,7 @@ const TurmaController = {
                     model: Turma,
                     as: 'turmas',
                     where:{
-                        turma_id: turma.turma_id
+                        id: turma.id
                     }
                 }]
             }]

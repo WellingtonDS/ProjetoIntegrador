@@ -3,7 +3,7 @@ const {sequelize, Professor, Disciplina} = require("../models");
 
 Professor.findAll().then(
     professores => {
-        console.log(professores[0].dataValues);
+        console.log(professores);
         sequelize.close();
     }
 ); 

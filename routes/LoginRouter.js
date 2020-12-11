@@ -15,7 +15,7 @@ router.use(function(req, res, next) {
 router.get('/professor', LoginController.showLoginProfessor);
 router.post('/professor', [
     check('email').isEmail().withMessage('Digite um email válido.'), 
-    check('senha').isLength({min:6}).withMessage('O tamanho da senha deve conter no mínimo 6 caracteres.')], 
+    check('senha').isLength({min:6}).withMessage('A senha deve conter no mínimo 6 caracteres.')], 
     LoginController.logarProfessor);
 
     // Logar aluno

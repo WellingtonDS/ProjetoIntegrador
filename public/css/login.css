@@ -31,7 +31,7 @@ label{
     font-size: 18px;
 }
 input {
-    width: 96%;
+    width: 100%;
 }
 
 span {
@@ -39,6 +39,11 @@ span {
     margin-top: 2px;
     margin-left: 0;
     font-size: 1.1rem;
+}
+
+.formulariro div {
+    width: 100%;
+    text-align: justify;
 }
 
 button {

@@ -33,12 +33,12 @@
                 <% turmas.forEach(turma => { %>
                     <% turma = turma.dataValues %>
                     <tr>
-                        <th scope="row"><%= turma.turma_id %></th>
+                        <th scope="row"><%= turma.id %></th>
                         <td><%= turma.serie %></td>
                         <td><%= turma.nivel %></td>
                         <td><%= turma.turno %></td>
                         <td>
-                            <a class="btn btn-light btn-sm" href="/professor/turmas/<%= turma.turma_id %>"> <strong> Detalhes </strong></a>
+                            <a class="btn btn-light btn-sm" href="/professor/turmas/<%= turma.id %>"> <strong> Detalhes </strong></a>
                             
                         </td>
                     </tr>

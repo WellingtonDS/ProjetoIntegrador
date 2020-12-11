@@ -3,11 +3,11 @@ const {sequelize, Turma, ProfessorDisciplina, Disciplina} = require('../models')
 Turma.findAll({
     include: [{
         model: ProfessorDisciplina, 
-        as: 'turmas_professores_disciplinas', 
-        where:{professor_id: 33},
+        as: 'professores_disciplinas', 
+        where:{professor_id: 13},
         include: [{
             model: Disciplina,
-            as: 'disciplina'
+            as: 'disciplinas'
         }]
     }],
     
