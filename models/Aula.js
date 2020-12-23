@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
             descricao:DataTypes.STRING,
             data: DataTypes.DATE,
             turma_id: DataTypes.INTEGER,
-            professores_disciplinas_id: DataTypes.INTEGER
+            professores_disciplinas_id: DataTypes.INTEGER,
+            situacao: DataTypes.BOOLEAN
         },
         {
             tableName: 'aulas',
