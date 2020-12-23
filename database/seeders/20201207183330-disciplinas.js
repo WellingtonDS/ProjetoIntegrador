@@ -13,7 +13,7 @@ module.exports = {
         { nome: 'Filosofia', descricao: null },
         { nome: 'Física', descricao: null },
         { nome: 'Geografia', descricao: null },
-        { nome: 'istória', descricao: null },
+        { nome: 'História', descricao: null },
         { nome: 'Língua Inglesa', descricao: null },
         { nome: 'Língua Portuguesa', descricao: null },
         { nome: 'Matemática', descricao: null },

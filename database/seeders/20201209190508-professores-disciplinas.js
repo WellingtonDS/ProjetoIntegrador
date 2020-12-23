@@ -14,8 +14,6 @@ module.exports = {
             disciplina_id: disciplinas[i].dataValues.id
         });
     }
-    console.log(professores)
-
     await queryInterface.bulkInsert('professores_disciplinas', professoresDisciplinas)
     
   },
