@@ -1,6 +1,6 @@
 const session = require("express-session");
 
-const AlunoController = {   
+module.exports = {   
     index: (req, res) => {
         // let aluno = req.session.usuario
         res.render('./aluno/index', {aluno: req.session.usuario});
@@ -20,4 +20,4 @@ const AlunoController = {
     }
 }
 
-module.exports = AlunoController;
+ 
