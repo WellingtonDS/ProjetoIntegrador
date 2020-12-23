@@ -39,6 +39,11 @@ module.exports = {
           },
           onDelete: 'CASCADE',
           onUpdate: 'CASCADE'
+        },
+        situacao: {
+          type: Sequelize.BOOLEAN,
+          defaultValue: false,
+          allowNull: false
         }
 
       });
