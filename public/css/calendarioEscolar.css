@@ -25,6 +25,23 @@ main div.mes h1 {
     color: rgb(56, 56, 56);
 }
 
+.mes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mes a {
+    color: rgb(56, 56, 56);
+    border-radius: 50%;
+    padding: 0 3px;
+}
+
+.mes a:hover {
+    background-color: orangered;
+    color: #fff;
+}
+
 /* estilização da area do calendário */
 
 section {
@@ -43,10 +60,11 @@ div.calendario {
 div.dia-semana {
     background-color: rgb(247, 67, 1);
     color: white;
-    padding: 10px;
+    padding: 10px 10px 7px;
     width: max-content;
     border-radius: 50%;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 section p.descricao {
