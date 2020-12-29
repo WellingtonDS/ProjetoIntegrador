@@ -1,16 +1,46 @@
-window.onload = () => {
-    let mesSeguinte = document.getElementById("mesSeguinte");
-    let mesAnterior = document.getElementById("mesAnterior");
+// definindo variaveis que serão manipuladas
+const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+const mesAnterior = document.getElementById('mesAnterior');
+const mesAtual = document.getElementById('mesAtual');
+const mesSeguinte = document.getElementById('mesSeguinte');
+const mes = document.getElementById('mes')
 
-    mesSeguinte.onclick = () => {
-        alert("Botao next clicado!")
+// definindo o mes padrão que irá aparecer no primeiro carregamento
+const date = new Date
+mesAtual.innerText = meses[date.getMonth()]; 
+
+let indice;
+
+// comentar os resto do código
+function altertarMes(event) {
+    // recupera apenas o botao que foi clicado
+    let botao = event.target.className.baseVal.split("-")[2];
+
+    console.log(botao)
+
+    if(botao === "right"){
+        if(mesAtual.innerText === "Dezembro"){
+            indice = 0;
+        } else {
+            indice += 1;
+        }
     }
 
-    mesAnterior.onclick = () => {
-        alert("Botao previous clicado!")
+    if(botao === "left"){
+        if(mesAtual.innerText === "Janeiro"){
+            indice = 11;
+        } else {
+            indice -= 1;
+        }
     }
 
+    return mesAtual.innerText = meses[indice];
+    
 }
+
+mes.addEventListener('click', (event) => {
+    altertarMes(event)
+})
 
 /* 
     O que preciso fazer nesse arquivo e no back-end:
