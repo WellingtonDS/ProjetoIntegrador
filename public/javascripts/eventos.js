@@ -1,25 +1,27 @@
 // definindo variaveis que serão manipuladas
 const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 const mesAnterior = document.getElementById('mesAnterior');
-const mesAtual = document.getElementById('mesAtual');
+const mesAtivo = document.getElementById('mesAtivo');
 const mesSeguinte = document.getElementById('mesSeguinte');
-const mes = document.getElementById('mes')
+const mes = document.getElementById('mes');
 
 // definindo o mes padrão que irá aparecer no primeiro carregamento
 const date = new Date
-mesAtual.innerText = meses[date.getMonth()]; 
+mesAtivo.innerText = meses[date.getMonth()];
+// console.log(`Mês atual: ${meses.indexOf(mesAtual.innerText)+1}`)
+buscarEventos(meses.indexOf(mesAtivo.innerText) + 1);
 
-let indice;
+var indice = 11;
 
 // comentar os resto do código
-function altertarMes(event) {
+function alterarMes(event) {
     // recupera apenas o botao que foi clicado
     let botao = event.target.className.baseVal.split("-")[2];
 
-    console.log(botao)
+    console.log(botao);
 
     if(botao === "right"){
-        if(mesAtual.innerText === "Dezembro"){
+        if(mesAtivo.innerText === "Dezembro"){
             indice = 0;
         } else {
             indice += 1;
@@ -27,20 +29,35 @@ function altertarMes(event) {
     }
 
     if(botao === "left"){
-        if(mesAtual.innerText === "Janeiro"){
+        if(mesAtivo.innerText === "Janeiro"){
             indice = 11;
         } else {
             indice -= 1;
         }
     }
 
-    return mesAtual.innerText = meses[indice];
+    mesAtivo.innerText = meses[indice];
     
 }
 
 mes.addEventListener('click', (event) => {
-    altertarMes(event)
-})
+    alterarMes(event);
+    buscarEventos(meses.indexOf(mesAtivo.innerText) + 1);
+});
+
+
+
+function buscarEventos(mes) {
+    fetch(`/calendarioEscolar/eventos`)
+    .then((resposta) => {
+        return resposta.json()
+    })
+    .then((dadosRecebidos) => {
+        console.log(dadosRecebidos)
+    })
+}
+
+
 
 /* 
     O que preciso fazer nesse arquivo e no back-end:
