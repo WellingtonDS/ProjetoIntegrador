@@ -16,7 +16,6 @@ const {sequelize, Evento} = require('../models');
 const { QueryTypes } = require('sequelize');
 const buscarEventos = async () => {
     let eventos = await sequelize.query(`SELECT * FROM eventos WHERE month(data) = ${3}`, { type: QueryTypes.SELECT});
-    console.log(eventos)
 }
 
 buscarEventos();
