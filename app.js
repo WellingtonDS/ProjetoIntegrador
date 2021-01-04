@@ -6,6 +6,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const methodOverride = require('method-override');
 
+// importando rotas
 const indexRouter = require('./routes/index');
 const QuemSomosRouter = require('./routes/QuemSomosRouter');
 const CalendarioEscolarRouter = require('./routes/CalendarioEscolarRouter');
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'Roceket School' }));
 app.use(methodOverride('_method'));
 
+// difinindo as rotas
 app.use('/', indexRouter);
 app.use('/quemSomos', QuemSomosRouter);
 app.use('/calendarioEscolar', CalendarioEscolarRouter);
