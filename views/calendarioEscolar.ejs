@@ -69,16 +69,18 @@
 
       <section id="eventosDoMes">
         <!-- implementar logica para exibir os eventos -->
-          <div class="calendario">
-            <div class="dia-semana">
-              2
+          <% eventosDoMes.forEach(evento => { %>
+            <div class="calendario">
+              <div class="dia-semana">
+                <%= evento.data.getDate() %>/0<%= evento.data.getMonth() + 1 %>
+              </div>
+              <p class="descricao">
+                <%= evento.descricao %>
+              </p>
             </div>
-            <p class="descricao">
-              Tenetur deleniti ea ipsa expedita, voluptatum, aliquid, exercitationem illum vero esse provident reprehenderit corporis quod quas labore. Impedit nemo vel nulla voluptatibus!
-            </p>
-          </div>
+          <% }) %>
       </section>
-        
+
     </main>
 
     <%- include('./partialRodape') %>

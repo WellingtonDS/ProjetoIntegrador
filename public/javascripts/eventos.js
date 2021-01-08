@@ -10,8 +10,8 @@ const botaoRight = document.getElementById("botaoRight");
 // definindo o mes padrão que irá aparecer no primeiro carregamento
 const date = new Date;
 var mesAtual = date.getMonth();
+
 mesAtivo.innerText = meses[date.getMonth()];
-// console.log(`Mês atual: ${meses.indexOf(mesAtual.innerText)+1}`)
 buscarEventos(meses.indexOf(mesAtivo.innerText));
 
 var indice = 0;
@@ -64,17 +64,3 @@ function buscarEventos(mes) {
         console.log(dadosRecebidos)
     })
 }
-
-// imprime os dados encontrados na view calendarioEscolar
-function exibirEventos(eventos){
-    console.log(eventos)  
-}
-
-/* 
-    O que precisa ser feito nesse arquivo e no back-end:
-
-    1. criar rotas para acesso à tabela eventos;
-    2. criar uma função para acessar a tabela eventos via fetch;
-    3. criar lógica para trazer somente os eventos do mês atual;
-    4. criar lógica que realize requisição de acordo com o botão clicado (next, previous) 
-*/
