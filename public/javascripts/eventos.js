@@ -1,5 +1,4 @@
 // definindo variaveis que serão manipuladas
-const meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 const mesAnterior = document.getElementById('mesAnterior');
 const mesAtivo = document.getElementById('mesAtivo');
 const mesSeguinte = document.getElementById('mesSeguinte');
@@ -8,15 +7,8 @@ const botaoLeft = document.getElementById("botaoLeft");
 const botaoRight = document.getElementById("botaoRight");
 
 // definindo o mes padrão que irá aparecer no primeiro carregamento
-const date = new Date;
-var mesAtual = date.getMonth();
-
-mesAtivo.innerText = meses[date.getMonth()];
-buscarEventos(meses.indexOf(mesAtivo.innerText));
 
 var indice = 0;
-var eventosDoMes = {};
-
 
 // comentar os resto do código
 function alterarMes(event) {
@@ -39,9 +31,6 @@ function alterarMes(event) {
             indice -= 1;
         }
     }
-
-    mesAtivo.innerText = meses[indice];
-    exibirEventos(eventosDoMes)
 }
 
 botaoLeft.addEventListener('click', (event) => {
@@ -56,11 +45,5 @@ botaoRight.addEventListener('click', (event) => {
 
 // busca os dados no back-end
 function buscarEventos(mes) {
-    fetch(`/calendarioEscolar/${mes}`)
-    .then((resposta) => {
-        return resposta.json()
-    })
-    .then((dadosRecebidos) => {
-        console.log(dadosRecebidos)
-    })
+    fetch(`/calendarioEscolar/${mes}`);
 }
