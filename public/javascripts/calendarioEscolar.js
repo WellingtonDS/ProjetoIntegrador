@@ -10,8 +10,6 @@ var diaMes = 0;
 function alterarMes(event) {
     // recupera apenas o botao que foi clicado
     let botao = event.target.className.baseVal.split("-")[2];
-
-    alert(botao)
 }
 
 botaoLeft.addEventListener('click', (event) => {
