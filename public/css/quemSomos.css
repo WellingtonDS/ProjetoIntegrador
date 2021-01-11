@@ -1,7 +1,6 @@
 /* estilizacão do span e da imagem do topo */
 
 main div.quemSomos-bg {
-  /* background-image: url('../images/quemSomos3.jpg'); */
   background-position: 0%;
   background-size: cover;
   width: 100%;
@@ -17,7 +16,7 @@ main div span {
 }
 
 main {
-  padding: 50px 0;
+  padding: 0;
 }
 
 .conteudo {
@@ -40,13 +39,12 @@ div.conteudo-img img {
   font-size: 3rem;
   padding: 0 30px;
   color: rgb(75, 74, 74);
-  margin-top: 100px;
+  margin-top: 50px;
   font-size: 50px;
-  color: rgb(56, 56, 56);
 }
 
 /* estilizacão do texto dos dois parágrafos*/
-p {
+.conteudo-texto p {
   padding: 20px 20px 0 0;
   line-height: 1.5;
   text-align: justify;
@@ -73,5 +71,4 @@ div.conteudo2 .conteudo-texto {
   text-align: center;
   font-size: 3rem;
   padding: 0 30px;
-  color: rgb(75, 74, 74);
 }
