@@ -11,13 +11,18 @@ const botaoRight = document.getElementById("botaoRight");
 var diaMes = 0;
 
 window.onload = () => {
+
+    // desativa o botão
     // remove o atributo href da tag a (botao esquerdo)
     if(mesAtivo.innerText === "Janeiro"){
+        mesAnterior.classList.add('botaoDesativado');
         mesAnterior.removeAttribute('href');
     }
 
+    // desativa o botão
     // remove o atributo href da tag a (botao direito)
     if(mesAtivo.innerText === "Dezembro"){
+        mesSeguinte.classList.add('botaoDesativado');
         mesSeguinte.removeAttribute('href');
     }
 

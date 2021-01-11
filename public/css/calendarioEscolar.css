@@ -31,15 +31,28 @@ main div#mes h1 {
     align-items: center;
 }
 
-#mes a {
+.botaoAtivado {
     color: rgb(56, 56, 56);
     border-radius: 50%;
     padding: 0 3px;
 }
 
-#mes a:hover {
+.botaoAtivado:hover {
     background-color: orangered;
     color: #fff;
+}
+
+.botaoDesativado {
+    color: rgb(56, 56, 56);
+    border-radius: 50%;
+    padding: 0 3px;
+    background-color: rgb(196, 190, 190);
+    opacity: 0.3;
+}
+
+.botaoDesativado:hover {
+    color: rgb(56, 56, 56);
+    background-color:  rgb(196, 190, 190);
 }
 
 /* estilização da area do calendário */
