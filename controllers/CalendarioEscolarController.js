@@ -7,6 +7,8 @@ const CalendarioEscolarController = {
         let diaMes = Number(req.params.mes);
         let mes = null;
         let eventosDoMes = null;
+
+        // array de meses que será usado na view de acordo com o parametro vindo da requisição
         let meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
         
         // verica se diaMes é undefined
