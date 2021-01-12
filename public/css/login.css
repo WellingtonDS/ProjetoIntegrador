@@ -68,3 +68,25 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+@media(max-width: 1020px){
+    .imagem {
+        width: 520px;
+    }
+}
+
+@media(max-width: 970px){
+
+    main {
+        height: 100vh;
+    }
+    .imagem {
+        display: none;
+    }
+}
+
+@media(max-width: 420px){
+    .formulario h1 {
+        font-size: 2.5rem;
+    }
+}
