@@ -21,3 +21,31 @@ div.row-justificada {
 tbody td > input {
   width: 60px;
 }
+
+.headerSecondario {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerSecondario a {
+  color:  rgb(150, 150, 150);
+  text-decoration: none;
+}
+
+.headerSecondario a:hover {
+  color:  rgb(56, 56, 56);
+}
+
+.botoesCard {
+  display: flex;
+  justify-content: end;
+}
+
+.botoesCard a {
+  margin: 0 5px;
+  color:  rgb(150, 150, 150);
+}
+
+.botoesCard a:hover {
+  color:  rgb(56, 56, 56);
+}
