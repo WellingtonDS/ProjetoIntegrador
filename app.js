@@ -13,6 +13,7 @@ const CalendarioEscolarRouter = require('./routes/CalendarioEscolarRouter');
 const LoginRouter = require('./routes/LoginRouter');
 const ProfessorRouter = require('./routes/ProfessorRouter');
 const AlunosRouter = require('./routes/AlunosRouter');
+const AdminRouter = require('./routes/AdminRouter');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/calendarioEscolar', CalendarioEscolarRouter);
 app.use('/login', LoginRouter);
 app.use('/aluno', AlunosRouter);
 
+app.use('/admin', AdminRouter);
 app.use('/professor', ProfessorRouter);
 
 // catch 404 and forward to error handler

@@ -13,23 +13,23 @@ module.exports = {
         },
         nome: {
           type: Sequelize.STRING(100),
-          allowNull: false,
+          allowNull: false
         },
         sobrenome: {
           type: Sequelize.STRING(100),
-          allowNull: false,
+          allowNull: false
         },
         responsavel: {
           type: Sequelize.STRING(100),
-          allowNull: false,
+          allowNull: false
         },
         endereco: {
           type: Sequelize.STRING(100),
-          allowNull: false,
+          allowNull: false
         },
         telefone: {
           type: Sequelize.STRING(15),
-          allowNull: false,
+          allowNull: false
         },
         usuario_id: {
           type: Sequelize.INTEGER,
@@ -42,8 +42,6 @@ module.exports = {
           onDelete: "CASCADE", 
           onUpdate: "CASCADE"
         }
-
-
     });
      
   },
