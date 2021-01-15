@@ -11,19 +11,27 @@ router.use(function(req, res, next) {
     }
     next();
 })
-    // Logar professor
+    // login admin
+
+router.get('/admin', LoginController.showLoginAdmin);
+router.post('/admin', [
+    check('email').isEmail().withMessage('Digite um email válido.'), 
+    check('senha').isLength({min:6}).withMessage('A senha deve conter no mínimo 6 caracteres.')], 
+    LoginController.logarAdmin);
+
+    // login professor
 router.get('/professor', LoginController.showLoginProfessor);
 router.post('/professor', [
     check('email').isEmail().withMessage('Digite um email válido.'), 
     check('senha').isLength({min:6}).withMessage('A senha deve conter no mínimo 6 caracteres.')], 
     LoginController.logarProfessor);
 
-    // Logar aluno
+    // login aluno
 
 router.get('/aluno', validarLogin, LoginController.showLoginAluno);
 router.post('/aluno', validarLogin, [
     check('email').isEmail().withMessage('Digite um email válido.'), 
-    check('senha').isLength({min:6}).withMessage('O tamanho da senha deve conter no mínimo 6 caracteres.')], 
+    check('senha').isLength({min:6}).withMessage('A senha deve conter no mínimo 6 caracteres.')], 
     LoginController.logarAluno);
 
 router.delete('/', LoginController.logout);
