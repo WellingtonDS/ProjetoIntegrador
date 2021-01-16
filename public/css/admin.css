@@ -1,0 +1,12 @@
+a {
+  color: #2f353b;
+  font-weight: bold;
+}
+
+a:link {
+  color: gray;
+}
+
+.tab-pane {
+  margin-top: 10px;
+}
