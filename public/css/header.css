@@ -9,7 +9,8 @@ body {
 }
 
 nav.navbar{
-    background-image: url("../../images/bg-header.png");
+    /* background-image: url("../../images/bg-header.png"); */
+    background-color: #2f353b;
     background-size: contain;
     box-shadow: 0 0 10px rgb(56, 56, 56);
     margin-bottom: 30px;
