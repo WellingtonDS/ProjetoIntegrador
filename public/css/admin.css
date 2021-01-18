@@ -1,21 +1,32 @@
 a {
-  color: #2f353b;
+  color: gray;
   font-weight: bold;
 }
 
 a:link {
-  color: gray;
+  color: #2f353b
+}
+
+a:hover {
+  color: #2f353b;
 }
 
 .tab-pane {
   margin-top: 10px;
 }
 
+/* Botao - nova turma */
+
+.btn-nova-turma {
+  display: flex;
+  justify-content: end;
+}
+
 /* TABELA DE TAREFAS */
 #tarefas {
   width: 100%;
-  border-spacing: 0 1.2rem;
-  color: #2d375f;
+  border-spacing: 0 10px;
+  color: #2f353b;
 }
 
 table thead th:first-child, 
@@ -24,9 +35,7 @@ table tbody td:first-child {
 }
 
 table th {
-  background: #fff;
-  font-weight: normal;
-
+  font-weight: bold;
   padding: 1rem 2rem;
   text-align: left;
 }
@@ -40,7 +49,6 @@ table tbody tr:hover {
 }
 
 table td {
-  background: rgb(200, 200, 252);
   padding: 1rem 2rem;
 }
 
