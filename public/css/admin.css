@@ -15,43 +15,69 @@ a:hover {
   margin-top: 10px;
 }
 
-/* Botao - nova turma */
+/* buscar */
 
-.btn-nova-turma {
+.buscar {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 /* TABELA DE TAREFAS */
-#tarefas {
+table {
   width: 100%;
-  border-spacing: 0 10px;
-  color: #2f353b;
-}
-
-table thead th:first-child, 
-table tbody td:first-child {
-  border-radius: 0.25rem 0 0 0.25rem;
+  margin-top: 10px;
 }
 
 table th {
+  color: #2f353b;
   font-weight: bold;
   padding: 1rem 2rem;
   text-align: left;
 }
 
 table tbody tr {
-  opacity: 0.7;
-}
-
-table tbody tr:hover {
-  opacity: 1;
+  color: #4d5a66;
 }
 
 table td {
   padding: 1rem 2rem;
 }
 
-td.descricao {
-  color: #2f353b;
+td.center {
+  text-align: center;
+}
+
+/* formulário */
+.input-buscar {
+  width: min(50vw,700px);
+}
+
+/* botões */
+.botao {
+  color: #fff;
+  opacity: 0.7;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 2px 5px;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.botao:hover {
+  color: #fff;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.botao-detalhes {
+  background-color: rgb(192, 192, 192);
+}
+
+.botao-editar {
+  background-color: rgb(113, 166, 190);
+}
+
+.botao-exluir {
+  background-color: rgb(255, 116, 116);
 }
