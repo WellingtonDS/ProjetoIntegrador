@@ -1,5 +1,5 @@
 <div class="container">
-  <form id="tarefas" action="/admin/tarefas/adicionar">
+  <form id="tarefas" action="/admin/tarefas/guardar" method="POST">
     <table class="table-responsive table-hover" id="tarefas">
       <thead>
         <tr>
@@ -9,20 +9,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="data">16/01/2021</td>
-          <td class="descricao">Cadastrar turmas</td>
-          <td class="center">
-            <input type="checkbox" id="1" name="check-1">
-          </td>
-        </tr>
-        <tr>
-          <td class="data">16/01/2021</td>
-          <td class="descricao">Cadastrar disciplinas</td>
-          <td class="center">
-            <input type="checkbox" id="2" name="check-2">
-          </td>
-        </tr>
+        <% tarefas.forEach(tarefa => { %>
+          <tr>
+            <td class="data">
+              <%= tarefa.data.getDate() %>/<%= tarefa.data.getMonth() + 1 %>/
+              <%= tarefa.data.getFullYear() %></td>
+            <td class="descricao"><%= tarefa.descricao %></td>
+            <td class="center">
+              <input type="checkbox" name="<%= tarefa.id %>">
+            </td>
+          </tr> 
+        <% }) %>               
       </tbody>
     </table>
     <div id="div-btn">
