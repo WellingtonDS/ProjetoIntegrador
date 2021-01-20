@@ -1,28 +1,34 @@
 <div class="container">
-  <table class="table-responsive table-hover" id="tarefas">
-    <thead>
-      <tr>
-        <th>Data</th>
-        <th>Descrição</th>
-        <th>Marcar como concluida</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="data">16/01/2021</td>
-        <td class="descricao">Cadastrar turmas</td>
-        <td class="center">
-          <input type="checkbox">
-        </td>
-      </tr>
-      <tr>
-        <td class="data">16/01/2021</td>
-        <td class="descricao">Cadastrar disciplinas</td>
-        <td class="center">
-          <input type="checkbox">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <form id="tarefas" action="/admin/tarefas/adicionar">
+    <table class="table-responsive table-hover" id="tarefas">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Descrição</th>
+          <th>Marcar como concluida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="data">16/01/2021</td>
+          <td class="descricao">Cadastrar turmas</td>
+          <td class="center">
+            <input type="checkbox" id="1" name="check-1">
+          </td>
+        </tr>
+        <tr>
+          <td class="data">16/01/2021</td>
+          <td class="descricao">Cadastrar disciplinas</td>
+          <td class="center">
+            <input type="checkbox" id="2" name="check-2">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="div-btn">
+      <button id="btn-tarefas" type="submit" class="botao botao-enviar">Salvar alterações</button>
+    </div>
+    
+  </form>
 </div>
 
