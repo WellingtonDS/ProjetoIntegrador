@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const AdminController = require('../controllers/AdminController');
+const TarefaController = require('../controllers/AdminController/TarefaController');
 const {check, validationResult, body} = require('express-validator');
 const validarSession = require('../middlewares/auth');
 
-router.get('/', validarSession, AdminController.index);
-router.post('/tarefas/guardar', validarSession, AdminController.guardar);
+router.get('/', validarSession, TarefaController.index);
+router.post('/tarefas/criar', validarSession, TarefaController.criar);
+router.put('/tarefas/editar', validarSession, TarefaController.editar);
 
 module.exports = router;
