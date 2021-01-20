@@ -26,6 +26,7 @@ a:hover {
 table {
   width: 100%;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 table th {
@@ -62,6 +63,7 @@ td.center {
   margin: 0 auto;
   font-size: 0.8rem;
   font-weight: 500;
+  border: none;
 }
 
 .botao:hover {
@@ -80,4 +82,8 @@ td.center {
 
 .botao-exluir {
   background-color: rgb(255, 116, 116);
+}
+
+.botao-enviar {
+  background-color: rgb(66, 180, 66);
 }
