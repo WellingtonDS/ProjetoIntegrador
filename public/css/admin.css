@@ -77,7 +77,7 @@ td.center {
 }
 
 .botao-editar {
-  background-color: rgb(113, 166, 190);
+  background-color: rgb(26, 85, 109);
 }
 
 .botao-exluir {
@@ -86,4 +86,20 @@ td.center {
 
 .botao-enviar {
   background-color: rgb(66, 180, 66);
+}
+
+#btn-nova-tarefa {
+  border: none;
+  background-color: #fff;
+  opacity: 0.7;
+  color: rgb(66, 180, 66);
+  outline: none;
+}
+
+#btn-nova-tarefa:hover {
+  opacity: 1;
+}
+
+#btn-modal {
+  text-align: right;
 }
