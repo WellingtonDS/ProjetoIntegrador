@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   admin.associate = (models) => {
-    admin.belongsTo(models.Usuario, {foreignKey: 'usuario_id', as:'usuario'})
+    admin.belongsTo(models.Usuario, {foreignKey: 'usuario_id', as:'usuario'});
+    admin.hasMany(models.Tarefa, {as: 'tarefas'});
   }
 
   return admin;
