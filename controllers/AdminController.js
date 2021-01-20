@@ -1,9 +1,21 @@
 const session = require('express-session');
+const { sequelize, Tarefa } = require('../models')
 
 const AdminController = {
-  index: (req, res) => {
-    console.log(req.session.usuario.nome)
-    res.render('./admin/index', {admin: req.session.usuario})
+  index: async (req, res) => {
+    let tarefas = await Tarefa.findAll(
+      {where:{situacao: false}}
+    );
+    res.render('./admin/index', {admin: req.session.usuario, tarefas})
+  },
+  guardar: async (req, res) => {
+    let tarefas = req.body;
+    // for(var id in tarefas){
+    //   Tarefa.update(
+    //     {situacao: 1},{where: {id}}
+    //   )
+    // }
+    res.send(tarefas)
   }
 }
 
