@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const LoginController = require('../controllers/LoginController');
-const validarLogin = require('../middlewares/auth');
+// const validarLogin = require('../middlewares/auth');
 const {check, validationResult, body} = require('express-validator');
 
 router.use(function(req, res, next) {
@@ -28,8 +28,8 @@ router.post('/professor', [
 
     // login aluno
 
-router.get('/aluno', validarLogin, LoginController.showLoginAluno);
-router.post('/aluno', validarLogin, [
+router.get('/aluno', LoginController.showLoginAluno);
+router.post('/aluno', [
     check('email').isEmail().withMessage('Digite um email válido.'), 
     check('senha').isLength({min:6}).withMessage('A senha deve conter no mínimo 6 caracteres.')], 
     LoginController.logarAluno);
