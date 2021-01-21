@@ -1,12 +1,12 @@
 const formTarefas = document.getElementById('formTarefas');
 const data = document.getElementById('data');
 const descricao = document.getElementById('descricao');
-const btnTarefasEnviar = document.getElementById('btnTarefasEnviar');
+const btnEnviar = document.getElementById('btnEnviar');
 
 // desabilita o botão de envio do formulário
 // assim que a página é carrega ou recarregada
 window.onload = () => {
-  btnTarefasEnviar.setAttribute('disabled', 'disabled');
+  btnEnviar.setAttribute('disabled', 'disabled');
   data.value = "";
   descricao.value = "";
 }
@@ -14,9 +14,9 @@ window.onload = () => {
 // verifica se os campos estão vazios
 function verifarInputs(data, descricao){
   if(data.value && descricao.value){
-    return btnTarefasEnviar.removeAttribute('disabled');
+    return btnEnviar.removeAttribute('disabled');
   } else {
-    btnTarefasEnviar.setAttribute('disabled', 'disabled');
+    btnEnviar.setAttribute('disabled', 'disabled');
   }
 }
 
