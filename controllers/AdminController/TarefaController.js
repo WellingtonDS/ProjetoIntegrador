@@ -10,6 +10,17 @@ const TarefaController = {
   },
   criar: async (req, res) => {
     let {data, descricao} = req.body;
+    let situacao = false;
+    let admin_id = 1;
+
+    let tarefa = {
+      data,
+      descricao,
+      situacao,
+      admin_id
+    }
+
+    res.status(200).json(tarefa)
   },
   editar: async (req, res) => {
     let tarefas = req.body;
