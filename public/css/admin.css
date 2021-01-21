@@ -50,7 +50,7 @@ td.center {
 
 /* formulário */
 .input-buscar {
-  width: min(50vw,700px);
+  width: min(50vw,600px);
 }
 
 /* botões */
@@ -102,4 +102,18 @@ td.center {
 
 #btn-modal {
   text-align: right;
+}
+
+#form-turma label, input {
+  margin: 10px 0;
+  display: block;
+}
+
+#form-buscar {
+  display: flex;
+  align-items: center;
+}
+
+#form-buscar button {
+  margin-left: 10px;
 }

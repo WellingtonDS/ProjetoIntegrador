@@ -1,10 +1,31 @@
-<form action="#">
-  <label for="serie">Série</label>
-  <input type="text" name="serie">
-  <label for="nivel">Nível</label>
-  <input type="text" name="nivel">
-  <label for="turno">Turno</label>
-  <input type="text" name="turno">
-  <button type="submit">Salvar</button>
-  <a href="#">Voltar</a>
-</form>
+<div class="modal fade" id="criarTurma" tabindex="-1" aria-labelledby="criarTurmaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="criarTurmaLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formTarefas" action="/admin/turma/criar" method="POST">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Série</label>
+            <input type="text" class="form-control" id="data" name="data">
+          </div>
+          <div class="form-group">
+            <label for="nivel" class="col-form-label">Nível</label>
+            <input type="text" class="form-control" id="nivel" name="nivel">
+          </div>
+          <div class="form-group">
+            <label for="turno" class="col-form-label">Turno</label>
+            <input type="text" class="form-control" id="turno" name="turno">
+          </div>
+          <div id="btn-modal">
+            <button id="btnEnviar" type="submit" class="btn btn-success" >Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
