@@ -8,17 +8,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST">
+        <form id="formTarefas" action="/admin/tarefas/criar" method="POST">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Data</label>
             <input type="date" class="form-control" id="data" name="data">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Descrição:</label>
-            <input class="form-control" id="message-text">
+            <input class="form-control" id="descricao" name="descricao">
           </div>
           <div id="btn-modal">
-            <button type="submit" class="btn btn-success">Enviar</button>
+            <button id="btnTarefasEnviar" type="submit" class="btn btn-success" >Enviar</button>
           </div>
         </form>
       </div>
