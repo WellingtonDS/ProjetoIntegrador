@@ -1,3 +1,7 @@
+button:focus {
+  outline: none;
+}
+
 a {
   color: gray;
   font-weight: bold;
@@ -88,7 +92,7 @@ td.center {
   background-color: rgb(66, 180, 66);
 }
 
-#btn-nova-tarefa {
+.btn-new {
   border: none;
   background-color: #fff;
   opacity: 0.7;
@@ -96,7 +100,7 @@ td.center {
   outline: none;
 }
 
-#btn-nova-tarefa:hover {
+.btn-new:hover {
   opacity: 1;
 }
 
@@ -109,11 +113,11 @@ td.center {
   display: block;
 }
 
-#form-buscar {
+.form-buscar {
   display: flex;
   align-items: center;
 }
 
-#form-buscar button {
+.form-buscar button {
   margin-left: 10px;
 }

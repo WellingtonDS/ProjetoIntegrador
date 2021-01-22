@@ -1,12 +1,35 @@
-<form action="#">
-  <label for="nome">Nome</label>
-  <input type="text" name="nome">
-  <label for="sobrenome">Sobrenome</label>
-  <input type="text" name="sobrenome">
-  <label for="email">Email</label>
-  <input type="email" name="email">
-  <label for="telefone">Telefone</label>
-  <input type="text" name="telefone">
-  <button type="submit">Salvar</button>
-  <a href="#">Voltar</a>
-</form>
+<div class="modal fade" id="criarProfessor" tabindex="-1" aria-labelledby="criarProfessorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="criarProfessorLabel">Cadastrar novo(a) Professor(a)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formProfessor" action="/admin/professores/criar" method="POST">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome">
+          </div>
+          <div class="form-group">
+            <label for="nivel" class="col-form-label">Sobrenome</label>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+          </div>
+          <div class="form-group">
+            <label for="nivel" class="col-form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone" name="telefone">
+          </div>
+          <div class="form-group">
+            <label for="nivel" class="col-form-label">Disciplina (Id)</label>
+            <input type="text" class="form-control" id="sobrenome" name="sobrenome">
+          </div>
+          <div id="btn-modal">
+            <button id="btnProfessorEnviar" type="submit" class="btn btn-success" >Enviar</button>
+          </div>    
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
