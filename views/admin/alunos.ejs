@@ -1,41 +1,44 @@
-
-<div class="buscar">
-  <form action="/admin/alunos/1/buscar">
-    <input class="input-buscar" type="text" name="nome">
-    <button class="btn btn-light" type="submit">Buscar</button>
-  </form>
-  <a href="#" data-toggle="tooltip" data-placement="right" title="Nova Matrícula">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-    </svg>
-  </a>
+<div class="container">
+  <%- include('./forms/form-alunos') %>
+  <div class="buscar">
+    <form class="form-buscar" action="/admin/alunos/1/buscar">
+      <input class="input-buscar" type="text" name="nome">
+      <button class="btn btn-light" type="submit">Buscar</button>
+    </form>
+    <button class="btn-new" id="btnNovoAluno" type="button" data-toggle="modal" data-target="#criarAluno" data-whatever="@mdo" data-toggle="tooltip" data-placement="right" title="Nova Matrícula">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+      </svg>
+    </button>
+  </div>
+  <table class="table table-responsive" id="tarefas">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>Responsável</th>
+        <th>Telefone</th>
+        <th>Nº de usuário</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="">Ana</td>
+        <td class="">Almeida</td>
+        <td class="">ana.almeida@rocketschool.com.br</td>
+        <td>Carmem Almeida</td>
+        <td class="">(88)25006412</td>
+        <td class="center">1</td>
+        <td class="turno">
+          <a class="botao botao-detalhes" href="#">Detalhes</a>
+          <a class="botao botao-editar" href="#">Editar</a>
+          <a class="botao botao-exluir" href="#">Excluir</a>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
 </div>
-<table class="table table-responsive" id="tarefas">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>Email</th>
-      <th>Responsável</th>
-      <th>Telefone</th>
-      <th>Nº de usuário</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="">Ana</td>
-      <td class="">Almeida</td>
-      <td class="">ana.almeida@rocketschool.com.br</td>
-      <td>Carmem Almeida</td>
-      <td class="">(88)25006412</td>
-      <td class="center">1</td>
-      <td class="turno">
-        <a class="botao botao-detalhes" href="#">Detalhes</a>
-        <a class="botao botao-editar" href="#">Editar</a>
-        <a class="botao botao-exluir" href="#">Excluir</a>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
+

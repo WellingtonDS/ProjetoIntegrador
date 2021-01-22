@@ -20,17 +20,18 @@
               <input type="checkbox" name="<%= tarefa.id %>">
             </td>
           </tr> 
-        <% }) %>               
+        <% }) %>
       </tbody>
     </table>
     <div id="div-btn">
-      <button id="btn-nova-tarefa" type="button" data-toggle="modal" data-target="#criarTarefa" data-whatever="@mdo" title="Nova Tarefa">
+      <button class="btn-new" id="btnNovaTarefa" type="button" data-toggle="modal" data-target="#criarTarefa" data-whatever="@mdo" title="Nova Tarefa">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
         </svg>
       </button>
       <button id="btn-tarefas" type="submit" class="botao botao-enviar">Salvar alterações</button>
     </div>
+    
   </form>
 </div>
 

@@ -1,20 +1,21 @@
 <div class="container">
+  <%- include('./forms/form-disciplinas') %>
   <div class="buscar">
-    <form action="/admin/disciplinas/1/buscar">
+    <form class="form-buscar" action="/admin/disciplinas/1/buscar">
       <input class="input-buscar" type="text" name="nome">
       <button class="btn btn-light" type="submit">Buscar</button>
     </form>
-    <a href="#" data-toggle="tooltip" data-placement="right" title="Nova Disciplina">
+    <button class="btn-new" id="btnNovaDisciplina" type="button" data-toggle="modal" data-target="#criarDisciplina" data-whatever="@mdo" title="Nova Turma">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
       </svg>
-    </a>
   </div>
   <table class="table table-responsive" id="tarefas">
     <thead>
       <tr>
         <th>Nome</th>
         <th>Descrição</th>
+        <th>Professor</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@
       <tr>
         <td class="data">Arte</td>
         <td class="descricao">Lorem ipsum dolor sit amet consectetur.</td>
+        <td class="descricao">Loro Ipsum</td>
         <td class="turno">
           <a class="botao botao-detalhes" href="#">Detalhes</a>
           <a class="botao botao-editar" href="#">Editar</a>
@@ -31,6 +33,7 @@
       <tr>
         <td class="data">Biologia</td>
         <td class="descricao">Lorem ipsum dolor sit amet consectetur.</td>
+        <td class="descricao">Lorena Ipsum</td>
         <td class="turno">
           <a class="botao botao-detalhes" href="#">Detalhes</a>
           <a class="botao botao-editar" href="#">Editar</a>
