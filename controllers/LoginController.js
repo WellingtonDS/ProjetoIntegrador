@@ -43,7 +43,7 @@ const LoginController = {
             req.session.usuario = admin;
             res.redirect('/admin');
         }
-        console.log(admin.dataValues)
+
         res.render('loginAdmin', {errors: listaDeErros.errors})
     },
     logarProfessor: async (req, res) => {
