@@ -16,6 +16,7 @@ Ainda em desenvolvimento, trata-se de uma aplicação que tem como objetivo gere
   - NodeJs;
   - Express;
   - Sequelize;
+  - Migrations e Seeders;
   - MySQL;
   
 :small_orange_diamond:**EJS como template engine;**
