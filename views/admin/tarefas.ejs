@@ -1,7 +1,15 @@
-<div class="container"> 
+<div class="container">
   <%- include('./forms/form-tarefas') %>
-  <form id="tarefas" action="/admin/tarefas/guardar" method="POST">
-    <table class="table-responsive table-hover" id="tarefas">
+  <form id="tarefas" action="/admin/tarefas/guardar">
+    <div id="div-btn">
+      <button class="btn-new" id="btnNovaTarefa" type="button" data-toggle="modal" data-target="#criarTarefa" data-whatever="@mdo" title="Nova Tarefa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+        </svg>
+      </button>
+      <button id="btn-tarefas" type="submit" class="botao botao-enviar">Salvar alterações</button>
+    </div>
+    <table class="table-responsive" id="tarefas">
       <thead>
         <tr>
           <th>Data</th>
@@ -12,10 +20,10 @@
       <tbody>
         <% tarefas.forEach(tarefa => { %>
           <tr>
-            <td class="data">
+            <td class="">
               <%= tarefa.data.getDate() %>/<%= tarefa.data.getMonth() < 10 ? "0" + (tarefa.data.getMonth() + 1) : tarefa.data.getMonth() + 1 %>/
               <%= tarefa.data.getFullYear() %></td>
-            <td class="descricao"><%= tarefa.descricao %></td>
+            <td class=""><%= tarefa.descricao %></td>
             <td class="center">
               <input type="checkbox" name="<%= tarefa.id %>">
             </td>
@@ -23,15 +31,6 @@
         <% }) %>
       </tbody>
     </table>
-    <div id="div-btn">
-      <button class="btn-new" id="btnNovaTarefa" type="button" data-toggle="modal" data-target="#criarTarefa" data-whatever="@mdo" title="Nova Tarefa">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-        </svg>
-      </button>
-      <button id="btn-tarefas" type="submit" class="botao botao-enviar">Salvar alterações</button>
-    </div>
-    
   </form>
 </div>
 

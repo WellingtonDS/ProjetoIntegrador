@@ -28,28 +28,45 @@ a:hover {
 
 /* TABELA DE TAREFAS */
 table {
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-right: 30px;
+  border-collapse: initial;
+  border-spacing: 0 0.5rem;
 }
 
 table th {
-  color: #2f353b;
+  color: gray;
+  background-color:  rgb(233, 233, 233);
   font-weight: bold;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1rem;
   text-align: left;
 }
 
 table tbody tr {
-  color: #4d5a66;
+  background-color: #f3f3f3;
+  color: #8d9aa7;
+}
+
+table tbody tr:hover {
+  background-color: rgb(241, 241, 241);
+  color: #687079;
 }
 
 table td {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
 }
 
-td.center {
-  text-align: center;
+.table-responsive {
+  width: max-content;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#div-btn {
+  text-align: right;
 }
 
 /* formulário */
