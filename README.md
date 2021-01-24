@@ -2,10 +2,9 @@
 
 ## :small_blue_diamond:Sobre o projeto
 
-Trata-se de uma aplicação que tem como objetivo gerenciar uma escola fictícia ainda em desenvolvimento.
+Ainda em desenvolvimento, trata-se de uma aplicação que tem como objetivo gerenciar uma escola fictícia de nível fundamental e médio. Tendo como usuários professores e alunos, além de um setor administrativo.
 
-
-## :small_blue_diamond:Tecnologias usadas :computer:
+## Tecnologias usadas :computer:
 
 :small_orange_diamond:**Front-end:**
   - HTML;
@@ -23,7 +22,7 @@ Trata-se de uma aplicação que tem como objetivo gerenciar uma escola fictícia
 
 :small_orange_diamond:**Arquitetura MVC;**
   
-## :small_blue_diamond:Contribuidores :busts_in_silhouette:
+## Contribuidores :busts_in_silhouette:
   - [WellingtonDS](https://github.com/WellingtonDS)
   - [Celline Franzin](https://github.com/ceefranzin)
   - [Lucas Lauro](https://github.com/llauros)
