@@ -13,18 +13,26 @@ const TarefaController = {
     let situacao = false;
     let admin_id = 1;
 
-    let tarefa = {
-      data,
-      descricao,
-      situacao,
-      admin_id
-    }
+    // let tarefa = {
+    //   data,
+    //   descricao,
+    //   situacao,
+    //   admin_id
+    // }
 
     if (!data || !descricao) {
-      res.status(401).json({ erro: 'Não foi possível criar uma nova tarefa.' })
+      return res.status(401).json({ erro: 'Não foi possível criar uma nova tarefa.' })
     }
 
-    res.status(200).json(tarefa)
+    Tarefa.create({
+        data:data,
+        descricao:descricao,
+        situacao:situacao,
+        admin_id:admin_id
+    });
+
+
+    res.status(200).json({msg:"okay deu certo"})
   },
   alterar: async (req, res) => {
     let tarefas = req.body;
