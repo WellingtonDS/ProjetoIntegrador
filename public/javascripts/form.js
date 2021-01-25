@@ -51,8 +51,6 @@ function verifarInputs(inputs){
     }
   })
 
-  console.log("inputs vazios: " + inputsVazios)
-
   habilitarBotao(inputsVazios)
 }
 

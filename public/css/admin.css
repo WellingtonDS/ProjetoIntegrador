@@ -3,16 +3,16 @@ button:focus {
 }
 
 a {
-  color: gray;
+  color: rgb(165, 165, 165);
   font-weight: bold;
 }
 
 a:link {
-  color: #2f353b
+  color: #4b535c
 }
 
 a:hover {
-  color: #2f353b;
+  color: #4b535c;
 }
 
 .tab-pane {
@@ -39,6 +39,7 @@ table th {
   font-weight: bold;
   padding: 0.8rem 1rem;
   text-align: left;
+  font-weight: 500;
 }
 
 table tbody tr {

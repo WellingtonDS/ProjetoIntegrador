@@ -7,7 +7,7 @@ const validarSession = require('../middlewares/auth');
 
 router.get('/', validarSession, TarefaController.index);
 router.post('/tarefas/criar', validarSession, TarefaController.criar);
-router.put('/tarefas/editar', validarSession, TarefaController.editar);
+router.put('/tarefas/alterar', validarSession, TarefaController.alterar);
 
 router.get('/turmas/criar', validarSession, TurmaController.show);
 router.post('/turmas/criar', validarSession, TurmaController.criar);

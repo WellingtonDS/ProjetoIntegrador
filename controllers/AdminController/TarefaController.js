@@ -20,16 +20,27 @@ const TarefaController = {
       admin_id
     }
 
+    if(!data || !descricao){
+      res.status(401).json({erro: 'Não foi possível criar uma nova tarefa.'})
+    }
+    
     res.status(200).json(tarefa)
   },
-  editar: async (req, res) => {
+  alterar: async (req, res) => {
     let tarefas = req.body;
+    let tarefasKeys = Object.keys(tarefas).length;
     // for(var id in tarefas){
     //   Tarefa.update(
     //     {situacao: 1},{where: {id}}
     //   )
     // }
-    res.send(tarefas)
+    
+    if(!tarefasKeys){
+      res.status(401).json({erro: 'Não foi possível fazer alterações.'})
+    }
+    
+
+    res.status(200).json(tarefas)
   }
 }
 
