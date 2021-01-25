@@ -34,7 +34,7 @@ table {
 }
 
 table th {
-  color: gray;
+  color:  rgb(111, 122, 126);
   background-color:  rgb(233, 233, 233);
   font-weight: bold;
   padding: 0.8rem 1rem;
