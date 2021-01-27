@@ -86,11 +86,6 @@ table td {
   font-size: 0.8rem;
   font-weight: 500;
   border: none;
-}
-
-.botao:hover {
-  color: #fff;
-  opacity: 1;
   text-decoration: none;
 }
 
@@ -122,9 +117,15 @@ table td {
   opacity: 1;
 }
 
+.ativo:hover {
+  opacity: 1;
+}
+
 #btn-modal {
   text-align: right;
 }
+
+/* formulários */
 
 #form-turma label, input {
   margin: 10px 0;

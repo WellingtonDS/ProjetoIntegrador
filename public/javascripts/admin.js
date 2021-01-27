@@ -3,27 +3,40 @@ const btnTarefas = document.getElementById('btn-tarefas');
 const formularioTarefas = document.getElementById('tarefas');
 
 // habilitar botao enviar
-function habilitarBotao(inputsVazios){
-  if(inputsVazios == 0){
+function habilitarBotao(inputsMarcados){
+  if(inputsMarcados > 0){
+    btnTarefas.classList.add('ativo');
     return btnTarefas.removeAttribute('disabled');
   } else {
+    btnTarefas.classList.remove('ativo');
     btnTarefas.setAttribute('disabled', 'disabled');
   }
 }
 
-// // verifica se os campos estão vazios
+function imprimirInput(inputs){
+  inputs.forEach(input => {
+    console.log(input)
+  })
+}
+
+// verifica se os campos estão vazios
 function verifarInputs(inputs){
-  let inputsVazios = 0;
+  let inputsMarcados = 0;
 
   inputs.forEach(input => {
-    if(input.value.length === 0){
-      inputsVazios += 1;
+    if(input.checked){
+      inputsMarcados += 1;
     }
   })
 
-  habilitarBotao(inputsVazios)
+  habilitarBotao(inputsMarcados)
 }
 
-formularioTarefas.onclick = () => {
+// verifica os campos e ativa ou desativa o botao de envio
+window.onload = () => {
+  verifarInputs(inputs)
+}
+
+formularioTarefas.onchange = () => {
   verifarInputs(inputs)
 }
