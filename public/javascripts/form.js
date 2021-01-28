@@ -4,19 +4,40 @@ const inputsNovaTarefa = document.querySelectorAll('.input-tarefa');
 const btnNovaTarefa = document.getElementById('btnNovaTarefa');
 const btnTarefaEnviar = document.getElementById('btnTarefaEnviar');
 
-// /*------------------------------------------------------------*/
+/*------------------------------------------------------------*/
 
 // variaveis form-turma
 const formTurma = document.getElementById('formTurma');
-const inputsNotaTurma = document.querySelectorAll('.input-turma')
+const inputsNovaTurma = document.querySelectorAll('.input-turma')
 const btnNovaTurma = document.getElementById('btnNovaTurma');
 const btnTurmaEnviar = document.getElementById('btnTurmaEnviar');
 
 /*-------------------------------------------------------------*/ 
+// variaveis form-disciplina
+const formDisciplina = document.getElementById('formDisciplina');
+const inputsNovaDisciplina = document.querySelectorAll('.input-disciplina')
+const btnNovaDisciplina = document.getElementById('btnNovaDisciplina');
+const btnDisciplinaEnviar = document.getElementById('btnDisciplinaEnviar');
 
+/*-------------------------------------------------------------*/ 
+// variaveis form-professor
+const formProfessor = document.getElementById('formProfessor');
+const inputsNovoProfessor = document.querySelectorAll('.input-professor')
+const btnNovoProfessor = document.getElementById('btnNovoProfessor');
+const btnProfessorEnviar = document.getElementById('btnProfessorEnviar');
+
+/*-------------------------------------------------------------*/ 
+// variaveis form-alunos
+const formAluno = document.getElementById('formAluno');
+const inputsNovoAluno = document.querySelectorAll('.input-aluno')
+const btnNovoAluno = document.getElementById('btnNovoAluno');
+const btnAlunoEnviar = document.getElementById('btnAlunoEnviar');
+
+// console.log(btnNovaDisciplina)
 // desabilita o botão de envio do formulário
 // assim que a página é carrega ou recarregada
 function desabilitarBotao(arrayInputs, botao){
+
   arrayInputs.forEach(input => {
     input.value = "";
   })
@@ -27,16 +48,14 @@ function desabilitarBotao(arrayInputs, botao){
 function habilitarBotao(inputsVazios, botao){
   
   if(inputsVazios == 0){
-    console.log("botao habilitado")
     return botao.removeAttribute('disabled');
   } else {
-    console.log("botao desabilitado")
     botao.setAttribute('disabled', 'disabled');
   }
-  console.log(botao)
+
 }
 
-// // verifica se os campos estão vazios
+// verifica se os campos estão vazios
 function verifarInputs(inputs, botao){
   let inputsVazios = 0;
 
@@ -49,14 +68,10 @@ function verifarInputs(inputs, botao){
   habilitarBotao(inputsVazios, botao)
 }
 
-// // desabita o botão assim que o formulario surge na tela
-// btnNovaTarefa.onclick = () => {
-//   desabilitarBotao(btnTarefaEnviar, inputsFormTarefa);
-// }
+// faz a chamada da função verificarInputs em duas situações
+// quando há uma mudança no formulário
+// e quando o usuário está digintando
 
-// // faz a chamada da função verificarInputs em duas situações
-// // quando há uma mudança no formulário
-// // e quando o usuário está digintando
 /*------------------------------------------------------*/ 
 
 btnNovaTarefa.onclick = () => {
@@ -64,11 +79,69 @@ btnNovaTarefa.onclick = () => {
 }
 
 formTarefa.onkeyup = () => {
-  console.log("Teclou")
   verifarInputs(inputsNovaTarefa, btnTarefaEnviar);
 }
 
 formTarefa.onchange = () => {
-  console.log("Mudou")
   verifarInputs(inputsNovaTarefa, btnTarefaEnviar);
 }
+
+/*------------------------------------------------------*/
+
+btnNovaTurma.onclick = () => {
+  desabilitarBotao(inputsNovaTurma, btnTurmaEnviar);
+}
+
+formTurma.onkeyup = () => {
+  verifarInputs(inputsNovaTurma, btnTurmaEnviar);
+}
+
+formTurma.onchange = () => {
+  verifarInputs(inputsNovaTurma, btnTurmaEnviar);
+}
+
+/*------------------------------------------------------*/
+
+btnNovaDisciplina.onclick = () => {
+  console.log("Clicou")
+  desabilitarBotao(inputsNovaDisciplina, btnDisciplinaEnviar);
+}
+
+formDisciplina.onkeyup = () => {
+  verifarInputs(inputsNovaDisciplina, btnDisciplinaEnviar);
+}
+
+formDisciplina.onchange = () => {
+  verifarInputs(inputsNovaDisciplina, btnDisciplinaEnviar);
+}
+
+/*------------------------------------------------------*/
+
+btnNovoProfessor.onclick = () => {
+  console.log("Clicou")
+  desabilitarBotao(inputsNovoProfessor, btnProfessorEnviar);
+}
+
+formProfessor.onkeyup = () => {
+  verifarInputs(inputsNovoProfessor, btnProfessorEnviar);
+}
+
+formProfessor.onchange = () => {
+  verifarInputs(inputsNovoProfessor, btnProfessorEnviar);
+}
+
+/*------------------------------------------------------*/
+
+btnNovoAluno.onclick = () => {
+  desabilitarBotao(inputsNovoAluno, btnAlunoEnviar);
+}
+
+formAluno.onkeyup = () => {
+  verifarInputs(inputsNovoAluno, btnAlunoEnviar);
+}
+
+formAluno.onchange = () => {
+  verifarInputs(inputsNovoAluno, btnAlunoEnviar);
+}
+
+/*------------------------------------------------------*/
