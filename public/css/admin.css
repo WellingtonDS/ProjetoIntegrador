@@ -17,6 +17,7 @@ a {
 
 a:hover {
   color: #4b535c;
+  text-decoration: none;
 }
 
 .tab-pane {
@@ -80,7 +81,7 @@ table td {
 
 /* formulário */
 .input-buscar {
-  width: min(70vw,600px);
+  width: min(60vw,600px);
 }
 
 /* botões */
@@ -97,16 +98,21 @@ table td {
   text-decoration: none;
 }
 
+a.botao:hover {
+  opacity: 1;
+  color: #fff;
+}
+
 .botao-detalhes {
-  background-color: rgb(192, 192, 192);
+  background-color: #8c96a0;
 }
 
 .botao-editar {
-  background-color: rgb(26, 85, 109);
+  background-color: #007bff;;
 }
 
 .botao-exluir {
-  background-color: rgb(255, 116, 116);
+  background-color: #dc3545;
 }
 
 .botao-enviar {
