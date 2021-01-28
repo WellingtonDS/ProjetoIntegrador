@@ -7,6 +7,17 @@ const TurmaController = {
     res.status(200).json(turmas)
     // res.render('./admin/turmas', {admin: req.session.usuario, turmas});
   },
+  detalhes: async (req, res) => {
+    let {id} = req.params;
+    let turma = await Turma.findOne({where: {id:id}});
+
+    if(!turma){
+      return res.status(401).json({erro: "Turma não encontrada"})
+    }
+
+    res.status(200).json(turma)
+
+  },
   criar: async (req, res) => {
     let { serie, nivel, turno } = req.body;
     
@@ -15,7 +26,6 @@ const TurmaController = {
       nivel,
       turno
     }
-
     res.status(200).json(turma)
   }
 }
