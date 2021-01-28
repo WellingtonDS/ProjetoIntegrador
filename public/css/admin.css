@@ -1,15 +1,19 @@
+.container {
+  overflow-x: auto;
+}
+
 button:focus {
   outline: none;
 }
 
 a {
-  color: rgb(165, 165, 165);
+  color: rgb(165, 165, 165) ;
   font-weight: bold;
 }
 
-a:link {
+/* a:link {
   color: #4b535c
-}
+} */
 
 a:hover {
   color: #4b535c;
@@ -76,7 +80,7 @@ table td {
 
 /* formulário */
 .input-buscar {
-  width: min(50vw,600px);
+  width: min(70vw,600px);
 }
 
 /* botões */
