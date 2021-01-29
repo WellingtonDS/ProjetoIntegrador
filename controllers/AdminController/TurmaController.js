@@ -39,6 +39,14 @@ const TurmaController = {
 
     res.redirect('/admin')
 
+  }, 
+  deletar: async (req, res) => {
+    let { id } = req.params;
+    // let turma = await Turma.findByPk(id);
+    console.log("Deu certo")
+    res.status(200).json({msg: "Deu bom"})
+    // await Turma.update({ativa: 0},{where:{id:id}})
+    
   }
 }
 

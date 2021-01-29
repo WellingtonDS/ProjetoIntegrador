@@ -38,6 +38,7 @@ const turmasDetalhes = async (id) => {
       turma = responseJson;
     })
   turmaContent = `
+  <form id="formTurmaDeletar" action="/admin/turmas/${id}/deletar?_method=DELETE" method="POST">
     <table class="table-responsive">
       <thead>
         <tr>
@@ -49,26 +50,29 @@ const turmasDetalhes = async (id) => {
         </tr>
       </thead>
       <tbody id="dadosTurmas">
-      <tr id="${turma.id}" class="trTbody">
-        <td>${turma.id}</td>
-        <td>${turma.serie}</td>
-        <td>${turma.nivel}</td>
-        <td>${turma.turno}</td>
-        <td>
-          <a id="btnVoltar" class="botao botao-detalhes" href="#">
-            Voltar
-          </a>&nbsp;
-          <a class="botao botao-editar" href="#" data-toggle="modal" data-target="#turmaEditar">
-            Editar
-          </a>&nbsp;
-          <a class="botao botao-exluir" href="#">
-            Excluir
-          </a>
-        </td>
-      </tr>
+        
+          <tr id="${turma.id}" class="trTbody">
+            <td>${turma.id}</td>
+            <td>${turma.serie}</td>
+            <td>${turma.nivel}</td>
+            <td>${turma.turno}</td>
+            <td>
+              <a id="btnVoltar" class="botao botao-detalhes" href="#">
+                Voltar
+              </a>&nbsp;
+              <a class="botao botao-editar" href="#" data-toggle="modal" data-target="#turmaEditar">
+                Editar
+              </a>&nbsp;
+              <button type="submit" class="botao botao-exluir">
+                Excluir
+              </button>
+            </td>
+          </tr>
+        
       </tbody>
     </table>
-    `
+  </form>
+  `
     tableContent.innerHTML = turmaContent;
     turmaEditarLabel.innerText = `Editar Turma #${turma.id}`
     formTurmaEditar.setAttribute('action', `/admin/turmas/${turma.id}/editar?_method=PUT`)
@@ -77,12 +81,20 @@ const turmasDetalhes = async (id) => {
     inputsFormTurmaEditar[2].value = turma.turno;
 }
 
+const confirmTurmasExcluir = (id) => {
+  if(window.confirm(`Deseja exluir essa Turma (${id})?`)){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 const turmasMetodos = (tag) => {
   let tagContent = (tag.innerText).toLowerCase().trim()
-
+  let id = tag.parentElement.parentElement.id;
+  let formTurmaDeletar = document.getElementById('formTurmaDeletar')
   switch(tagContent){
     case 'detalhes':
-      let id = tag.parentElement.parentElement.id;
       turmasDetalhes(id);
       break;
     case 'voltar':
@@ -91,7 +103,18 @@ const turmasMetodos = (tag) => {
     case 'editar':
       break;
     case 'excluir':
+      
+      if(!confirmTurmasExcluir(id)){
+        formTurmaDeletar.onsubmit = (event) => {
+          event.preventDefault();
+          console.log("Turma não excluida")
+        }
+      } else {
+        console.log("Excluindo Turma...")
+      }
+      
       break
+
     default:
       break;
   }
