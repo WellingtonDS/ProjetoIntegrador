@@ -27,6 +27,18 @@ const TurmaController = {
       turno
     }
     res.status(200).json(turma)
+  },
+  editar: async (req, res) => {
+    let { id } = req.params;
+    let { serie, nivel, turno } = req.body;
+    await Turma.update({
+      serie: serie,
+      nivel: nivel,
+      turno: turno
+    }, {where: {id:id}})
+
+    res.redirect('/admin')
+
   }
 }
 

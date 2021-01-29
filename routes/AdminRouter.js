@@ -14,7 +14,7 @@ router.put('/tarefas/alterar', validarSession, TarefaController.alterar);
 router.get('/turmas', validarSession, TurmaController.show);
 router.get('/turmas/:id/detalhes', validarSession, TurmaController.detalhes);
 router.post('/turmas/criar', validarSession, TurmaController.criar);
-// router.put('/turmas/:id/editar', validarSession, TurmaController.editar);
+router.put('/turmas/:id/editar', validarSession, TurmaController.editar);
 // router.delete('/turmas/:id/deletar', validarSession, TurmaController.deletar);
 
 // // rotas para disciplina
