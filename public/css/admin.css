@@ -2,6 +2,10 @@
   overflow-x: auto;
 }
 
+#main {
+  min-height: 80vh;
+}
+
 button:focus {
   outline: none;
 }
@@ -157,4 +161,12 @@ a.botao:hover {
 
 #tarefas {
   margin-bottom: 10px;
+}
+
+.rodape {
+  opacity: 0.5;
+  color: #8d9aa7;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
 }
