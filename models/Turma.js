@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
             // },
             serie: DataTypes.STRING(30),
             nivel: DataTypes.STRING(20),
-            turno: DataTypes.STRING(10)
+            turno: DataTypes.STRING(10),
+            ativa: DataTypes.BOOLEAN,
         },
         {
             tableName: 'turmas',
