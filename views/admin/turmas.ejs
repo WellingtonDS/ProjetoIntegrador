@@ -11,7 +11,7 @@
       </svg>
     </button>
   </div>
-  <div id="conteudoTurmas" style="display: flex;">
+  <div id="conteudoTurmas" >
     <table class="table-responsive">
       <thead>
         <tr>
@@ -23,5 +23,37 @@
       </thead>
       <tbody id="dadosTurmas"></tbody>
     </table>    
+  </div>
+  <div class="modal fade" id="turmaEditar" tabindex="-1" aria-labelledby="turmaEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="turmaEditarLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formTurmaEditar" action="" method="POST">
+            <div class="form-group">
+              <label for="serie" class="col-form-label">Série</label>
+              <input type="text" class="form-control input-turma-editar" id="serie" name="serie">
+            </div>
+            <div class="form-group">
+              <label for="nivel" class="col-form-label">Nível</label>
+              <input type="text" class="form-control input-turma-editar" id="nivel" name="nivel">
+            </div>
+            <div class="form-group">
+              <label for="turno" class="col-form-label">Turno</label>
+              <input type="text" class="form-control input-turma-editar" id="turno" name="turno">
+            </div>
+            <div id="btn-modal">
+              <button id="btnTurmaEditar" type="submit" class="btn btn-success" >Enviar</button>
+            </div>    
+          </form>
+        </div>
+        
+      </div>
+    </div>
   </div>
 </div>
