@@ -10,36 +10,48 @@
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
       </svg>
   </div>
-  <table class="table-responsive" id="tarefas">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th class="center">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="">1</td>
-        <td class="">Arte</td>
-        <td class="">Lorem ipsum dolor sit amet consectetur.</td>
-        <td class="">
-          <a class="botao botao-detalhes" href="#">Detalhes</a>
-          <a class="botao botao-editar" href="#">Editar</a>
-          <a class="botao botao-exluir" href="#">Excluir</a>
-        </td>  
-      </tr>
-      <tr>
-        <td class="">1</td>
-        <td class="">Biologia</td>
-        <td class="">Lorem ipsum dolor sit amet consectetur.</td>
-        <td class="">
-          <a class="botao botao-detalhes" href="#">Detalhes</a>
-          <a class="botao botao-editar" href="#">Editar</a>
-          <a class="botao botao-exluir" href="#">Excluir</a>
-        </td>
-      </tr> 
-    </tbody>
-  </table>
+  <div id="conteudoDisciplinas">
+    <table class="table-responsive" id="tarefas">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th class="center">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="dadosDisciplinas"></tbody>
+    </table>
+  </div>
+  <div class="modal fade" id="disciplinaEditar" tabindex="-1" aria-labelledby="criarDisciplinaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="disciplinaEditarLabel">Cadastrar nova Disciplina</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formDisciplinaEditar" action="" method="POST">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Nome</label>
+              <input type="text" class="form-control input-disciplina-editar" id="nome" name="nome">
+            </div>
+            <div class="form-group">
+              <label for="nivel" class="col-form-label">Descrição</label>
+              <textarea type="text" class="form-control input-disciplina-editar" id="descricao" name="descricao"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="nivel" class="col-form-label">Professor #1</label>
+              <input type="text" class="form-control input-disciplina-editar" id="professor" name="professor">
+            </div>
+            <div id="btn-modal">
+              <button id="btnDisciplinaEnviar" type="submit" class="btn btn-success" >Enviar</button>
+            </div>    
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </div>
