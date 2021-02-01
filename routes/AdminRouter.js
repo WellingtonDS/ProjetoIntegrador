@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const TarefaController = require('../controllers/AdminController/TarefaController');
 const TurmaController = require('../controllers/AdminController/TurmaController');
+const DisciplinaController = require('../controllers/AdminController/DisciplinaController');
 const {check, validationResult, body} = require('express-validator');
 const validarSession = require('../middlewares/auth');
 
@@ -11,17 +12,17 @@ router.post('/tarefas/criar', validarSession, TarefaController.criar);
 router.put('/tarefas/alterar', validarSession, TarefaController.alterar);
 
 // rotas para turma
-router.get('/turmas', validarSession, TurmaController.show);
+router.get('/turmas', validarSession, TurmaController.index);
 router.get('/turmas/:id/detalhes', validarSession, TurmaController.detalhes);
 router.post('/turmas/criar', validarSession, TurmaController.criar);
 router.put('/turmas/:id/editar', validarSession, TurmaController.editar);
 router.delete('/turmas/:id/deletar', validarSession, TurmaController.deletar);
 
 // // rotas para disciplina
-// router.get('/disciplinas/criar', validarSession, DisciplinaController.show);
-// router.post('/disciplinas/criar', validarSession, DisciplinaController.criar);
-// router.put('/disciplinas/:id/editar', validarSession, DisciplinaController.editar);
-// router.delete('/disciplinas/:id/deletar', validarSession, DisciplinaController.deletar);
+router.get('/disciplinas', validarSession, DisciplinaController.index);
+router.get('/disciplinas/:id/detalhes', validarSession, DisciplinaController.detalhes);
+router.put('/disciplinas/:id/editar', validarSession, DisciplinaController.editar);
+router.delete('/disciplinas/:id/deletar', validarSession, DisciplinaController.deletar);
 
 // // rotas para professor
 // router.get('/professores/criar', validarSession, ProfessorController.show);

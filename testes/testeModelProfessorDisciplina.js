@@ -1,6 +1,6 @@
 const {sequelize, ProfessorDisciplina} = require('../models');
 
-ProfessorDisciplina.findAll().then(resultado => {
-    console.log(resultado);
+ProfessorDisciplina.findAll({include: "disciplina"}).then(resultado => {
+    console.log(resultado[0]);
     sequelize.close();
 })
