@@ -2,7 +2,7 @@ const session = require('express-session');
 const { sequelize, Turma } = require('../../models');
 
 const TurmaController = {
-  show: async (req, res) => {
+  index: async (req, res) => {
     let turmas = await Turma.findAll({where:{ativa:1}});
     res.status(200).json(turmas)
     // res.render('./admin/turmas', {admin: req.session.usuario, turmas});
@@ -43,7 +43,7 @@ const TurmaController = {
   deletar: async (req, res) => {
     let { id } = req.params;
     let turma = await Turma.findByPk(id);
-    console.log(id)
+
     if(!turma){
       res.status(401).json({msg: "Não foi possivel concluir esta ação"})
     }

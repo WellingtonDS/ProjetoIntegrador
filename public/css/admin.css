@@ -107,6 +107,11 @@ a.botao:hover {
   color: #fff;
 }
 
+button.botao:hover {
+  opacity: 1;
+  color: #fff;
+}
+
 .botao-detalhes {
   background-color: #8c96a0;
 }

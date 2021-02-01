@@ -5,7 +5,7 @@ const formTurmaEditar = document.getElementById('formTurmaEditar');
 const inputsFormTurmaEditar = document.querySelectorAll('.input-turma-editar')
 const turmaEditarLabel = document.getElementById('turmaEditarLabel');
 var turmas;
-var requisicaoFeita = false;
+var reqTurma = false;
 
 const turmasIndex = () => {
   let dataTable = `<table class="table-responsive"><thead><tr><th>Série</th><th>Nível</th><th>Turno</th><th class="center">Ações</th></tr></thead><tbody id="dadosTurmas">`;
@@ -29,14 +29,16 @@ const turmasIndex = () => {
 }
 
 const turmasDetalhes = async (id) => {
-  let tableContent = document.getElementById('conteudoTurmas');
+  let tableTurmaContent = document.getElementById('conteudoTurmas');
   let turma = null;
   let turmaContent = '';
+  
   await fetch(`/admin/turmas/${id}/detalhes`)
     .then(response => response.json())
     .then(responseJson => {
       turma = responseJson;
     })
+ 
   turmaContent = `
   <form id="formTurmaDeletar" action="/admin/turmas/${id}/deletar?_method=DELETE" method="POST">
     <table class="table-responsive">
@@ -73,12 +75,27 @@ const turmasDetalhes = async (id) => {
     </table>
   </form>
   `
-    tableContent.innerHTML = turmaContent;
+  tableTurmaContent.innerHTML = turmaContent;
     turmaEditarLabel.innerText = `Editar Turma #${turma.id}`
     formTurmaEditar.setAttribute('action', `/admin/turmas/${turma.id}/editar?_method=PUT`)
     inputsFormTurmaEditar[0].value = turma.serie;
     inputsFormTurmaEditar[1].value = turma.nivel;
     inputsFormTurmaEditar[2].value = turma.turno;
+}
+
+turmasTab.onclick = async () => {
+
+  if(!reqTurma){
+    await fetch("/admin/turmas")
+    .then(data => data.json())
+    .then(dataDecode => {
+      turmas = dataDecode;
+      reqTurma = true;
+    })
+    .catch(err => console.log(err))
+  }
+
+  turmasIndex();
 }
 
 const confirmTurmasExcluir = (id) => {
@@ -107,7 +124,7 @@ const turmasMetodos = (tag) => {
       if(!confirmTurmasExcluir(id)){
         formTurmaDeletar.onsubmit = (event) => {
           event.preventDefault();
-          console.log("Turma não excluida")
+
         }
       } else {
         console.log("Excluindo Turma...")
@@ -118,21 +135,6 @@ const turmasMetodos = (tag) => {
     default:
       break;
   }
-}
-
-turmasTab.onclick = async () => {
-
-  if(!requisicaoFeita){
-    await fetch("/admin/turmas")
-    .then(data => data.json())
-    .then(dataDecode => {
-      turmas = dataDecode;
-      requisicaoFeita = true;
-    })
-    .catch(err => console.log(err))
-  }
-
-  turmasIndex();
 }
 
 conteudoTurmas.addEventListener('click', (event) => {
