@@ -11,27 +11,61 @@
       </svg>
     </button>
   </div>
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Sobrenome</th>
-        <th>Turma</th>
-        <th class="center">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="">1</td>
-        <td class="">Ana</td>
-        <td class="">Almeida</td>
-        <td>1º Ano</td>
-        <td class="turno">
-          <a class="botao botao-detalhes" href="#">Detalhes</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div id="conteudoAlunos">
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Responsável</th>
+          <th>Endereço</th>
+          <th class="center">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="dadosAlunos"></tbody>
+    </table>
+  </div>
+  
+  <div class="modal fade" id="alunoEditar" tabindex="-1" aria-labelledby="alunoEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="alunoEditarLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formAlunoEditar" action="" method="POST">
+            <div class="form-group">
+              <label for="nome" class="col-form-label">Nome</label>
+              <input type="text" class="form-control input-aluno-editar" id="nome" name="nome">
+            </div>
+            <div class="form-group">
+              <label for="sobrenome" class="col-form-label">Sobrenome</label>
+              <input type="text" class="form-control input-aluno-editar" id="sobrenome" name="sobrenome">
+            </div>
+            <div class="form-group">
+              <label for="responsavel" class="col-form-label">Responsável</label>
+              <input type="text" class="form-control input-aluno-editar" id="responsavel" name="responsavel">
+            </div>
+            <div class="form-group">
+              <label for="endereco" class="col-form-label">Endereço</label>
+              <input type="text" class="form-control input-aluno-editar" id="endereco" name="endereco">
+            </div>
+            <div class="form-group">
+              <label for="usuarioId" class="col-form-label">Usuario Id</label>
+              <input type="text" class="form-control input-aluno-editar" id="usuarioId" name="usuarioId">
+            </div>
+            <div id="btn-modal">
+              <button id="btnAlunoEditar" type="submit" class="btn btn-success" >
+                Enviar
+                <!-- <span class="sr-only">Loading...</span> -->
+              </button>
+            </div>    
+          </form>
+        </div> 
+      </div>
+    </div>
+  </div>
 </div>
 
