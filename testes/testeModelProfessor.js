@@ -1,7 +1,13 @@
 const {sequelize, Professor, Disciplina} = require("../models");
 // const Disciplina = require("../models/Disciplina");
 
-Professor.findAll().then(
+Professor.findOne(
+    {   
+        where: {id: 12},
+        include: [{association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}, 'usuario']
+    }
+    
+    ).then(
     professores => {
         console.log(professores);
         sequelize.close();
