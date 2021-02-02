@@ -24,6 +24,7 @@ const professoresIndex = () => {
     `
   })
 
+  console.log(professores)
   conteudoProfessores.innerHTML = dataProfessores + `</tbody></table>`;
 
 }
@@ -48,6 +49,8 @@ const professorDetalhes = async (professorId) => {
           <th>Id</th>
           <th>Nome</th>
           <th>Telefone</th>
+          <th>E-mail</th>
+          <th>Disciplina</th>
           <th>Usuario Id</th>
           <th class="center">Ações</th>
         </tr>
@@ -58,6 +61,8 @@ const professorDetalhes = async (professorId) => {
             <td>${professor.id}</td>
             <td>${professor.nome} ${professor.sobrenome}</td>
             <td>${professor.telefone}</td>
+            <td>${professor.usuario.email}</td>
+            <td>${professor.disciplinas[0].nome}</td>
             <td>${professor.usuario_id}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">

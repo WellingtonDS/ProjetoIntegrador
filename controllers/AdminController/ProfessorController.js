@@ -3,13 +3,20 @@ const { sequelize, Professor, Usuario } = require('../../models');
 
 const ProfessorController = {
   index: async (req, res) => {
-    let professores = await Professor.findAll();
+    let professores = await Professor.findAll(
+      { 
+        include: [{association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}, 'usuario']
+      });
     res.status(200).json(professores);
 
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
-    let professor = await Professor.findByPk(id);
+    let professor = await Professor.findOne(
+      { 
+        where: {id: id},
+        include: [{association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}, 'usuario']
+      });
     res.status(200).json(professor)
   },
   editar: async (req, res) => {

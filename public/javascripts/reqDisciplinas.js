@@ -48,7 +48,7 @@ const disciplinaDetalhes = async (disciplinaId) => {
           <th>Id</th>
           <th>Nome</th>
           <th>Descrição</th>
-          <th>professor</th>
+          <th>Professor</th>
           <th class="center">Ações</th>
         </tr>
       </thead>
