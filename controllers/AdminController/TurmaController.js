@@ -9,7 +9,7 @@ const TurmaController = {
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
-    let turma = await Turma.findOne({where: {id:id}});
+    let turma = await Turma.findByPk(id);
 
     if(!turma){
       return res.status(401).json({erro: "Turma não encontrada"})
@@ -48,7 +48,6 @@ const TurmaController = {
       res.status(401).json({msg: "Não foi possivel concluir esta ação"})
     }
 
-    
     await Turma.update(
       {
         ativa: 'false'

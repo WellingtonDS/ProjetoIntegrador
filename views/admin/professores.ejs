@@ -11,27 +11,56 @@
       </svg>
     </button>
   </div>
-  <table class="table-responsive">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Sobrenome</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="">1</td>
-        <td class="">Francisca</td>
-        <td class="">Almeida</td>
-        <td class="">
-          <a class="botao botao-detalhes" href="#">Detalhes</a>
-          <a class="botao botao-editar" href="#">Editar</a>
-          <a class="botao botao-exluir" href="#">Excluir</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div id="conteudoProfessores">
+    <table class="table-responsive">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="dadosProfessores"></tbody>
+    </table>
+  </div>
+  <div class="modal fade" id="professorEditar" tabindex="-1" aria-labelledby="professoresEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="professorEditarLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formProfessorEditar" action="" method="POST">
+            <div class="form-group">
+              <label for="nome" class="col-form-label">Nome</label>
+              <input type="text" class="form-control input-professor-editar" id="nome" name="nome">
+            </div>
+            <div class="form-group">
+              <label for="sobrenome" class="col-form-label">Sobrenome</label>
+              <input type="text" class="form-control input-professor-editar" id="sobrenome" name="sobrenome">
+            </div>
+            
+            <div class="form-group">
+              <label for="telefone" class="col-form-label">Telefone</label>
+              <input type="text" class="form-control input-professor-editar" id="telefone" name="telefone">
+            </div>
+            <div class="form-group">
+              <label for="usuarioId" class="col-form-label">Usuario Id</label>
+              <input type="text" class="form-control input-professor-editar" id="usuarioId" name="usuarioId">
+            </div>
+            <div id="btn-modal">
+              <button id="btnProfessorEditar" type="submit" class="btn btn-success" >
+                Enviar
+                <!-- <span class="sr-only">Loading...</span> -->
+              </button>
+            </div>    
+          </form>
+        </div> 
+      </div>
+    </div>
+  </div>
 </div>
 

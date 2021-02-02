@@ -52,7 +52,7 @@ const disciplinaDetalhes = async (disciplinaId) => {
           <th class="center">Ações</th>
         </tr>
       </thead>
-      <tbody id="dadosTurmas">
+      <tbody id="dadosDisciplinas">
         
           <tr id="${disciplina.id}" class="trTbody">
             <td>${disciplina.id}</td>
