@@ -66,7 +66,7 @@ const disciplinaDetalhes = async (disciplinaId) => {
               <a class="botao botao-editar" href="#" data-toggle="modal" data-target="#disciplinaEditar">
                 Editar
               </a>&nbsp;
-              <button type="submit" class="botao botao-exluir">
+              <button type="submit" class="botao botao-excluir">
                 Excluir
               </button>
             </td>
@@ -115,16 +115,12 @@ const disciplinasMetodos = (tag) => {
       if(!confirmDisciplinasExcluir(id)){
         formDisciplinaDeletar.onsubmit = (event) => {
           event.preventDefault();
-          console.log("Disciplina não excluida")
         }
-      } else {
-        console.log("Excluindo Disciplina...")
       }
       
       break
 
     default:
-      console.log("Fazendo nada")
       break;
   }
 }

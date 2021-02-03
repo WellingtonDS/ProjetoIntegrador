@@ -2,7 +2,7 @@ const alunosTab = document.getElementById('alunos-tab');
 const conteudoAlunos = document.getElementById('conteudoAlunos');
 const alunoEditarLabel = document.getElementById('alunoEditarLabel');
 const formAlunosEditar = document.getElementById('formAlunosEditar');
-const inputsFormAlunosEditar = document.querySelectorAll('.input-alunos-editar')
+const inputsFormAlunosEditar = document.querySelectorAll('.input-aluno-editar')
 var alunos;
 var reqAlunos = false;
 
@@ -68,7 +68,7 @@ const alunosDetalhes = async (alunosId) => {
               <a class="botao botao-editar" href="#" data-toggle="modal" data-target="#alunoEditar">
                 Editar
               </a>&nbsp;
-              <button type="submit" class="botao botao-exluir">
+              <button type="submit" class="botao botao-excluir">
                 Excluir
               </button>
             </td>
@@ -104,7 +104,7 @@ const alunosMetodos = (tag) => {
   
   switch(tagContent){
     case 'detalhes':
-      console.log(id)
+
       alunosDetalhes(id)
       break;
 
@@ -120,16 +120,14 @@ const alunosMetodos = (tag) => {
       if(!confirmAlunosExcluir(id)){
         formAlunosDeletar.onsubmit = (event) => {
           event.preventDefault();
-          console.log("Aluno não excluido")
+
         }
-      } else {
-        console.log("Excluindo aluno...")
       }
-      
+
       break
 
     default:
-      console.log("Fazendo nada")
+
       break;
   }
 }
@@ -153,6 +151,5 @@ alunosTab.onclick = async () => {
 
 conteudoAlunos.addEventListener('click', (event) => {
   let tag = event.target;
-  console.log(tag)
   alunosMetodos(tag)
 })

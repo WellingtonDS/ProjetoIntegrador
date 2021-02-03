@@ -11,24 +11,43 @@
       </svg>
     </button>
   </div>
-  <table class="table-responsive" >
-    <thead>
-      <tr>
-        <th>Data</th>
-        <th>Descrição</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="">20/01/2021</td>
-        <td class="">Lorem ipsum creatus est</td>
-        <td class="">
-          <a class="botao botao-detalhes" href="#">Editar</a>
-          <a class="botao botao-detalhes" href="#">Excluir</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div id="conteudoEventos">
+    <table class="table-responsive" >
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Descrição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="dadosEventos"></tbody>
+    </table>
+  </div>
+  <div class="modal fade" id="eventoEditar" tabindex="-1" aria-labelledby="ventoEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventoEditarLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formEventoEditar" action="" method="POST">
+            <div class="form-group">
+              <label for="data" class="col-form-label">Data</label>
+              <input type="text" class="form-control input-evento-editar" id="data" name="data">
+            </div>
+            <div class="form-group">
+              <label for="descricao" class="col-form-label">Descrição</label>
+              <textarea type="text" class="form-control input-evento-editar" id="descricao" name="descricao"></textarea>
+            </div>
+            <div id="btn-modal">
+              <button id="btnEventoEnviar" type="submit" class="btn btn-success" >Enviar</button>
+            </div>    
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-

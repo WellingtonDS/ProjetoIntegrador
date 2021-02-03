@@ -65,7 +65,7 @@ const turmasDetalhes = async (id) => {
               <a class="botao botao-editar" href="#" data-toggle="modal" data-target="#turmaEditar">
                 Editar
               </a>&nbsp;
-              <button type="submit" class="botao botao-exluir">
+              <button type="submit" class="botao botao-excluir">
                 Excluir
               </button>
             </td>
@@ -81,21 +81,6 @@ const turmasDetalhes = async (id) => {
     inputsFormTurmaEditar[0].value = turma.serie;
     inputsFormTurmaEditar[1].value = turma.nivel;
     inputsFormTurmaEditar[2].value = turma.turno;
-}
-
-turmasTab.onclick = async () => {
-
-  if(!reqTurma){
-    await fetch("/admin/turmas")
-    .then(data => data.json())
-    .then(dataDecode => {
-      turmas = dataDecode;
-      reqTurma = true;
-    })
-    .catch(err => console.log(err))
-  }
-
-  turmasIndex();
 }
 
 const confirmTurmasExcluir = (id) => {
@@ -124,10 +109,7 @@ const turmasMetodos = (tag) => {
       if(!confirmTurmasExcluir(id)){
         formTurmaDeletar.onsubmit = (event) => {
           event.preventDefault();
-
         }
-      } else {
-        console.log("Excluindo Turma...")
       }
       
       break
@@ -135,6 +117,21 @@ const turmasMetodos = (tag) => {
     default:
       break;
   }
+}
+
+turmasTab.onclick = async () => {
+
+  if(!reqTurma){
+    await fetch("/admin/turmas")
+    .then(data => data.json())
+    .then(dataDecode => {
+      turmas = dataDecode;
+      reqTurma = true;
+    })
+    .catch(err => console.log(err))
+  }
+
+  turmasIndex();
 }
 
 conteudoTurmas.addEventListener('click', (event) => {

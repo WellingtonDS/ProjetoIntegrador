@@ -33,7 +33,13 @@ const inputsNovoAluno = document.querySelectorAll('.input-aluno')
 const btnNovoAluno = document.getElementById('btnNovoAluno');
 const btnAlunoEnviar = document.getElementById('btnAlunoEnviar');
 
-// console.log(btnNovaDisciplina)
+/*-------------------------------------------------------------*/ 
+// variaveis form-eventos
+const formEvento = document.getElementById('formEvento');
+const inputsNovoEvento = document.querySelectorAll('.input-evento')
+const btnNovoEvento = document.getElementById('btnNovoEvento');
+const btnEventoEnviar = document.getElementById('btnEventoEnviar');
+
 // desabilita o botão de envio do formulário
 // assim que a página é carrega ou recarregada
 function desabilitarBotao(arrayInputs, botao){
@@ -145,3 +151,15 @@ formAluno.onchange = () => {
 }
 
 /*------------------------------------------------------*/
+
+btnNovoEvento.onclick = () => {
+  desabilitarBotao(inputsNovoEvento, btnEventoEnviar);
+}
+
+formEvento.onkeyup = () => {
+  verifarInputs(inputsNovoEvento, btnEventoEnviar);
+}
+
+formEvento.onchange = () => {
+  verifarInputs(inputsNovoEvento, btnEventoEnviar);
+}

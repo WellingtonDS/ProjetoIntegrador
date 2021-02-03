@@ -24,7 +24,6 @@ const professoresIndex = () => {
     `
   })
 
-  console.log(professores)
   conteudoProfessores.innerHTML = dataProfessores + `</tbody></table>`;
 
 }
@@ -71,7 +70,7 @@ const professorDetalhes = async (professorId) => {
               <a class="botao botao-editar" href="#" data-toggle="modal" data-target="#professorEditar">
                 Editar
               </a>&nbsp;
-              <button type="submit" class="botao botao-exluir">
+              <button type="submit" class="botao botao-excluir">
                 Excluir
               </button>
             </td>
@@ -106,7 +105,6 @@ const professoresMetodos = (tag) => {
   
   switch(tagContent){
     case 'detalhes':
-      console.log(id)
       professorDetalhes(id)
       break;
 
@@ -122,16 +120,14 @@ const professoresMetodos = (tag) => {
       if(!confirmProfessoresExcluir(id)){
         formProfessorDeletar.onsubmit = (event) => {
           event.preventDefault();
-          console.log("professor não excluida")
+
         }
-      } else {
-        console.log("Excluindo professor...")
       }
       
       break
 
     default:
-      console.log("Fazendo nada")
+
       break;
   }
 }
@@ -155,6 +151,6 @@ professoresTab.onclick = async () => {
 
 conteudoProfessores.addEventListener('click', (event) => {
   let tag = event.target;
-  console.log(tag)
+
   professoresMetodos(tag)
 })
