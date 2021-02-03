@@ -42,6 +42,7 @@ const LoginController = {
 
             req.session.usuario = admin;
             res.redirect('/admin');
+
         }
 
         res.render('loginAdmin', {errors: listaDeErros.errors})

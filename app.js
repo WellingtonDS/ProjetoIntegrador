@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'Roceket School' }));
+app.use(session({secret: 'RocketSchool'}));
 app.use(methodOverride('_method'));
 
 // difinindo as rotas
