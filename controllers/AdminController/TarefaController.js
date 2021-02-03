@@ -41,9 +41,8 @@ const TarefaController = {
       )
     }
     
-    res.redirect("/admin");
+    res.status(201).redirect("/admin");
 
-    // res.status(200).json(tarefas);
   }
 }
 
