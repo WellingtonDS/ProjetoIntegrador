@@ -8,15 +8,15 @@ const EventoController = {
 
   },
   criar: async (req, res) => {
-    let {id} = req.params;
+
     let {data, descricao} = req.body;
     
     await Evento.create({
       data:data,
-      descricao: descricao,
+      descricao: descricao
     })
 
-    res.redirect('/admin')
+    res.status(201).redirect('/admin')
 
   },
   editar: async (req, res) => {
