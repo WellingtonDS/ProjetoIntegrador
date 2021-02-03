@@ -28,7 +28,6 @@ window.onload = () => {
 
 }
 
-// comentar os resto do código
 function alterarMes(event) {
     // recupera apenas o botao que foi clicado
     let botao = event.target.className.baseVal.split("-")[2];
