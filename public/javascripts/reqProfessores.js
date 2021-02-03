@@ -39,6 +39,13 @@ const professorDetalhes = async (professorId) => {
       professor = responseJson;
     })
   
+  let disciplina;
+  if(professor.disciplinas[0].nome == "undefined"){
+    disciplina = "Não há";
+  } else {
+    disciplina = professor.disciplinas[0].nome;
+  }
+
   // gerando string que será inserinda no html
   professorContent = `
   <form id="formProfessorDeletar" action="/admin/professores/${professor.id}/deletar?_method=DELETE" method="POST">
@@ -55,13 +62,13 @@ const professorDetalhes = async (professorId) => {
         </tr>
       </thead>
       <tbody id="dadosProfessor">
-        
+
           <tr id="${professor.id}" class="trTbody">
             <td>${professor.id}</td>
             <td>${professor.nome} ${professor.sobrenome}</td>
             <td>${professor.telefone}</td>
             <td>${professor.usuario.email}</td>
-            <td>${professor.disciplinas[0].nome}</td>
+            <td>${disciplina}</td>
             <td>${professor.usuario_id}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">
