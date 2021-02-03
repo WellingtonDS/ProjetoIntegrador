@@ -5,6 +5,7 @@ const TurmaController = require('../controllers/AdminController/TurmaController'
 const DisciplinaController = require('../controllers/AdminController/DisciplinaController');
 const ProfessorController = require('../controllers/AdminController/ProfessorController');
 const AlunoController = require('../controllers/AdminController/AlunoController');
+const EventoController = require('../controllers/AdminController/EventoController');
 const {check, validationResult, body} = require('express-validator');
 const validarSession = require('../middlewares/auth');
 
@@ -39,9 +40,9 @@ router.put('/alunos/:id/editar', validarSession, AlunoController.editar);
 router.delete('/alunos/:id/deletar', validarSession, AlunoController.deletar);
 
 // rotas para evento
-// router.get('/eventos/criar', validarSession, EventoController.index);
-// router.post('/eventos/criar', validarSession, EventoController.criar);
-// router.put('/eventos/:id/editar', validarSession, EventoController.editar);
-// router.delete('/eventos/:id/deletar', validarSession, EventoController.deletar);
+router.get('/eventos', validarSession, EventoController.index);
+router.post('/eventos/criar', validarSession, EventoController.criar);
+router.put('/eventos/:id/editar', validarSession, EventoController.editar);
+router.delete('/eventos/:id/deletar', validarSession, EventoController.deletar);
 
 module.exports = router;
