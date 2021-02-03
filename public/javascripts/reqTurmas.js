@@ -30,14 +30,31 @@ const turmasIndex = () => {
 
 const turmasDetalhes = async (id) => {
   let tableTurmaContent = document.getElementById('conteudoTurmas');
-  let turma = null;
+  
+  let turma;
+  let listaProfessores;
+  let listaAlunos;
+  let professores = `<ul>`;
+  let alunos = `<ul>`
+  
   let turmaContent = '';
   
   await fetch(`/admin/turmas/${id}/detalhes`)
     .then(response => response.json())
     .then(responseJson => {
-      turma = responseJson;
+      turma = responseJson
     })
+
+
+  listaProfessores = turma.professores_disciplinas;
+  listaProfessores.forEach(item => {
+    professores += `<li>${item.professor.nome} ${item.professor.sobrenome}</li>`
+  })
+
+  listaAlunos = turma.alunos;
+  listaAlunos.forEach(aluno => {
+    alunos += `<li>${aluno.nome} ${aluno.sobrenome}</li>`
+  })
  
   turmaContent = `
   <form id="formTurmaDeletar" action="/admin/turmas/${id}/deletar?_method=DELETE" method="POST">
@@ -74,13 +91,34 @@ const turmasDetalhes = async (id) => {
       </tbody>
     </table>
   </form>
+  <p class="mt-3">
+    <a class="btn btn-success btn-sm" data-toggle="collapse" href="#collapseProfessores" role="button" aria-expanded="false" aria-controls="collapseProfessores">
+      Professores (${listaProfessores.length})
+    </a>
+    <a class="btn btn-info btn-sm" data-toggle="collapse" href="#collapseAlunos" role="button" aria-expanded="false" aria-controls="collapseAlunos">
+      Alunos (${listaAlunos.length})
+    </a>
+  </p>
+  <div class="collapse mb-2" id="collapseProfessores">
+    <div id="professoresContainer" class="card card-body"></div>
+  </div>
+  <div class="collapse" id="collapseAlunos">
+    <div id="alunosContainer" class="card card-body"></div>
+  </div>
   `
+  
   tableTurmaContent.innerHTML = turmaContent;
-    turmaEditarLabel.innerText = `Editar Turma #${turma.id}`
-    formTurmaEditar.setAttribute('action', `/admin/turmas/${turma.id}/editar?_method=PUT`)
-    inputsFormTurmaEditar[0].value = turma.serie;
-    inputsFormTurmaEditar[1].value = turma.nivel;
-    inputsFormTurmaEditar[2].value = turma.turno;
+
+  const professoresContainer = document.getElementById('professoresContainer');
+  professoresContainer.innerHTML = professores + `</ul>`
+  const alunosContainer = document.getElementById('alunosContainer')
+  alunosContainer.innerHTML = alunos + `</ul>`
+
+  turmaEditarLabel.innerText = `Editar Turma #${turma.id}`
+  formTurmaEditar.setAttribute('action', `/admin/turmas/${turma.id}/editar?_method=PUT`)
+  inputsFormTurmaEditar[0].value = turma.serie;
+  inputsFormTurmaEditar[1].value = turma.nivel;
+  inputsFormTurmaEditar[2].value = turma.turno;
 }
 
 const confirmTurmasExcluir = (id) => {
@@ -131,6 +169,7 @@ turmasTab.onclick = async () => {
     .catch(err => console.log(err))
   }
 
+  console.log(turmas)
   turmasIndex();
 }
 
