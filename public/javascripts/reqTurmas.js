@@ -4,8 +4,17 @@ const btnVoltar = document.getElementById('btnVoltar');
 const formTurmaEditar = document.getElementById('formTurmaEditar');
 const inputsFormTurmaEditar = document.querySelectorAll('.input-turma-editar')
 const turmaEditarLabel = document.getElementById('turmaEditarLabel');
+const FormTurmasBuscar = document.getElementById('FormTurmasBuscar');
+const InputBusca = document.querySelector('.input-buscar');
+const FormContent = document.getElementById('form-content');
+const inputBuscarTurma = document.getElementById('inputBuscarTurma');
+const alertErro = document.getElementById('alertErro');
+const fecharAlert = document.getElementById('fecharAlert');
+
 var turmas;
 var reqTurma = false;
+var opcaoBusca;
+var valorBusca;
 
 const turmasIndex = () => {
   let dataTable = `<table class="table-responsive"><thead><tr><th>Série</th><th>Nível</th><th>Turno</th><th class="center">Ações</th></tr></thead><tbody id="dadosTurmas">`;
@@ -157,6 +166,19 @@ const turmasMetodos = (tag) => {
   }
 }
 
+const verificarErro = (valor) => {
+  let erro = true;
+  console.log(valor)
+  if(valor == undefined || valor == ""){
+    alertErro.style.display = 'flex';
+  } else {
+    alertErro.style.display = 'none';
+    erro = false;
+  }
+
+  return erro;
+}
+
 turmasTab.onclick = async () => {
 
   if(!reqTurma){
@@ -170,6 +192,38 @@ turmasTab.onclick = async () => {
   }
 
   turmasIndex();
+}
+
+FormContent.addEventListener('click', event => {
+  let content = event.target.value
+  if(content == "serie" || content == "turno"){
+    opcaoBusca = content;
+  }
+})
+
+inputBuscarTurma.addEventListener('keyup', () => {
+  valorBusca = inputBuscarTurma.value;
+})
+
+inputBuscarTurma.addEventListener('change', () => {
+  valorBusca = inputBuscarTurma.value;
+})
+
+FormTurmasBuscar.onsubmit = async (event) => {
+  event.preventDefault()
+  if(verificarErro(valorBusca) || valorBusca == ""){
+    return
+  } else {
+    console.log("Formulario submetido")
+    await fetch(`/admin/turmas/buscar?opcao=${ opcaoBusca }&valor=${ valorBusca }`)
+      .then(resultado => {
+        console.log(resultado)
+      })
+  }
+}
+
+fecharAlert.onclick = () => {
+  alertErro.style.display = "";
 }
 
 conteudoTurmas.addEventListener('click', (event) => {
