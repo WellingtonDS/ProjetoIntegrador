@@ -33,6 +33,7 @@ a:hover {
 .buscar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 /* TABELA DE TAREFAS */
@@ -86,6 +87,28 @@ table td {
 /* formulário */
 .input-buscar {
   width: min(60vw,345px);
+}
+
+#alertErro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(247, 70, 70);
+  display: none;
+}
+
+#fecharAlert {
+  cursor: pointer;
+}
+
+div.checkbox-area {
+  display: flex;
+  align-items: baseline;
+  margin-right: 10px;
+}
+
+div.checkbox-area input {
+  margin-right: 5px;
 }
 
 /* botões */
@@ -164,7 +187,7 @@ select.form-control {
 #form-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 
 div.form-group {

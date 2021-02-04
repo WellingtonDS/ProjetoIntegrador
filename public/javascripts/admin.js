@@ -20,7 +20,7 @@ function imprimirInput(inputs){
 }
 
 // verifica se os campos estão vazios
-function verifarInputsTarefas(inputs){
+function verificarInputsTarefas(inputs){
   let inputsMarcados = 0;
 
   inputs.forEach(input => {
@@ -34,9 +34,9 @@ function verifarInputsTarefas(inputs){
 
 // verifica os campos e ativa ou desativa o botao de envio
 window.onload = () => {
-  verifarInputsTarefas(inputs)
+  verificarInputsTarefas(inputs)
 }
 
 formularioTarefas.onchange = () => {
-  verifarInputsTarefas(inputs)
+  verificarInputsTarefas(inputs)
 }
