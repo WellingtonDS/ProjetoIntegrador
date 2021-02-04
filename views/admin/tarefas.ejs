@@ -1,6 +1,6 @@
 <div class="container">
   <%- include('./forms/form-tarefas') %>
-  <form id="tarefas" method="POST" action="/admin/tarefas/alterar?_method=PUT">
+  <form id="FormTarefas" method="POST" action="/admin/tarefas/alterar?_method=PUT">
     <div id="div-btn">
       <button class="btn-new" id="btnNovaTarefa" type="button" data-toggle="modal" data-target="#criarTarefa" data-whatever="@mdo" title="Nova Tarefa">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
@@ -16,9 +16,9 @@
           <th>Marcar como concluida</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="tarefasContent">
         <% tarefas.forEach(tarefa => { %>
-          <tr>
+          <tr id="<%= tarefa.id %>">
             <td class="">
               <%= tarefa.data.getDate() %>/<%= tarefa.data.getMonth() < 10 ? "0" + (tarefa.data.getMonth() + 1) : tarefa.data.getMonth() + 1 %>/
               <%= tarefa.data.getFullYear() %></td>
@@ -32,6 +32,5 @@
     </table>
     <button id="btn-tarefas" type="submit" class="botao botao-enviar">Salvar alterações</button>
   </form>
-  
 </div>
 
