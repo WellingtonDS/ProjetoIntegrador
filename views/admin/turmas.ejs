@@ -1,9 +1,17 @@
 <div class="container">
   <%- include('./forms/form-turmas') %>
   <div class="buscar">
-    <form class="form-buscar" action="/admin/turmas/1/buscar">
-      <input class="input-buscar" type="text" name="nome">
-      <button class="btn btn-light" type="submit">Buscar</button>
+    <form class="form-buscar" action="/admin/turmas/1/buscar?">
+      <div id="form-content">
+        <select class="form-control" id="exampleFormControlSelect1" name="selecao">
+          <option>Tudo</option>
+          <option>Série</option>
+          <option>Nível</option>
+          <option>Turno</option>
+        </select>
+        <input class="input-buscar" type="text" name="nome">
+        <button class="btn btn-light" type="submit">Buscar</button>
+      </div>
     </form>
     <button class="btn-new" id="btnNovaTurma" type="button" data-toggle="modal" data-target="#criarTurma" data-whatever="@mdo" title="Nova Turma">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">

@@ -36,12 +36,13 @@ const TurmaController = {
   criar: async (req, res) => {
     let { serie, nivel, turno } = req.body;
     
-    let turma = {
-      serie,
-      nivel,
-      turno
-    }
-    res.status(200).json(turma)
+    await Turma.create({
+      serie: serie,
+      nivel: nivel,
+      turno: turno
+    })
+
+    res.status(200).redirect('/admin')
   },
   editar: async (req, res) => {
     let { id } = req.params;

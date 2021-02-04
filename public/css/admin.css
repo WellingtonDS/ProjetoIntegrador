@@ -85,7 +85,7 @@ table td {
 
 /* formulário */
 .input-buscar {
-  width: min(60vw,600px);
+  width: min(60vw,345px);
 }
 
 /* botões */
@@ -150,14 +150,25 @@ button.botao:hover {
 
 /* formulários */
 
-#form-turma label, input {
-  margin: 10px 0;
-  display: block;
+select.form-control {
+  width: initial;
+  padding: initial;
+  margin-right: 10px;
 }
 
-.form-buscar {
+#form-turma label, input {
+  margin: 10px 0;
+  /* display: block; */
+}
+
+#form-content {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+div.form-group {
+  align-self: center;
 }
 
 .form-buscar button {

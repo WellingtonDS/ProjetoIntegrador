@@ -34,8 +34,8 @@ const turmasDetalhes = async (id) => {
   let turma;
   let listaProfessores;
   let listaAlunos;
-  let professores = `<ul>`;
-  let alunos = `<ul>`
+  let professores = `<ul class="list-group">`;
+  let alunos = `<ul class="list-group">`
   
   let turmaContent = '';
   
@@ -48,12 +48,12 @@ const turmasDetalhes = async (id) => {
 
   listaProfessores = turma.professores_disciplinas;
   listaProfessores.forEach(item => {
-    professores += `<li>${item.professor.nome} ${item.professor.sobrenome}</li>`
+    professores += `<li class="list-group-item">${item.professor.nome} ${item.professor.sobrenome}</li>`
   })
 
   listaAlunos = turma.alunos;
   listaAlunos.forEach(aluno => {
-    alunos += `<li>${aluno.nome} ${aluno.sobrenome}</li>`
+    alunos += `<li class="list-group-item">${aluno.nome} ${aluno.sobrenome}</li>`
   })
  
   turmaContent = `
@@ -93,10 +93,10 @@ const turmasDetalhes = async (id) => {
   </form>
   <p class="mt-3">
     <a class="btn btn-success btn-sm" data-toggle="collapse" href="#collapseProfessores" role="button" aria-expanded="false" aria-controls="collapseProfessores">
-      Professores (${listaProfessores.length})
+      Professores <span class="badge badge-light badge-pill">${listaProfessores.length}</span>
     </a>
     <a class="btn btn-info btn-sm" data-toggle="collapse" href="#collapseAlunos" role="button" aria-expanded="false" aria-controls="collapseAlunos">
-      Alunos (${listaAlunos.length})
+      Alunos <span <span class="badge badge-light badge-pill">${listaAlunos.length}</span>
     </a>
   </p>
   <div class="collapse mb-2" id="collapseProfessores">
