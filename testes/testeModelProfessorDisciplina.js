@@ -8,6 +8,6 @@ ProfessorDisciplina.findAll(
         ]
     })
     .then(resultado => {
-    console.log(resultado[0].dataValues);
+    console.log(resultado[1].dataValues);
     sequelize.close();
 })

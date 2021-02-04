@@ -30,14 +30,18 @@ const disciplinasIndex = () => {
 
 const disciplinaDetalhes = async (disciplinaId) => {
   let tableDisciplinaContent = document.getElementById('conteudoDisciplinas');
-  let disciplina = null;
+  let disciplina;
+  let professor;
   let disciplinaContent = '';
 
   await fetch(`/admin/disciplinas/${disciplinaId}/detalhes`)
     .then(response => response.json())
     .then(responseJson => {
       disciplina = responseJson;
-    })
+    });
+
+  professores = disciplina.professores;
+  console.log(professores)
   
   // gerando string que será inserinda no html
   disciplinaContent = `
@@ -58,7 +62,7 @@ const disciplinaDetalhes = async (disciplinaId) => {
             <td>${disciplina.id}</td>
             <td>${disciplina.nome}</td>
             <td>${disciplina.descricao}</td>
-            <td>Ana Francisca</td>
+            <td>${professores[0].nome} ${professores[0].sobrenome}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">
                 Voltar
@@ -77,10 +81,10 @@ const disciplinaDetalhes = async (disciplinaId) => {
   `
   tableDisciplinaContent.innerHTML = disciplinaContent;
   disciplinaEditarLabel.innerText = `Editar Disciplina #${disciplina.id}`;
-  formDisciplinaEditar.setAttribute('action', `/admin/disciplinas/${disciplina.id}/editar?_method=PUT`)
-  inputsFormDisciplinasEditar[0].value = disciplina.nome
-  inputsFormDisciplinasEditar[1].value = disciplina.descricao
-  inputsFormDisciplinasEditar[2].value = 2;
+  formDisciplinaEditar.setAttribute('action', `/admin/disciplinas/${disciplina.id}/editar?_method=PUT`);
+  inputsFormDisciplinasEditar[0].value = disciplina.nome;
+  inputsFormDisciplinasEditar[1].value = disciplina.descricao;
+  inputsFormDisciplinasEditar[2].value = professores[0].id;
 
 
 }
@@ -97,7 +101,7 @@ const disciplinasMetodos = (tag) => {
   let tagContent = (tag.innerText).toLowerCase().trim()
   let id = tag.parentElement.parentElement.id;
   let formDisciplinaDeletar = document.getElementById('formDisciplinaDeletar')
-  
+
   switch(tagContent){
     case 'detalhes':
       disciplinaDetalhes(id)
@@ -137,7 +141,7 @@ disciplinasTab.onclick = async () => {
     })
     .catch(err => console.log(err))
   }
-
+  console.log(disciplinas)
   disciplinasIndex();
 
 }

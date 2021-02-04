@@ -169,7 +169,6 @@ turmasTab.onclick = async () => {
     .catch(err => console.log(err))
   }
 
-  console.log(turmas)
   turmasIndex();
 }
 

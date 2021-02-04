@@ -20,7 +20,7 @@
         <% tarefas.forEach(tarefa => { %>
           <tr id="<%= tarefa.id %>">
             <td class="">
-              <%= tarefa.data.getDate() %>/<%= tarefa.data.getMonth() < 10 ? "0" + (tarefa.data.getMonth() + 1) : tarefa.data.getMonth() + 1 %>/
+              <%= tarefa.data.getDate() < 10 ? "0" + tarefa.data.getDate() : tarefa.data.getDate() %>/<%= tarefa.data.getMonth() < 10 ? "0" + (tarefa.data.getMonth() + 1) : tarefa.data.getMonth() + 1 %>/
               <%= tarefa.data.getFullYear() %></td>
             <td class=""><%= tarefa.descricao %></td>
             <td class="center">

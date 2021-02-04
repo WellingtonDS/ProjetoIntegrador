@@ -29,7 +29,6 @@ const TurmaController = {
       return res.status(401).json({erro: "Turma não encontrada"})
     }
 
-    // console.log(turma)
     res.status(200).json(turma)
 
   },
