@@ -13,6 +13,12 @@ const TurmaController = {
     res.status(200).json(turmas)
     // res.render('./admin/turmas', {admin: req.session.usuario, turmas});
   },
+  buscar: async (req, res) => {
+    let busca = req.query;
+    
+    console.log(busca)
+    res.status(200).json(busca)
+  },
   detalhes: async (req, res) => {
     let {id} = req.params;
     console.log(id)
