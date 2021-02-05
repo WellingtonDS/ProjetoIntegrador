@@ -1,6 +1,6 @@
 FormTarefas = document.getElementById('FormTarefas');
 
 FormTarefas.onsubmit = () => {
-  window.location.reload
+  window.location.reload()
 }
 
