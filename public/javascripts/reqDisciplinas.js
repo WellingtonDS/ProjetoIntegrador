@@ -143,12 +143,6 @@ const disciplinasMetodos = (tag) => {
 // insere os dados filtrados vindos do backend na aba disciplinas
 const disciplinasFiltradasMostrar = () => {
 
-  if(disciplinasFiltradas == "Arte"){
-    console.log("Ok")
-  } else {
-    alertWarningDisciplinas.style.display = 'flex';
-  }
-
   if(disciplinasFiltradas.length == 0 || disciplinasFiltradas == undefined){
     alertWarningDisciplinas.style.display = 'flex';
   } else {
@@ -204,18 +198,16 @@ formDisciplinasBuscar.onsubmit = async (event) => {
 
 inputBuscarDisciplina.addEventListener('click', event => {
   discBusca = inputBuscarDisciplina.value
-})
+});
 
 inputBuscarDisciplina.addEventListener('keyup', event => {
   discBusca = inputBuscarDisciplina.value;
-})
+});
 
 formDisciplinasBuscar.addEventListener('change', event => {
   discBusca = inputBuscarDisciplina.value;
 })
-// fim da area de busca
 
-// fazendo requisição
 disciplinasTab.onclick = async () => {
 
   inputBuscarDisciplina.value = "";
@@ -241,7 +233,9 @@ fecharAlertErroDisciplinas.onclick = () => {
 fecharAlertWarningDisciplinas.onclick = () => {
   alertWarningDisciplinas.style.display = ""
 }
+// fim da area de busca
 
+// fazendo requisição
 conteudoDisciplinas.addEventListener('click', (event) => {
   let tag = event.target;
   disciplinasMetodos(tag)

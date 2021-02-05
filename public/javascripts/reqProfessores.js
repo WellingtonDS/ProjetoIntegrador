@@ -3,7 +3,16 @@ const conteudoProfessores = document.getElementById('conteudoProfessores');
 const professorEditarLabel = document.getElementById('professorEditarLabel');
 const formProfessorEditar = document.getElementById('formProfessorEditar');
 const inputsFormprofessoresEditar = document.querySelectorAll('.input-professor-editar')
+const formProfessoresBuscar = document.getElementById('formProfessoresBuscar');
+const inputBuscarProfessor = document.getElementById('inputBuscarProfessor');
+const alertErroProfessores = document.getElementById('alertErroProfessores');
+const fecharAlertErroProfessores = document.getElementById('fecharAlertErroProfessores');
+const alertWarningProfessores = document.getElementById('alertWarningProfessores');
+const fecharAlertWarningProfessores = document.getElementById('fecharAlertWarningProfessores');
+
 var professores;
+var professoresFiltrados;
+var profBusca;
 var reqProfessores = false;
 
 // inserindo os dados no container
@@ -30,7 +39,7 @@ const professoresIndex = () => {
 
 const professorDetalhes = async (professorId) => {
   let tableProfessorContent = document.getElementById('conteudoProfessores');
-  let professor = null;
+  let professores = null;
   let professorContent = '';
 
   await fetch(`/admin/professores/${professorId}/detalhes`)
@@ -38,13 +47,15 @@ const professorDetalhes = async (professorId) => {
     .then(responseJson => {
       professor = responseJson;
     })
+
+  console.log(professor)
   
-  let disciplina;
-  if(professor.disciplinas[0].nome == "undefined"){
-    disciplina = "Não há";
-  } else {
-    disciplina = professor.disciplinas[0].nome;
-  }
+  let disciplina = professor.disciplinas[0].nome
+  // if(professor.Professores[0].nome == "undefined"){
+  //   disciplina = "Não há";
+  // } else {
+  //   disciplina = professor.Professores[0].nome;
+  // }
 
   // gerando string que será inserinda no html
   professorContent = `
@@ -112,6 +123,7 @@ const professoresMetodos = (tag) => {
   
   switch(tagContent){
     case 'detalhes':
+      inputBuscarProfessor.value = "";
       professorDetalhes(id)
       break;
 
@@ -139,15 +151,97 @@ const professoresMetodos = (tag) => {
   }
 }
 
+// inicio da area de busca
+const professoresFiltradosMostrar = () => {
+
+  console.log(profBusca)
+
+  if(professoresFiltrados.length == 0 || professoresFiltrados == undefined){
+    alertWarningProfessores.style.display = 'flex';
+  } else {
+    alertWarningProfessores.style.display = "";
+
+    let dataTableProfessoresFiltrados = `<table class="table-responsive" id=""><thead><tr><th>Nome</th><th>Telefone</th><th>Usuario Id</th><th class="center">Ações</th></tr></thead><tbody id="dadosProfessores">`
+    professoresFiltrados.forEach(professorFiltrado => {
+    
+      dataTableProfessoresFiltrados += `
+      <tr id="${professorFiltrado.id}" class="trTbody">
+        <td class="">${professorFiltrado.nome} ${professorFiltrado.sobrenome}</td>
+        <td class="">${professorFiltrado.telefone}</td>
+        <td class="">${professorFiltrado.usuario_id}</td>
+        <td class="">
+          <a class="botao botao-detalhes" href="#">Detalhes</a>
+        </td>  
+      </tr>
+      ` 
+      conteudoProfessores.innerHTML = dataTableProfessoresFiltrados + `</tbody></table>`;
+    })
+  }
+}
+
+const verificarErroProfessor = (profBusca) => {
+  let erro = true;
+  console.log(profBusca)
+  if(profBusca == undefined || profBusca == ""){
+    alertErroProfessores.style.display = 'flex';
+  } else {
+    alertErroProfessores.style.display = 'none';
+    erro = false;
+  }
+
+  return erro;
+}
+
+formProfessoresBuscar.onsubmit = async (event) => {
+  event.preventDefault()
+  if(verificarErroProfessor(profBusca) || profBusca == ""){
+    return
+  } else {
+    console.log("Formulario submetido")
+    await fetch(`/admin/professores/buscar?professor=${ profBusca }`)
+      .then(resultado => resultado.json())
+      .then(resultadoJson => {
+        console.log(resultadoJson)
+        professoresFiltrados = resultadoJson;
+      })
+  }
+
+  professoresFiltradosMostrar();
+
+}
+
+inputBuscarProfessor.addEventListener('click', event => {
+  profBusca = inputBuscarProfessor.value
+});
+
+inputBuscarProfessor.addEventListener('keyup', event => {
+  profBusca = inputBuscarProfessor.value;
+});
+
+formProfessoresBuscar.addEventListener('change', event => {
+  profBusca = inputBuscarProfessor.value;
+})
+
+fecharAlertErroProfessores.onclick = () => {
+  alertErroProfessores.style.display = "";
+}
+
+fecharAlertWarningProfessores.onclick = () => {
+  alertWarningProfessores.style.display = ""
+}
+// fim da area de busca
+
 // fazendo requisição
 professoresTab.onclick = async () => {
 
-    await fetch("/admin/professores")
-    .then(resultado => resultado.json())
-    .then(resultadoJson => {
-      professores = resultadoJson;
-    })
-    .catch(err => console.log(err))
+  inputBuscarProfessor.value = "";
+
+  await fetch("/admin/professores")
+  .then(resultado => resultado.json())
+  .then(resultadoJson => {
+    professores = resultadoJson;
+  })
+  .catch(err => console.log(err))
 
   professoresIndex();
 

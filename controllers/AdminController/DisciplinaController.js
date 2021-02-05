@@ -23,8 +23,8 @@ const DisciplinaController = {
   },
   buscar: async (req, res) => {
     let {disciplina} = req.query;
-    // let disciplinasFiltradas = await Disciplina.findOne({where: {nome: }})
-    disciplinasFiltradas = await Disciplina.findAll(
+
+    let disciplinasFiltradas = await Disciplina.findAll(
       {where: {nome: {[Op.substring]: `${disciplina}`}}}
     )
 

@@ -1,5 +1,6 @@
 const session = require('express-session');
 const { sequelize, Professor, Usuario } = require('../../models');
+const { Op } = require("sequelize");
 
 const ProfessorController = {
   index: async (req, res) => {
@@ -18,6 +19,15 @@ const ProfessorController = {
         include: [{association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}, 'usuario']
       });
     res.status(200).json(professor)
+  },
+  buscar: async (req, res) => {
+    let {professor} = req.query;
+    
+    let professoresFiltrados = await Professor.findAll(
+      {where: {nome: {[Op.substring]: `${professor}`}}}
+    );
+    
+    res.status(200).json(professoresFiltrados);
   },
   editar: async (req, res) => {
     let {id} = req.params;

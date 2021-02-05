@@ -93,6 +93,22 @@ table td {
   display: none;
 }
 
+#alertErroProfessores {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(247, 70, 70);
+  display: none;
+}
+
+#alertErroDisciplinas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(247, 70, 70);
+  display: none;
+}
+
 .iconFechar {
   cursor: pointer;
 }
@@ -105,15 +121,15 @@ table td {
   display: none;
 }
 
-#alertErroDisciplinas {
+#alertWarningDisciplinas {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgb(247, 70, 70);
+  color: rgb(255, 96, 38);
   display: none;
 }
 
-#alertWarningDisciplinas {
+#alertWarningProfessores {
   display: flex;
   justify-content: space-between;
   align-items: center;
