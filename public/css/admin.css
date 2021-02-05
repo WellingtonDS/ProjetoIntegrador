@@ -105,6 +105,22 @@ table td {
   display: none;
 }
 
+#alertErroDisciplinas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(247, 70, 70);
+  display: none;
+}
+
+#alertWarningDisciplinas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(255, 96, 38);
+  display: none;
+}
+
 div.checkbox-area {
   display: flex;
   align-items: baseline;

@@ -172,19 +172,28 @@ const turmasMetodos = (tag) => {
   }
 }
 
-const verificarErro = (filtroBusca, valor) => {
-  let erro = true;
-  console.log(valor)
-  if(filtroBusca == undefined || valor == undefined || valor == ""){
-    alertErro.style.display = 'flex';
-  } else {
-    alertErro.style.display = 'none';
-    erro = false;
+turmasTab.onclick = async () => {
+
+  inputsRadio.forEach(input => {
+    input.checked = false;
+  })
+
+  inputBuscarTurma.value = "";
+
+  if(!reqTurma){
+    await fetch("/admin/turmas")
+    .then(data => data.json())
+    .then(dataDecode => {
+      turmas = dataDecode;
+      reqTurma = true;
+    })
+    .catch(err => console.log(err))
   }
 
-  return erro;
+  turmasIndex();
 }
 
+// insere os dados filtrados vindos do backend na aba turmas
 const turmasFiltradasMostrar = () => {
 
   if(turmasFiltradas.length == 0 || turmasFiltradas == undefined){
@@ -211,25 +220,18 @@ const turmasFiltradasMostrar = () => {
 
 }
 
-turmasTab.onclick = async () => {
-
-  inputsRadio.forEach(input => {
-    input.checked = false;
-  })
-
-  inputBuscarTurma.value = "";
-
-  if(!reqTurma){
-    await fetch("/admin/turmas")
-    .then(data => data.json())
-    .then(dataDecode => {
-      turmas = dataDecode;
-      reqTurma = true;
-    })
-    .catch(err => console.log(err))
+// inicio area de busca
+const verificarErro = (filtroBusca, valor) => {
+  let erro = true;
+  console.log(valor)
+  if(filtroBusca == undefined || valor == undefined || valor == ""){
+    alertErro.style.display = 'flex';
+  } else {
+    alertErro.style.display = 'none';
+    erro = false;
   }
 
-  turmasIndex();
+  return erro;
 }
 
 FormContent.addEventListener('click', event => {
@@ -272,6 +274,7 @@ fecharAlert.onclick = () => {
 fecharAlertWarning.onclick = () => {
   alertWarning.style.display = ""
 }
+// fim da area de busca
 
 conteudoTurmas.addEventListener('click', (event) => {
   let tag = event.target;

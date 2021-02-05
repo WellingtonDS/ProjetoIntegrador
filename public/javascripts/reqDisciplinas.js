@@ -3,8 +3,17 @@ const conteudoDisciplinas = document.getElementById('conteudoDisciplinas');
 const disciplinaEditarLabel = document.getElementById('disciplinaEditarLabel');
 const formDisciplinaEditar = document.getElementById('formDisciplinaEditar');
 const inputsFormDisciplinasEditar = document.querySelectorAll('.input-disciplina-editar')
+const formDisciplinasBuscar = document.getElementById('formDisciplinasBuscar');
+const inputBuscarDisciplina = document.getElementById('inputBuscarDisciplina');
+const alertErroDisciplinas = document.getElementById('alertErroDisciplinas');
+const fecharAlertErroDisciplinas = document.getElementById('fecharAlertErroDisciplinas');
+const alertWarningDisciplinas = document.getElementById('alertWarningDisciplinas');
+const fecharAlertWarningDisciplinas = document.getElementById('fecharAlertWarningDisciplinas');
 // const conteudoDisciplinas = document.getElementById('conteudoDisciplinas');
+
 var disciplinas;
+var disciplinasFiltradas;
+var discBusca;
 var reqDisciplinas = false;
 
 // inserindo os dados no container
@@ -104,6 +113,7 @@ const disciplinasMetodos = (tag) => {
 
   switch(tagContent){
     case 'detalhes':
+      inputBuscarDisciplina.value = "";
       disciplinaDetalhes(id)
       break;
 
@@ -129,8 +139,86 @@ const disciplinasMetodos = (tag) => {
   }
 }
 
+// inicio area de busca
+// insere os dados filtrados vindos do backend na aba disciplinas
+const disciplinasFiltradasMostrar = () => {
+
+  if(disciplinasFiltradas == "Arte"){
+    console.log("Ok")
+  } else {
+    alertWarningDisciplinas.style.display = 'flex';
+  }
+
+  if(disciplinasFiltradas.length == 0 || disciplinasFiltradas == undefined){
+    alertWarningDisciplinas.style.display = 'flex';
+  } else {
+    alertWarningDisciplinas.style.display = "";
+
+    let dataTableDisciplinasFitradas = `<table class="table-responsive" id="tarefas"><thead><tr><th>Nome</th><th>Descrição</th><th class="center">Ações</th></tr></thead><tbody id="dadosDisciplinas">`
+    disciplinasFiltradas.forEach(disciplinaFiltrada => {
+    
+      dataTableDisciplinasFitradas += `
+      <tr id="${disciplinaFiltrada.id}" class="trTbody">
+        <td class="">${disciplinaFiltrada.nome}</td>
+        <td class="">${disciplinaFiltrada.descricao.substring(0, 30)}...</td>
+        <td class="">
+          <a class="botao botao-detalhes" href="#">Detalhes</a>
+        </td>  
+      </tr>
+      ` 
+      conteudoDisciplinas.innerHTML = dataTableDisciplinasFitradas + `</tbody></table>`;
+    })
+  }
+}
+
+const verificarErroDisciplina = (discBusca) => {
+  let erro = true;
+  console.log(discBusca)
+  if(discBusca == undefined || discBusca == ""){
+    alertErroDisciplinas.style.display = 'flex';
+  } else {
+    alertErroDisciplinas.style.display = 'none';
+    erro = false;
+  }
+
+  return erro;
+}
+
+formDisciplinasBuscar.onsubmit = async (event) => {
+  event.preventDefault()
+  if(verificarErroDisciplina(discBusca) || discBusca == ""){
+    return
+  } else {
+    console.log("Formulario submetido")
+    await fetch(`/admin/disciplinas/buscar?disciplina=${ discBusca }`)
+      .then(resultado => resultado.json())
+      .then(resultadoJson => {
+        console.log(resultadoJson)
+        disciplinasFiltradas = resultadoJson;
+      })
+  }
+
+  disciplinasFiltradasMostrar();
+
+}
+
+inputBuscarDisciplina.addEventListener('click', event => {
+  discBusca = inputBuscarDisciplina.value
+})
+
+inputBuscarDisciplina.addEventListener('keyup', event => {
+  discBusca = inputBuscarDisciplina.value;
+})
+
+formDisciplinasBuscar.addEventListener('change', event => {
+  discBusca = inputBuscarDisciplina.value;
+})
+// fim da area de busca
+
 // fazendo requisição
 disciplinasTab.onclick = async () => {
+
+  inputBuscarDisciplina.value = "";
 
   if(!reqDisciplinas){
     await fetch("/admin/disciplinas")
@@ -141,9 +229,17 @@ disciplinasTab.onclick = async () => {
     })
     .catch(err => console.log(err))
   }
-  console.log(disciplinas)
+
   disciplinasIndex();
 
+}
+
+fecharAlertErroDisciplinas.onclick = () => {
+  alertErroDisciplinas.style.display = "";
+}
+
+fecharAlertWarningDisciplinas.onclick = () => {
+  alertWarningDisciplinas.style.display = ""
 }
 
 conteudoDisciplinas.addEventListener('click', (event) => {

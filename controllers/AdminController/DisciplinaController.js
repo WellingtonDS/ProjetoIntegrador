@@ -1,5 +1,6 @@
 const session = require('express-session');
 const { sequelize, Disciplina } = require('../../models');
+const { Op } = require("sequelize");
 
 const DisciplinaController = {
   index: async (req, res) => {
@@ -19,6 +20,15 @@ const DisciplinaController = {
       });
 
     res.status(200).json(disciplina);
+  },
+  buscar: async (req, res) => {
+    let {disciplina} = req.query;
+    // let disciplinasFiltradas = await Disciplina.findOne({where: {nome: }})
+    disciplinasFiltradas = await Disciplina.findAll(
+      {where: {nome: {[Op.substring]: `${disciplina}`}}}
+    )
+
+    res.status(200).json(disciplinasFiltradas);
   },
   editar: async (req, res) => {
     let {id} = req.params;
