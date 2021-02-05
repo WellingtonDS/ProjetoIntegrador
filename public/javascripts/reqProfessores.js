@@ -142,15 +142,12 @@ const professoresMetodos = (tag) => {
 // fazendo requisição
 professoresTab.onclick = async () => {
 
-  if(!reqProfessores){
     await fetch("/admin/professores")
     .then(resultado => resultado.json())
     .then(resultadoJson => {
       professores = resultadoJson;
-      reqProfessores = true;
     })
     .catch(err => console.log(err))
-  }
 
   professoresIndex();
 

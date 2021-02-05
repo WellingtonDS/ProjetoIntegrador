@@ -1,4 +1,4 @@
-FormTarefas = document.getElementById('FormTarefas');
+const FormTarefas = document.getElementById('FormTarefas');
 
 FormTarefas.onsubmit = () => {
   window.location.reload()

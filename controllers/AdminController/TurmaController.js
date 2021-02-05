@@ -1,14 +1,15 @@
 const session = require('express-session');
 const { sequelize, Turma } = require('../../models');
+const {Op} = require("sequelize");
 
 const TurmaController = {
   index: async (req, res) => {
     let turmas = await Turma.findAll(
-      {   where: {ativa: 1},
-          include: [
-              {association: 'alunos', through: {atributes: 'matriculas'}},
-              {association: 'professores_disciplinas', through: {atributes: 'turmas_professores_disciplinas'}, include: 'professor'}
-          ]
+      {   
+        include: [
+            {association: 'alunos', through: {atributes: 'matriculas'}},
+            {association: 'professores_disciplinas', through: {atributes: 'turmas_professores_disciplinas'}, include: 'professor'}
+        ]
       });
     res.status(200).json(turmas)
     // res.render('./admin/turmas', {admin: req.session.usuario, turmas});
@@ -22,15 +23,15 @@ const TurmaController = {
     switch(filtro) {
       case "serie":
         turmasFiltradas = await Turma.findAll(
-          {where: { serie: valor}})
+          {where: { serie: {[Op.substring]: `${valor}`}}})
         break;
       case "nivel":
         turmasFiltradas = await Turma.findAll(
-          {where: { nivel: valor}})
+          {where: { nivel: {[Op.substring]: `${valor}`}}})
         break;
       case "turno":
         turmasFiltradas = await Turma.findAll(
-          {where: { turno: valor}})
+          {where: { turno: {[Op.substring]: `${valor}`}}})
         break;
     }
 
