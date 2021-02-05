@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             // },
             turma_id: DataTypes.INTEGER,
             aluno_id: DataTypes.INTEGER,
-            situacao: DataTypes.STRING(15)
+            situacao: DataTypes.STRING(10)
         },
         {
             tableName: 'matriculas',

@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
         'Disciplina',
         {
             nome: DataTypes.STRING(45),
-            descricao: DataTypes.STRING(140)
+            descricao: DataTypes.STRING(140),
+            situacao: DataTypes.STRING(10)
         },
         {
             tableName: 'disciplinas',
