@@ -25,6 +25,7 @@ router.delete('/turmas/:id/deletar', validarSession, TurmaController.deletar);
 // rotas para disciplina
 router.get('/disciplinas', validarSession, DisciplinaController.index);
 router.get('/disciplinas/:id/detalhes', validarSession, DisciplinaController.detalhes);
+router.get('/disciplinas/buscar', validarSession, DisciplinaController.buscar);
 router.put('/disciplinas/:id/editar', validarSession, DisciplinaController.editar);
 router.delete('/disciplinas/:id/deletar', validarSession, DisciplinaController.deletar);
 
