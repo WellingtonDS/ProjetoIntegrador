@@ -32,6 +32,7 @@ router.delete('/disciplinas/:id/deletar', validarSession, DisciplinaController.d
 // rotas para professor
 router.get('/professores', validarSession, ProfessorController.index);
 router.get('/professores/:id/detalhes', validarSession, ProfessorController.detalhes);
+router.get('/professores/buscar', validarSession, ProfessorController.buscar);
 router.put('/professores/:id/editar', validarSession, ProfessorController.editar);
 router.delete('/professores/:id/deletar', validarSession, ProfessorController.deletar);
 
