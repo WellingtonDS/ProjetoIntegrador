@@ -4,7 +4,7 @@ const { sequelize, Turma } = require('../../models');
 const TurmaController = {
   index: async (req, res) => {
     let turmas = await Turma.findAll(
-      {
+      {   where: {ativa: 1},
           include: [
               {association: 'alunos', through: {atributes: 'matriculas'}},
               {association: 'professores_disciplinas', through: {atributes: 'turmas_professores_disciplinas'}, include: 'professor'}
@@ -15,9 +15,26 @@ const TurmaController = {
   },
   buscar: async (req, res) => {
     let busca = req.query;
-    
-    console.log(busca)
-    res.status(200).json(busca)
+    let filtro = busca.filtro;
+    let valor = busca.valor;
+    let turmasFiltradas;
+
+    switch(filtro) {
+      case "serie":
+        turmasFiltradas = await Turma.findAll(
+          {where: { serie: valor}})
+        break;
+      case "nivel":
+        turmasFiltradas = await Turma.findAll(
+          {where: { nivel: valor}})
+        break;
+      case "turno":
+        turmasFiltradas = await Turma.findAll(
+          {where: { turno: valor}})
+        break;
+    }
+
+    res.status(200).json(turmasFiltradas)
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
@@ -44,7 +61,8 @@ const TurmaController = {
     await Turma.create({
       serie: serie,
       nivel: nivel,
-      turno: turno
+      turno: turno,
+      ativa: 'false'
     })
 
     res.status(200).redirect('/admin')

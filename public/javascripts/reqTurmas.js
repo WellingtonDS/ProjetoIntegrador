@@ -5,15 +5,19 @@ const formTurmaEditar = document.getElementById('formTurmaEditar');
 const inputsFormTurmaEditar = document.querySelectorAll('.input-turma-editar')
 const turmaEditarLabel = document.getElementById('turmaEditarLabel');
 const FormTurmasBuscar = document.getElementById('FormTurmasBuscar');
+const inputsRadio = document.querySelectorAll('.inputRadio');
 const InputBusca = document.querySelector('.input-buscar');
 const FormContent = document.getElementById('form-content');
 const inputBuscarTurma = document.getElementById('inputBuscarTurma');
 const alertErro = document.getElementById('alertErro');
-const fecharAlert = document.getElementById('fecharAlert');
+const fecharAlert = document.getElementById('fecharAlertErro');
+const alertWarning = document.getElementById('alertWarning');
+const fecharAlertWarning = document.getElementById('fecharAlertWarning');
 
 var turmas;
+var turmasFiltradas;
 var reqTurma = false;
-var opcaoBusca;
+var filtroBusca;
 var valorBusca;
 
 const turmasIndex = () => {
@@ -39,7 +43,9 @@ const turmasIndex = () => {
 
 const turmasDetalhes = async (id) => {
   let tableTurmaContent = document.getElementById('conteudoTurmas');
-  
+  inputsRadio.forEach(input => {
+    input.checked = false;
+  })
   let turma;
   let listaProfessores;
   let listaAlunos;
@@ -166,10 +172,10 @@ const turmasMetodos = (tag) => {
   }
 }
 
-const verificarErro = (valor) => {
+const verificarErro = (filtroBusca, valor) => {
   let erro = true;
   console.log(valor)
-  if(valor == undefined || valor == ""){
+  if(filtroBusca == undefined || valor == undefined || valor == ""){
     alertErro.style.display = 'flex';
   } else {
     alertErro.style.display = 'none';
@@ -179,7 +185,39 @@ const verificarErro = (valor) => {
   return erro;
 }
 
+const turmasFiltradasMostrar = () => {
+
+  if(turmasFiltradas.length == 0 || turmasFiltradas == undefined){
+    alertWarning.style.display = 'flex';
+  } else {
+    let dataTableTurmasFitradas = `<table class="table-responsive"><thead><tr><th>Série</th><th>Nível</th><th>Turno</th><th class="center">Ações</th></tr></thead><tbody id="dadosTurmas">`;
+    turmasFiltradas.forEach(turmaFiltrada => {
+    
+      dataTableTurmasFitradas += `
+      <tr id="${turmaFiltrada.id}" class="trTbody">
+        <td>${turmaFiltrada.serie}</td>
+        <td>${turmaFiltrada.nivel}</td>
+        <td>${turmaFiltrada.turno}</td>
+        <td class="">
+          <a class="botao botao-detalhes" href="#">
+            Detalhes
+          </a>
+        </td>
+      </tr>
+      ` 
+      conteudoTurmas.innerHTML = dataTableTurmasFitradas + `</tbody></table>`;
+    })
+  }  
+
+}
+
 turmasTab.onclick = async () => {
+
+  inputsRadio.forEach(input => {
+    input.checked = false;
+  })
+
+  inputBuscarTurma.value = "";
 
   if(!reqTurma){
     await fetch("/admin/turmas")
@@ -196,8 +234,8 @@ turmasTab.onclick = async () => {
 
 FormContent.addEventListener('click', event => {
   let content = event.target.value
-  if(content == "serie" || content == "turno"){
-    opcaoBusca = content;
+  if(content == "serie" || content == "nivel" || content == "turno"){
+    filtroBusca = content;
   }
 })
 
@@ -211,19 +249,28 @@ inputBuscarTurma.addEventListener('change', () => {
 
 FormTurmasBuscar.onsubmit = async (event) => {
   event.preventDefault()
-  if(verificarErro(valorBusca) || valorBusca == ""){
+  if(verificarErro(filtroBusca, valorBusca) || valorBusca == ""){
     return
   } else {
     console.log("Formulario submetido")
-    await fetch(`/admin/turmas/buscar?opcao=${ opcaoBusca }&valor=${ valorBusca }`)
-      .then(resultado => {
-        console.log(resultado)
+    await fetch(`/admin/turmas/buscar?filtro=${ filtroBusca }&valor=${ valorBusca }`)
+      .then(resultado => resultado.json())
+      .then(resultadoJson => {
+        console.log(resultadoJson)
+        turmasFiltradas = resultadoJson;
       })
   }
+
+  turmasFiltradasMostrar();
+
 }
 
 fecharAlert.onclick = () => {
   alertErro.style.display = "";
+}
+
+fecharAlertWarning.onclick = () => {
+  alertWarning.style.display = ""
 }
 
 conteudoTurmas.addEventListener('click', (event) => {

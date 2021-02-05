@@ -15,10 +15,6 @@ a {
   font-weight: bold;
 }
 
-/* a:link {
-  color: #4b535c
-} */
-
 a:hover {
   color: #4b535c;
   text-decoration: none;
@@ -97,8 +93,16 @@ table td {
   display: none;
 }
 
-#fecharAlert {
+.iconFechar {
   cursor: pointer;
+}
+
+#alertWarning {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(255, 96, 38);
+  display: none;
 }
 
 div.checkbox-area {
