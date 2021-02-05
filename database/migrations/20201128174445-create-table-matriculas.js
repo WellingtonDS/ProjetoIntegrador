@@ -33,7 +33,7 @@ module.exports = {
           onUpdate: 'CASCADE'
         },
         situacao: {
-          type: Sequelize.STRING(15),
+          type: Sequelize.STRING(10),
           allowNull: false
         }
       });

@@ -14,7 +14,14 @@ module.exports = {
         type: Sequelize.STRING(45),
         allowNull: false
       },
-      descricao: Sequelize.STRING(140)
+      descricao: {
+        type: Sequelize.STRING(200),
+        allowNull: false
+      },
+      situacao: {
+        type: Sequelize.STRING(10),
+        allowNull: false
+      }
     });
 
   },

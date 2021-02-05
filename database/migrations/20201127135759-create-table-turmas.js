@@ -21,6 +21,10 @@ module.exports = {
           turno: {
             type: Sequelize.STRING(10),
             allowNull: false,
+          },
+          situacao: {
+            type: Sequelize.STRING(10),
+            allowNull: false,
           }
         });
 

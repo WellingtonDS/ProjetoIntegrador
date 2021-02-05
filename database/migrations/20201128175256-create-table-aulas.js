@@ -41,7 +41,7 @@ module.exports = {
           onUpdate: 'CASCADE'
         },
         situacao: {
-          type: Sequelize.BOOLEAN,
+          type: Sequelize.STRING(10),
           defaultValue: false,
           allowNull: false
         }
