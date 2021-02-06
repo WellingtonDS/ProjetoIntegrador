@@ -21,7 +21,7 @@ const DisciplinaController = {
       situacao: "NA"
     })
 
-    res.status(201).json({msg: "Usuário cadastrado com sucesso"});
+    res.status(201).json({msg: "Disciplina criada com sucesso"});
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
