@@ -24,6 +24,7 @@ router.delete('/turmas/:id/deletar', validarSession, TurmaController.deletar);
 
 // rotas para disciplina
 router.get('/disciplinas', validarSession, DisciplinaController.index);
+router.post('/disciplinas/criar', validarSession, DisciplinaController.criar);
 router.get('/disciplinas/:id/detalhes', validarSession, DisciplinaController.detalhes);
 router.get('/disciplinas/buscar', validarSession, DisciplinaController.buscar);
 router.put('/disciplinas/:id/editar', validarSession, DisciplinaController.editar);
@@ -39,6 +40,7 @@ router.delete('/professores/:id/deletar', validarSession, ProfessorController.de
 // rotas para aluno
 router.get('/alunos', validarSession, AlunoController.index);
 router.get('/alunos/:id/detalhes', validarSession, AlunoController.detalhes);
+router.get('/alunos/buscar', validarSession, AlunoController.buscar);
 router.put('/alunos/:id/editar', validarSession, AlunoController.editar);
 router.delete('/alunos/:id/deletar', validarSession, AlunoController.deletar);
 
