@@ -19,6 +19,66 @@ const inputsNovaDisciplina = document.querySelectorAll('.input-disciplina')
 const btnNovaDisciplina = document.getElementById('btnNovaDisciplina');
 const btnDisciplinaEnviar = document.getElementById('btnDisciplinaEnviar');
 
+/* ---------------------------------------------------------------------------------------- */
+// variaveis que serão usadas para validar o formulario para criar uma disciplina
+const disciplinaNome = document.getElementById('disciplinaNome');
+const disciplinaDescricao = document.getElementById('disciplinaDescricao');
+const spinner = document.getElementById('spinner');
+const msgErroDisciplinaCriar = document.getElementById('msgErroDisciplinaCriar');
+const msgSucessoDisciplinaCriar = document.getElementById('msgSucessoDisciplinaCriar');
+var disciplina;
+var descricao;
+
+const DisciplinaCriar = async (disciplina, descricao) => {
+  let strJson = JSON.stringify({disciplina, descricao});
+  console.log(strJson);
+
+  await fetch("/admin/disciplinas/criar", {
+    method: "POST",
+    body: strJson,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(resultado => {
+    console.log(resultado);
+  })
+
+
+  function sucesso() {
+    msgErroDisciplinaCriar.style.display = "none";
+    msgSucessoDisciplinaCriar.style.display = "flex";
+    disciplinaNome.value = "";
+    disciplinaDescricao.value = "";
+    btnDisciplinaEnviar.innerText = "Enviar";
+    setTimeout(verifarInputs(inputsNovaDisciplina, btnDisciplinaEnviar), 2000)
+  }
+
+  let msgSucesso = setTimeout(sucesso, 2000);
+
+}
+
+formDisciplina.addEventListener('keyup', () => {
+  disciplina = disciplinaNome.value
+  descricao = disciplinaDescricao.value
+})
+
+formDisciplina.addEventListener('change', () => {
+  disciplina = disciplinaNome.value
+  descricao = disciplinaDescricao.value
+})
+
+formDisciplina.onsubmit = (event) => {
+  event.preventDefault()
+  if(disciplina.length >= 3 && descricao.length >= 10){
+    msgErroDisciplinaCriar.style.visibility = "hidden";
+    btnDisciplinaEnviar.innerHTML = `Enviando <span id="spinner" class="spinner-border spinner-border-sm enviando" role="status" aria-hidden="true"></span>`;
+    DisciplinaCriar(disciplina, descricao);
+  } else {
+    msgErroDisciplinaCriar.style.visibility = "visible";
+    btnDisciplinaEnviar.innerText = "Enviar";
+  }
+}
+
 /*-------------------------------------------------------------*/ 
 // variaveis form-professor
 const formProfessor = document.getElementById('formProfessor');
@@ -56,6 +116,7 @@ function habilitarBotao(inputsVazios, botao){
   if(inputsVazios == 0){
     return botao.removeAttribute('disabled');
   } else {
+    btnDisciplinaEnviar.innerText = "Enviar";
     botao.setAttribute('disabled', 'disabled');
   }
 
@@ -109,7 +170,9 @@ formTurma.onchange = () => {
 /*------------------------------------------------------*/
 
 btnNovaDisciplina.onclick = () => {
-  console.log("Clicou")
+  msgErroDisciplinaCriar.style.display = "flex";
+  msgSucessoDisciplinaCriar.style.display = "none";
+  btnDisciplinaEnviar.innerText = "Enviar";
   desabilitarBotao(inputsNovaDisciplina, btnDisciplinaEnviar);
 }
 

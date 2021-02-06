@@ -9,7 +9,6 @@ const alertErroDisciplinas = document.getElementById('alertErroDisciplinas');
 const fecharAlertErroDisciplinas = document.getElementById('fecharAlertErroDisciplinas');
 const alertWarningDisciplinas = document.getElementById('alertWarningDisciplinas');
 const fecharAlertWarningDisciplinas = document.getElementById('fecharAlertWarningDisciplinas');
-// const conteudoDisciplinas = document.getElementById('conteudoDisciplinas');
 
 var disciplinas;
 var disciplinasFiltradas;
@@ -94,8 +93,6 @@ const disciplinaDetalhes = async (disciplinaId) => {
   inputsFormDisciplinasEditar[0].value = disciplina.nome;
   inputsFormDisciplinasEditar[1].value = disciplina.descricao;
   inputsFormDisciplinasEditar[2].value = professores[0].id;
-
-
 }
 
 const confirmDisciplinasExcluir = (id) => {
@@ -139,7 +136,7 @@ const disciplinasMetodos = (tag) => {
   }
 }
 
-// inicio area de busca
+// inicio da area de busca
 // insere os dados filtrados vindos do backend na aba disciplinas
 const disciplinasFiltradasMostrar = () => {
 

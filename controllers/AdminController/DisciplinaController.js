@@ -11,6 +11,14 @@ const DisciplinaController = {
 
     res.status(200).json(disciplinas);
   },
+  criar: async (req, res) => {
+    let {disciplina, descricao} = req.body;
+    let novaDisciplina = {
+      disciplina,
+      descricao
+    }
+    res.status(201).json(novaDisciplina);
+  },
   detalhes: async (req, res) => {
     let {id} = req.params;
     let disciplina = await Disciplina.findOne(

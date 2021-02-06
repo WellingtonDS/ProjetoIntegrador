@@ -85,23 +85,7 @@ table td {
   width: min(60vw,345px);
 }
 
-#alertErro {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgb(247, 70, 70);
-  display: none;
-}
-
-#alertErroProfessores {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgb(247, 70, 70);
-  display: none;
-}
-
-#alertErroDisciplinas {
+.alert-erro {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,23 +97,7 @@ table td {
   cursor: pointer;
 }
 
-#alertWarning {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgb(255, 96, 38);
-  display: none;
-}
-
-#alertWarningDisciplinas {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgb(255, 96, 38);
-  display: none;
-}
-
-#alertWarningProfessores {
+.alert-aviso {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -215,9 +183,31 @@ select.form-control {
   margin-right: 10px;
 }
 
+.btn-modal-enviar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.msgErroModal {
+  margin: 0;
+  color: #f85969;
+  opacity: 0.7;
+  visibility: hidden;
+}
+
+.msgSucessoModal {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  color: green;
+  opacity: 0.7;
+  display: none;
+}
+
 #form-turma label, input {
   margin: 10px 0;
-  /* display: block; */
 }
 
 #form-content {
