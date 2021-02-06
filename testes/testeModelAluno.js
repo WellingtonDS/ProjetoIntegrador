@@ -9,6 +9,11 @@ const {sequelize, Aluno, Matricula} = require('../models');
 //     sequelize.close();
 // })
 
-Aluno.findAll().then(aluno => {
-    console.log(aluno[0].toJSON())
-})
+Aluno.findAll(
+    {
+        include: [{association: 'turma', through: {atributes: 'matriculas'}}]
+    })
+    .then(alunos => {
+        console.log(alunos[70]);
+        sequelize.close();
+    })
