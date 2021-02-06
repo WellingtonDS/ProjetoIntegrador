@@ -40,6 +40,7 @@ const disciplinaDetalhes = async (disciplinaId) => {
   let tableDisciplinaContent = document.getElementById('conteudoDisciplinas');
   let disciplina;
   let professor;
+  let profDescricao;
   let disciplinaContent = '';
 
   await fetch(`/admin/disciplinas/${disciplinaId}/detalhes`)
@@ -48,8 +49,13 @@ const disciplinaDetalhes = async (disciplinaId) => {
       disciplina = responseJson;
     });
 
-  professores = disciplina.professores;
-  console.log(professores)
+  professor = disciplina.professores[0];
+
+  if(professor == undefined){
+    profDescricao = "Professor NÃO cadastrado"
+  } else {
+    profDescricao = `${professor.nome} ${professor.sobrenome}`  
+  }
   
   // gerando string que será inserinda no html
   disciplinaContent = `
@@ -70,7 +76,7 @@ const disciplinaDetalhes = async (disciplinaId) => {
             <td>${disciplina.id}</td>
             <td>${disciplina.nome}</td>
             <td>${disciplina.descricao}</td>
-            <td>${professores[0].nome} ${professores[0].sobrenome}</td>
+            <td>${profDescricao}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">
                 Voltar
@@ -92,7 +98,12 @@ const disciplinaDetalhes = async (disciplinaId) => {
   formDisciplinaEditar.setAttribute('action', `/admin/disciplinas/${disciplina.id}/editar?_method=PUT`);
   inputsFormDisciplinasEditar[0].value = disciplina.nome;
   inputsFormDisciplinasEditar[1].value = disciplina.descricao;
-  inputsFormDisciplinasEditar[2].value = professores[0].id;
+  if(professor != undefined) {
+    inputsFormDisciplinasEditar[2].value = professor.id;
+  } else {
+    inputsFormDisciplinasEditar[2].value = "";
+  }
+  
 }
 
 const confirmDisciplinasExcluir = (id) => {

@@ -13,11 +13,15 @@ const DisciplinaController = {
   },
   criar: async (req, res) => {
     let {disciplina, descricao} = req.body;
-    let novaDisciplina = {
-      disciplina,
-      descricao
-    }
-    res.status(201).json(novaDisciplina);
+    
+    // insere dados no banco de dados
+    await Disciplina.create({
+      nome: disciplina,
+      descricao: descricao,
+      situacao: "NA"
+    })
+
+    res.status(201).json({msg: "Usuário cadastrado com sucesso"});
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
