@@ -60,7 +60,6 @@ const turmasDetalhes = async (id) => {
       turma = responseJson
     })
 
-
   listaProfessores = turma.professores_disciplinas;
   listaProfessores.forEach(item => {
     professores += `<li class="list-group-item">${item.professor.nome} ${item.professor.sobrenome}</li>`
@@ -80,6 +79,7 @@ const turmasDetalhes = async (id) => {
           <th>Série</th>
           <th>Nível</th>
           <th>Turno</th>
+          <th>Ativa</th>
           <th class="center">Ações</th>
         </tr>
       </thead>
@@ -90,6 +90,7 @@ const turmasDetalhes = async (id) => {
             <td>${turma.serie}</td>
             <td>${turma.nivel}</td>
             <td>${turma.turno}</td>
+            <td>${turma.situacao == "A" ? "SIM" : "NÃO"}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">
                 Voltar

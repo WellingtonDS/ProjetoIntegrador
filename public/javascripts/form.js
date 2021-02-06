@@ -50,7 +50,21 @@ const DisciplinaCriar = async (disciplina, descricao) => {
     disciplinaNome.value = "";
     disciplinaDescricao.value = "";
     btnDisciplinaEnviar.innerText = "Enviar";
-    setTimeout(verifarInputs(inputsNovaDisciplina, btnDisciplinaEnviar), 2000)
+    setTimeout(verifarInputs(inputsNovaDisciplina, btnDisciplinaEnviar), 2000);
+    
+    // atrasa o reload da pagina
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function recarregarPagina() {
+
+      await sleep(2000);
+      // recarrega a pagina apos 2 segundos
+      window.location.reload();
+    }
+    
+    recarregarPagina();
   }
 
   let msgSucesso = setTimeout(sucesso, 2000);
@@ -58,13 +72,13 @@ const DisciplinaCriar = async (disciplina, descricao) => {
 }
 
 formDisciplina.addEventListener('keyup', () => {
-  disciplina = disciplinaNome.value
-  descricao = disciplinaDescricao.value
+  disciplina = disciplinaNome.value.trim();
+  descricao = disciplinaDescricao.value.trim();
 })
 
 formDisciplina.addEventListener('change', () => {
-  disciplina = disciplinaNome.value
-  descricao = disciplinaDescricao.value
+  disciplina = disciplinaNome.value.trim();
+  descricao = disciplinaDescricao.value.trim();
 })
 
 formDisciplina.onsubmit = (event) => {

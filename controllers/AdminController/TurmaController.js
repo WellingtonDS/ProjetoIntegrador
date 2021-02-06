@@ -63,7 +63,7 @@ const TurmaController = {
       serie: serie,
       nivel: nivel,
       turno: turno,
-      ativa: 'false'
+      situacao: "A"
     })
 
     res.status(200).redirect('/admin')
@@ -90,9 +90,9 @@ const TurmaController = {
 
     await Turma.update(
       {
-        ativa: 'false'
+        situacao: 'NA'
       }
-      ,{where:{id:id}})
+      ,{where:{id: id}})
     
     res.redirect('/admin')
   }
