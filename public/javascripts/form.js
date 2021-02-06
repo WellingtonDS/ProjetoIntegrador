@@ -10,7 +10,87 @@ const btnTarefaEnviar = document.getElementById('btnTarefaEnviar');
 const formTurma = document.getElementById('formTurma');
 const inputsNovaTurma = document.querySelectorAll('.input-turma')
 const btnNovaTurma = document.getElementById('btnNovaTurma');
+const turmaSerie = document.getElementById('turmaSerie');
+const turmaNivel = document.getElementById('turmaNivel');
+const turmaTurno = document.getElementById('turmaTurno');
+const msgErroTurmaCriar = document.getElementById('msgErroTurmaCriar');
+const msgSucessoTurmaCriar = document.getElementById('msgSucessoTurmaCriar');
 const btnTurmaEnviar = document.getElementById('btnTurmaEnviar');
+var serie;
+var nivel;
+var turno;
+
+/* inicio da area de criação de uma nova turma */
+
+const TurmaCriar = async (serie, nivel, turno) => {
+  let strTurmaJson = JSON.stringify({serie, nivel, turno});
+  console.log(strTurmaJson);
+
+  await fetch("/admin/turmas/criar", {
+    method: "POST",
+    body: strTurmaJson,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(resultado => {
+    console.log(resultado);
+  })
+
+
+  function sucessoTurma() {
+    msgErroTurmaCriar.style.display = "none";
+    msgSucessoTurmaCriar.style.display = "flex";
+    turmaSerie.value = "";
+    turmaNivel.value = "";
+    turmaTurno.value = "";
+    btnTurmaEnviar.innerText = "Enviar";
+    setTimeout(verifarInputs(inputsNovaTurma, btnTurmaEnviar), 2000);
+    
+    // atrasa o reload da pagina
+    function sleepTurma(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function recarregarPaginaTurma() {
+
+      await sleepTurma(2000);
+      // recarrega a pagina apos 2 segundos
+      window.location.reload();
+    }
+    
+    recarregarPaginaTurma();
+  }
+
+  let msgSucessoTurma = setTimeout(sucessoTurma, 2000);
+
+}
+
+formTurma.addEventListener('keyup', () => {
+  serie = turmaSerie.value.trim();
+  nivel = turmaNivel.value.trim();
+  turno = turmaTurno.value.trim();
+})
+
+formTurma.addEventListener('change', () => {
+  serie = turmaSerie.value.trim();
+  nivel = turmaNivel.value.trim();
+  turno = turmaTurno.value.trim();
+})
+
+formTurma.onsubmit = (event) => {
+  event.preventDefault()
+  console.log(`Serie: ${serie}, Nivel: ${nivel}, Turno: ${turno}`)
+  if(serie.length >= 3 && nivel.length >= 3 && turno.length){
+    msgErroTurmaCriar.style.visibility = "hidden";
+    btnTurmaEnviar.innerHTML = `Enviando <span id="spinnerTurma" class="spinner-border spinner-border-sm enviando" role="status" aria-hidden="true"></span>`;
+    TurmaCriar(serie, nivel, turno);
+  } else {
+    msgErroTurmaCriar.style.visibility = "visible";
+    btnTurmaEnviar.innerText = "Enviar";
+  }
+}
+
+/* fim da area de criação de uma nova turma*/ 
 
 /*-------------------------------------------------------------*/ 
 // variaveis form-disciplina
@@ -20,7 +100,7 @@ const btnNovaDisciplina = document.getElementById('btnNovaDisciplina');
 const btnDisciplinaEnviar = document.getElementById('btnDisciplinaEnviar');
 
 /* ---------------------------------------------------------------------------------------- */
-// variaveis que serão usadas para validar o formulario para criar uma disciplina
+// variaveis que serão usadas para validar o formulario de criar uma disciplina
 const disciplinaNome = document.getElementById('disciplinaNome');
 const disciplinaDescricao = document.getElementById('disciplinaDescricao');
 const spinner = document.getElementById('spinner');
@@ -29,6 +109,7 @@ const msgSucessoDisciplinaCriar = document.getElementById('msgSucessoDisciplinaC
 var disciplina;
 var descricao;
 
+// inicio da area de criação de uma nova disciplina
 const DisciplinaCriar = async (disciplina, descricao) => {
   let strJson = JSON.stringify({disciplina, descricao});
   console.log(strJson);
@@ -92,6 +173,7 @@ formDisciplina.onsubmit = (event) => {
     btnDisciplinaEnviar.innerText = "Enviar";
   }
 }
+// fim da area de criação de uma nova disciplina
 
 /*-------------------------------------------------------------*/ 
 // variaveis form-professor
@@ -128,8 +210,11 @@ function desabilitarBotao(arrayInputs, botao){
 function habilitarBotao(inputsVazios, botao){
   
   if(inputsVazios == 0){
+    msgErroTurmaCriar.visibility = "hidden";
+    msgErroDisciplinaCriar.visibility = "hidden";
     return botao.removeAttribute('disabled');
   } else {
+    btnTurmaEnviar.innerText = "Enviar";
     btnDisciplinaEnviar.innerText = "Enviar";
     botao.setAttribute('disabled', 'disabled');
   }
@@ -170,6 +255,9 @@ formTarefa.onchange = () => {
 /*------------------------------------------------------*/
 
 btnNovaTurma.onclick = () => {
+  msgErroTurmaCriar.style.visibility = "hidden";
+  msgSucessoTurmaCriar.style.display = "none";
+  btnTurmaEnviar.innerText = "Enviar";
   desabilitarBotao(inputsNovaTurma, btnTurmaEnviar);
 }
 
