@@ -9,22 +9,24 @@ const TarefaController = {
     res.render('./admin/index', { admin: req.session.usuario, tarefas })
   },
   criar: async (req, res) => {
-    let { data, descricao } = req.body;
+    let tarefa  = req.body;
     let situacao = false;
     let admin_id = 1;
 
-    if (!data || !descricao) {
+    if (!tarefa.data || !tarefa.descricao) {
       return res.status(401).json({ erro: 'Não foi possível criar uma nova tarefa.' })
     }
 
     await Tarefa.create({
-      data:data,
-      descricao:descricao,
-      situacao:situacao,
-      admin_id:admin_id
+      data: tarefa.data,
+      descricao: tarefa.descricao,
+      situacao: situacao,
+      admin_id: admin_id
     });
 
-    res.redirect('/admin')
+    console.log(tarefa)
+
+    res.status(201).json(tarefa);
   },
   alterar: async (req, res) => {
     let tarefas = req.body;
