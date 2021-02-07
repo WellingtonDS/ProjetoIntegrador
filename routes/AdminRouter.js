@@ -40,6 +40,7 @@ router.delete('/professores/:id/deletar', validarSession, ProfessorController.de
 
 // rotas para aluno
 router.get('/alunos', validarSession, AlunoController.index);
+router.post('/alunos/criar', validarSession, AlunoController.criar);
 router.get('/alunos/:id/detalhes', validarSession, AlunoController.detalhes);
 router.get('/alunos/buscar', validarSession, AlunoController.buscar);
 router.put('/alunos/:id/editar', validarSession, AlunoController.editar);
