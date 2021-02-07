@@ -2,7 +2,7 @@
 
 ## :small_blue_diamond:Sobre o projeto
 
-Ainda em desenvolvimento, trata-se de uma aplicação que tem como objetivo gerenciar uma escola fictícia de nível fundamental e médio. Tendo como usuários professores e alunos, além de um setor administrativo.
+Ainda em desenvolvimento, trata-se de uma aplicação que tem como objetivo gerenciar uma escola fictícia de nível fundamental e médio.
 
 ## Tecnologias usadas :computer:
 
