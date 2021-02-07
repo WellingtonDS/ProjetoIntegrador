@@ -179,10 +179,11 @@ formDisciplina.onsubmit = (event) => {
 // variaveis form-professor
 const formProfessor = document.getElementById('formProfessor');
 const inputsNovoProfessor = document.querySelectorAll('.input-professor');
-const professorNome = document.getElementById('professorNome')
-const professorSobrenome = document.getElementById('professorSobrenome')
-const professorTelefone = document.getElementById('professorTelefone')
-const professorDisciplina = document.getElementById('professorDisciplina')
+const professorNome = document.getElementById('professorNome');
+const professorSobrenome = document.getElementById('professorSobrenome');
+const professorTelefone = document.getElementById('professorTelefone');
+const professorDisciplina = document.getElementById('professorDisciplina');
+const professorTurma = document.getElementById('professorTurma');
 const msgErroProfessorCriar = document.getElementById('msgErroProfessorCriar');
 const msgSucessoProfessorCriar = document.getElementById('msgSucessoProfessorCriar');
 const btnNovoProfessor = document.getElementById('btnNovoProfessor');
@@ -192,11 +193,12 @@ var profNome;
 var profSobrenome;
 var profTelefone;
 var profDisciplina;
+var profTurma;
 
 /* inicio da area de criação de um novo professor */
 
-const ProfessorCriar = async (nome, sobrenome, telefone, disciplina) => {
-  let strProfessorJson = JSON.stringify({nome, sobrenome, telefone, disciplina});
+const ProfessorCriar = async (nome, sobrenome, telefone, disciplina, turma) => {
+  let strProfessorJson = JSON.stringify({nome, sobrenome, telefone, disciplina, turma});
   console.log(strProfessorJson);
 
   await fetch("/admin/professores/criar", {
@@ -217,6 +219,7 @@ const ProfessorCriar = async (nome, sobrenome, telefone, disciplina) => {
     professorSobrenome.value = "";
     professorTelefone.value = "";
     professorDisciplina.value = "";
+    professorTurma.value = "";
 
     btnProfessorEnviar.innerText = "Enviar";
     setTimeout(verifarInputs(inputsNovoProfessor, btnProfessorEnviar), 2000);
@@ -245,6 +248,7 @@ formProfessor.addEventListener('keyup', () => {
   profSobrenome = professorSobrenome.value.trim();
   profTelefone = professorTelefone.value.trim();
   profDisciplina = professorDisciplina.value.trim();
+  profTurma = professorDisciplina.value.trim();
 })
 
 formProfessor.addEventListener('change', () => {
@@ -252,22 +256,16 @@ formProfessor.addEventListener('change', () => {
   profSobrenome = professorSobrenome.value.trim();
   profTelefone = professorTelefone.value.trim();
   profDisciplina = professorDisciplina.value.trim();
+  profTurma = professorDisciplina.value.trim();
 })
 
 formProfessor.onsubmit = (event) => {
   event.preventDefault();
-  let professor = {
-    profNome,
-    profSobrenome,
-    profTelefone,
-    profDisciplina
-  }
-
-  
-  if(profNome.length >= 3 && profSobrenome.length >= 3 && profTelefone.length >= 11 && profDisciplina.length >= 1 && profDisciplina >= 1){
+ 
+  if(profNome.length >= 3 && profSobrenome.length >= 3 && profTelefone.length >= 11 && profDisciplina > 0 && profTurma > 0){
     msgErroProfessorCriar.style.visibility = "hidden";
     btnProfessorEnviar.innerHTML = `Enviando <span id="spinnerTurma" class="spinner-border spinner-border-sm enviando" role="status" aria-hidden="true"></span>`;
-    ProfessorCriar(profNome, profSobrenome, profTelefone, profDisciplina);
+    ProfessorCriar(profNome, profSobrenome, profTelefone, profDisciplina, profTurma);
   } else {
     msgErroProfessorCriar.style.visibility = "visible";
     btnProfessorEnviar.innerText = "Enviar";
@@ -282,6 +280,110 @@ const formAluno = document.getElementById('formAluno');
 const inputsNovoAluno = document.querySelectorAll('.input-aluno')
 const btnNovoAluno = document.getElementById('btnNovoAluno');
 const btnAlunoEnviar = document.getElementById('btnAlunoEnviar');
+const alunoNome = document.getElementById('alunoNome');
+const alunoSobrenome = document.getElementById('alunoSobrenome');
+const alunoResponsavel = document.getElementById('alunoResponsavel');
+const alunoEndereco = document.getElementById('alunoEndereco');
+const alunoTelefone = document.getElementById('alunoTelefone');
+const alunoTurma = document.getElementById('alunoTurma');
+const msgErroAlunoCriar = document.getElementById('msgErroAlunoCriar');
+const msgSucessoAlunoCriar = document.getElementById('msgSucessoAlunoCriar');
+
+var novoAlunoNome;
+var novoAlunoSobrenome;
+var novoAlunoResponsavel;
+var novoAlunoEndereco;
+var novoAlunoTelefone;
+var novoAlunoTurma;
+
+/* inicio da area de criação de um novo aluno */  
+
+const AlunoCriar = async (aluno) => {
+  let strAlunoJson = JSON.stringify({aluno});
+  console.log(strAlunoJson);
+
+  await fetch("/admin/alunos/criar", {
+    method: "POST",
+    body: strAlunoJson,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(resultado => {
+    console.log(resultado);
+  })
+
+
+  function sucessoAluno() {
+    msgErroAlunoCriar.style.display = "none";
+    msgSucessoAlunoCriar.style.display = "flex";
+    alunoNome.value = "";
+    alunoSobrenome.value = "";
+    alunoResponsavel.value = "";
+    alunoEndereco.value = "";
+    alunoTelefone.value = "";
+    alunoTurma.value = "";
+
+    btnAlunoEnviar.innerText = "Enviar";
+    setTimeout(verifarInputs(inputsNovoAluno, btnAlunoEnviar), 2000);
+    
+    // atrasa o reload da pagina
+    function sleepAluno(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function recarregarPaginaAluno() {
+      await sleepAluno(2000);
+      // recarrega a pagina apos 2 segundos
+      window.location.reload();
+    }
+    
+    recarregarPaginaAluno();
+  }
+
+  let msgSucessoAluno = setTimeout(sucessoAluno, 2000);
+
+}
+
+formAluno.addEventListener('keyup', () => {
+  novoAlunoNome = alunoNome.value.trim();
+  novoAlunoSobrenome = alunoSobrenome.value.trim();
+  novoAlunoResponsavel = alunoResponsavel.value.trim();
+  novoAlunoEndereco = alunoEndereco.value.trim();
+  novoAlunoTelefone = alunoTelefone.value.trim();
+  novoAlunoTurma = alunoTurma.value.trim();
+})
+
+formAluno.addEventListener('change', () => {
+  novoAlunoNome = alunoNome.value.trim();
+  novoAlunoSobrenome = alunoSobrenome.value.trim();
+  novoAlunoResponsavel = alunoResponsavel.value.trim();
+  novoAlunoEndereco = alunoEndereco.value.trim();
+  novoAlunoTelefone = alunoTelefone.value.trim();
+  novoAlunoTurma = alunoTurma.value.trim();
+})
+
+formAluno.onsubmit = (event) => {
+  event.preventDefault();
+  let aluno = {
+    nome: novoAlunoNome,
+    sobrenome: novoAlunoSobrenome,
+    responsavel: novoAlunoResponsavel,
+    endereco: novoAlunoEndereco,
+    telefone: novoAlunoTelefone,
+    turma: novoAlunoTurma
+  }
+
+  
+  if(novoAlunoNome.length >= 3 && novoAlunoSobrenome.length >= 3 && novoAlunoResponsavel.length >= 3 && novoAlunoEndereco.length >= 3 && novoAlunoTelefone.length >= 11 && novoAlunoTurma > 0){
+    msgErroAlunoCriar.style.visibility = "hidden";
+    btnAlunoEnviar.innerHTML = `Enviando <span id="spinnerTurma" class="spinner-border spinner-border-sm enviando" role="status" aria-hidden="true"></span>`;
+    // AlunoCriar(novoAlunoNome, novoAlunoSobrenome, novoAlunoResponsavel, novoAlunoEndereco, novoAlunoTelefone, novoAlunoTurma);
+    AlunoCriar(aluno);
+  } else {
+    msgErroAlunoCriar.style.visibility = "visible";
+    btnAlunoEnviar.innerText = "Enviar";
+  }
+}
 
 /*-------------------------------------------------------------*/ 
 // variaveis form-eventos
@@ -307,11 +409,13 @@ function habilitarBotao(inputsVazios, botao){
     msgErroTurmaCriar.visibility = "hidden";
     msgErroDisciplinaCriar.visibility = "hidden";
     msgErroProfessorCriar.visibility = "hidden";
+    msgErroAlunoCriar.visibility = "hidden";
     return botao.removeAttribute('disabled');
   } else {
     btnTurmaEnviar.innerText = "Enviar";
     btnDisciplinaEnviar.innerText = "Enviar";
     btnProfessorEnviar.innerText = "Enviar";
+    btnAlunoEnviar.innerText = "Enviar";
     botao.setAttribute('disabled', 'disabled');
   }
 
@@ -368,7 +472,7 @@ formTurma.onchange = () => {
 /*------------------------------------------------------*/
 
 btnNovaDisciplina.onclick = () => {
-  msgErroDisciplinaCriar.style.display = "flex";
+  msgErroDisciplinaCriar.style.display = "hidden";
   msgSucessoDisciplinaCriar.style.display = "none";
   btnDisciplinaEnviar.innerText = "Enviar";
   desabilitarBotao(inputsNovaDisciplina, btnDisciplinaEnviar);
@@ -403,6 +507,9 @@ formProfessor.onchange = () => {
 /*------------------------------------------------------*/
 
 btnNovoAluno.onclick = () => {
+  msgErroAlunoCriar.style.visibility = "hidden";
+  msgSucessoAlunoCriar.style.display = "none";
+  btnAlunoEnviar.innerText = "Enviar";
   desabilitarBotao(inputsNovoAluno, btnAlunoEnviar);
 }
 
