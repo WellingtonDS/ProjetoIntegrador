@@ -18,7 +18,7 @@ const DisciplinaController = {
     await Disciplina.create({
       nome: disciplina,
       descricao: descricao,
-      situacao: "NA"
+      situacao: "A"
     })
 
     res.status(201).json({msg: "Disciplina criada com sucesso"});
