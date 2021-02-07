@@ -16,9 +16,9 @@ router.put('/tarefas/alterar', validarSession, TarefaController.alterar);
 
 // rotas para turma
 router.get('/turmas', validarSession, TurmaController.index);
+router.post('/turmas/criar', validarSession, TurmaController.criar);
 router.get('/turmas/:id/detalhes', validarSession, TurmaController.detalhes);
 router.get('/turmas/buscar', validarSession, TurmaController.buscar);
-router.post('/turmas/criar', validarSession, TurmaController.criar);
 router.put('/turmas/:id/editar', validarSession, TurmaController.editar);
 router.delete('/turmas/:id/deletar', validarSession, TurmaController.deletar);
 
@@ -32,6 +32,7 @@ router.delete('/disciplinas/:id/deletar', validarSession, DisciplinaController.d
 
 // rotas para professor
 router.get('/professores', validarSession, ProfessorController.index);
+router.post('/professores/criar', validarSession, ProfessorController.criar);
 router.get('/professores/:id/detalhes', validarSession, ProfessorController.detalhes);
 router.get('/professores/buscar', validarSession, ProfessorController.buscar);
 router.put('/professores/:id/editar', validarSession, ProfessorController.editar);
