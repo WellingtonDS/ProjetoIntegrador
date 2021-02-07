@@ -13,9 +13,10 @@ const ProfessorController = {
 
   },
   criar: async (req, res) => {
-    let {nome, sobrenome, telefone, disciplina} = req.body;
+    let {nome, sobrenome, telefone, disciplina, turma} = req.body;
     let usuarioId;
     let professorId;
+    let professorDisciplinaId;
 
     // cria um novo usuario do tipo professor
     await Usuario.create(
@@ -55,6 +56,15 @@ const ProfessorController = {
         professor_id: professorId,
         disciplina_id: disciplina
       })
+      .then(novoProfessorDisciplina => {
+        console.log(novoProfessorDisciplina);
+        professorDisciplinaId = novoProfessorDisciplina.id;
+      })
+      .catch(err => {
+        console.log("Erro ao tentar criar novo professor: " + err)
+      })
+    
+    // cadastrar o professorDisciplina a uma turma
     
     res.status(201).json({msg: "OK"})
   },
