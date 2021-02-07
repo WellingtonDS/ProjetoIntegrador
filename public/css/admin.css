@@ -209,6 +209,11 @@ select.form-control {
   display: none;
 }
 
+.infoSmall {
+  color: gray;
+  margin: 0;
+}
+
 #form-eventos {
   display: flex;
 }

@@ -2,9 +2,88 @@
 const formTarefa = document.getElementById('formTarefa');
 const inputsNovaTarefa = document.querySelectorAll('.input-tarefa');
 const btnNovaTarefa = document.getElementById('btnNovaTarefa');
+const tarefaData = document.getElementById('tarefaData');
+const tarefaDescricao = document.getElementById('tarefaDescricao');
+const msgErroTarefaCriar = document.getElementById('msgErroTarefaCriar')
+const msgSucessoTarefaCriar = document.getElementById('msgSucessoTarefaCriar')
 const btnTarefaEnviar = document.getElementById('btnTarefaEnviar');
 
-/*------------------------------------------------------------*/
+var novaTarefaData;
+var novaTarefaDescricao;
+
+/* inicio da area de criação de uma nova tarefa */
+
+const TarefaCriar = async (tarefa) => {
+  let strTarefaJson = JSON.stringify(tarefa);
+  console.log(strTarefaJson);
+
+  await fetch("/admin/tarefas/criar", {
+    method: "POST",
+    body: strTarefaJson,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(resultado => {
+    console.log(resultado);
+  })
+
+
+  function sucessoTarefa() {
+    msgErroTarefaCriar.style.display = "none";
+    msgSucessoTarefaCriar.style.display = "flex";
+    tarefaData.value = "";
+    tarefaDescricao.value = "";
+    btnTarefaEnviar.innerText = "Enviar";
+    setTimeout(verifarInputs(inputsNovaTarefa, btnTarefaEnviar), 2000);
+    
+    // atrasa o reload da pagina
+    function sleepTarefa(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function recarregarPaginaTarefa() {
+
+      await sleepTarefa(2000);
+      // recarrega a pagina apos 2 segundos
+      window.location.reload();
+    }
+    
+    recarregarPaginaTarefa();
+  }
+
+  let msgSucessoTarefa = setTimeout(sucessoTarefa, 2000);
+
+}
+
+formTarefa.addEventListener('keyup', () => {
+  novaTarefaData = tarefaData.value;
+  novaTarefaDescricao = tarefaDescricao.value.trim();
+})
+
+formTarefa.addEventListener('change', () => {
+  novaTarefaData = tarefaData.value;
+  novaTarefaDescricao = tarefaDescricao.value.trim();
+})
+
+formTarefa.onsubmit = (event) => {
+  event.preventDefault()
+  let tarefa = {
+    data: novaTarefaData,
+    descricao: novaTarefaDescricao
+  }
+
+  console.log(tarefa.descricao.length)
+  if(tarefa.descricao.length >= 10){
+    msgErroTarefaCriar.style.visibility = "hidden";
+    btnTarefaEnviar.innerHTML = `Enviando <span id="spinnerTarefa" class="spinner-border spinner-border-sm enviando" role="status" aria-hidden="true"></span>`;
+    TarefaCriar(tarefa);
+  } else {
+    msgErroTarefaCriar.style.visibility = "visible";
+    btnTarefaEnviar.innerText = "Enviar";
+  }
+}
+
+/* fim da area de criação de uma nova terefa */ 
 
 // variaveis form-turma
 const formTurma = document.getElementById('formTurma');
@@ -410,12 +489,14 @@ function habilitarBotao(inputsVazios, botao){
     msgErroDisciplinaCriar.visibility = "hidden";
     msgErroProfessorCriar.visibility = "hidden";
     msgErroAlunoCriar.visibility = "hidden";
+    msgErroTarefaCriar.visibility = "hidden";
     return botao.removeAttribute('disabled');
   } else {
     btnTurmaEnviar.innerText = "Enviar";
     btnDisciplinaEnviar.innerText = "Enviar";
     btnProfessorEnviar.innerText = "Enviar";
     btnAlunoEnviar.innerText = "Enviar";
+    btnTarefaEnviar.innerText = "Enviar";
     botao.setAttribute('disabled', 'disabled');
   }
 
@@ -441,6 +522,9 @@ function verifarInputs(inputs, botao){
 /*------------------------------------------------------*/ 
 
 btnNovaTarefa.onclick = () => {
+  msgErroTarefaCriar.style.visibility = "hidden";
+  msgSucessoTarefaCriar.style.display = "none";
+  btnTarefaEnviar.innerText = "Enviar";
   desabilitarBotao(inputsNovaTarefa, btnTarefaEnviar);
 }
 
