@@ -11,25 +11,28 @@
         <form id="formProfessor" action="/admin/professores/criar" method="POST">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nome</label>
-            <input type="text" class="form-control input-professor" id="nome" name="nome">
+            <input type="text" class="form-control input-professor" id="professorNome" name="nome">
           </div>
           <div class="form-group">
             <label for="sobrenome" class="col-form-label">Sobrenome</label>
-            <input type="text" class="form-control input-professor" id="sobrenome" name="sobrenome">
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-form-label">Email</label>
-            <input type="email" class="form-control input-professor" id="email" name="email">
+            <input type="text" class="form-control input-professor" id="professorSobrenome" name="sobrenome">
           </div>
           <div class="form-group">
             <label for="telefone" class="col-form-label">Telefone</label>
-            <input type="text" class="form-control input-professor" id="telefone" name="telefone">
+            <input type="text" class="form-control input-professor" id="professorTelefone" name="telefone">
           </div>
           <div class="form-group">
             <label for="disciplina" class="col-form-label">Disciplina (Id)</label>
-            <input type="text" class="form-control input-professor" id="disciplina" name="disciplina">
+            <input type="text" class="form-control input-professor" id="professorDisciplina" name="disciplina">
           </div>
-          <div id="btn-modal">
+          <div id="btn-modal" class="btn-modal-enviar">
+            <p id="msgErroProfessorCriar" class="msgErroModal">Erro ao tentar enviar as informações</p>
+            <p id="msgSucessoProfessorCriar" class="msgSucessoModal">
+              Professor(a) criado(a) com sucesso
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg>
+            </p>
             <button id="btnProfessorEnviar" type="submit" class="btn btn-success" >Enviar</button>
           </div>    
         </form>

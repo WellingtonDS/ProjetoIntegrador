@@ -178,9 +178,103 @@ formDisciplina.onsubmit = (event) => {
 /*-------------------------------------------------------------*/ 
 // variaveis form-professor
 const formProfessor = document.getElementById('formProfessor');
-const inputsNovoProfessor = document.querySelectorAll('.input-professor')
+const inputsNovoProfessor = document.querySelectorAll('.input-professor');
+const professorNome = document.getElementById('professorNome')
+const professorSobrenome = document.getElementById('professorSobrenome')
+const professorTelefone = document.getElementById('professorTelefone')
+const professorDisciplina = document.getElementById('professorDisciplina')
+const msgErroProfessorCriar = document.getElementById('msgErroProfessorCriar');
+const msgSucessoProfessorCriar = document.getElementById('msgSucessoProfessorCriar');
 const btnNovoProfessor = document.getElementById('btnNovoProfessor');
 const btnProfessorEnviar = document.getElementById('btnProfessorEnviar');
+
+var profNome;
+var profSobrenome;
+var profTelefone;
+var profDisciplina;
+
+/* inicio da area de criação de um novo professor */
+
+const ProfessorCriar = async (nome, sobrenome, telefone, disciplina) => {
+  let strProfessorJson = JSON.stringify({nome, sobrenome, telefone, disciplina});
+  console.log(strProfessorJson);
+
+  await fetch("/admin/professores/criar", {
+    method: "POST",
+    body: strProfessorJson,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(resultado => {
+    console.log(resultado);
+  })
+
+
+  function sucessoProfessor() {
+    msgErroProfessorCriar.style.display = "none";
+    msgSucessoProfessorCriar.style.display = "flex";
+    professorNome.value = "";
+    professorSobrenome.value = "";
+    professorTelefone.value = "";
+    professorDisciplina.value = "";
+
+    btnProfessorEnviar.innerText = "Enviar";
+    setTimeout(verifarInputs(inputsNovoProfessor, btnProfessorEnviar), 2000);
+    
+    // atrasa o reload da pagina
+    function sleepProfessor(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function recarregarPaginaProfessor() {
+
+      await sleepProfessor(2000);
+      // recarrega a pagina apos 2 segundos
+      window.location.reload();
+    }
+    
+    recarregarPaginaProfessor();
+  }
+
+  let msgSucessoProfessor = setTimeout(sucessoProfessor, 2000);
+
+}
+
+formProfessor.addEventListener('keyup', () => {
+  profNome = professorNome.value.trim();
+  profSobrenome = professorSobrenome.value.trim();
+  profTelefone = professorTelefone.value.trim();
+  profDisciplina = professorDisciplina.value.trim();
+})
+
+formProfessor.addEventListener('change', () => {
+  profNome = professorNome.value.trim();
+  profSobrenome = professorSobrenome.value.trim();
+  profTelefone = professorTelefone.value.trim();
+  profDisciplina = professorDisciplina.value.trim();
+})
+
+formProfessor.onsubmit = (event) => {
+  event.preventDefault();
+  let professor = {
+    profNome,
+    profSobrenome,
+    profTelefone,
+    profDisciplina
+  }
+
+  
+  if(profNome.length >= 3 && profSobrenome.length >= 3 && profTelefone.length >= 11 && profDisciplina.length >= 1 && profDisciplina >= 1){
+    msgErroProfessorCriar.style.visibility = "hidden";
+    btnProfessorEnviar.innerHTML = `Enviando <span id="spinnerTurma" class="spinner-border spinner-border-sm enviando" role="status" aria-hidden="true"></span>`;
+    ProfessorCriar(profNome, profSobrenome, profTelefone, profDisciplina);
+  } else {
+    msgErroProfessorCriar.style.visibility = "visible";
+    btnProfessorEnviar.innerText = "Enviar";
+  }
+}
+
+/* fim da area de criação de um novo professor */
 
 /*-------------------------------------------------------------*/ 
 // variaveis form-alunos
@@ -212,10 +306,12 @@ function habilitarBotao(inputsVazios, botao){
   if(inputsVazios == 0){
     msgErroTurmaCriar.visibility = "hidden";
     msgErroDisciplinaCriar.visibility = "hidden";
+    msgErroProfessorCriar.visibility = "hidden";
     return botao.removeAttribute('disabled');
   } else {
     btnTurmaEnviar.innerText = "Enviar";
     btnDisciplinaEnviar.innerText = "Enviar";
+    btnProfessorEnviar.innerText = "Enviar";
     botao.setAttribute('disabled', 'disabled');
   }
 
@@ -289,7 +385,10 @@ formDisciplina.onchange = () => {
 /*------------------------------------------------------*/
 
 btnNovoProfessor.onclick = () => {
-  console.log("Clicou")
+  msgErroProfessorCriar.style.visibility = "hidden";
+  msgSucessoProfessorCriar.style.display = "none";
+  btnProfessorEnviar.innerText = "Enviar";
+
   desabilitarBotao(inputsNovoProfessor, btnProfessorEnviar);
 }
 
