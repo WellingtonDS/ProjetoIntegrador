@@ -40,7 +40,7 @@ const TurmaController = {
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
-    console.log(id)
+
     let turma = await Turma.findOne(
       {
         where: {id: id},

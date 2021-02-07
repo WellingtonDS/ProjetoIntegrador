@@ -85,11 +85,13 @@ const AlunoController = {
   },
   editar: async (req, res) => {
     let {id} = req.params;
-    let {nome, sobrenome, telefone, usuario_id, alunoId} = req.body;
+    let {nome, sobrenome, responsavel, endereco, telefone, usuario_id, alunoId} = req.body;
     
     await Aluno.update({
       nome:nome,
       sobrenome: sobrenome,
+      responsavel: responsavel,
+      endereco: endereco,
       telefone: telefone
     }, {where: {id: id}})
 

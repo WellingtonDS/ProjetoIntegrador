@@ -1,5 +1,5 @@
 const session = require('express-session');
-const { sequelize, Professor, Usuario, ProfessorDisciplina } = require('../../models');
+const { sequelize, Professor, Usuario, ProfessorDisciplina, TurmaProfessoresDisciplinas } = require('../../models');
 const { Op } = require("sequelize");
 const bcrypt = require('bcrypt');
 
@@ -75,7 +75,22 @@ const ProfessorController = {
         where: {id: id},
         include: [{association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}, 'usuario']
       });
-    res.status(200).json(professor)
+
+    let professorDisciplinaId;
+    await ProfessorDisciplina.findOne(
+      {
+        where: {professor_id: professor.id}
+      })
+      .then(resultado => {
+        professorDisciplinaId = resultado.id;
+      })
+
+    let turmas = await TurmaProfessoresDisciplinas.findAll(
+      {
+        where: {professores_disciplinas_id: professorDisciplinaId},
+        include: 'turma'
+    });
+    res.status(200).json({professor, turmas})
   },
   buscar: async (req, res) => {
     let {professor} = req.query;
