@@ -1,6 +1,7 @@
 const session = require('express-session');
-const { sequelize, Aluno, Usuario } = require('../../models');
+const { sequelize, Aluno, Usuario, Matricula, Turma } = require('../../models');
 const { Op, where } = require("sequelize");
+const bcrypt = require('bcrypt');
 
 const AlunoController = {
   index: async (req, res) => {
@@ -11,6 +12,57 @@ const AlunoController = {
 
     res.status(200).json(alunos);
 
+  },
+  criar: async (req, res) => {
+    let {aluno} = req.body;
+    let usuarioId;
+    let alunoId;
+
+    console.log(aluno.nome)
+    // cria novo usuario e recupera o id
+
+    await Usuario.create(
+      {
+        email: `${aluno.nome.toLowerCase()}.${aluno.sobrenome.toLowerCase()}${aluno.turma + aluno.nome.length}@rocketschool.com.br`,
+        senha: bcrypt.hashSync('123456', 10),
+        tipo: "A",
+        situacao: "A"
+      })
+      .then(novoUsuario => {
+        console.log(novoUsuario.get());
+        usuarioId = novoUsuario.id;
+      })
+      .catch(err => {
+        console.log("Erro ao tentar criar novo usuário: " + err)
+      })
+
+    // insere um novo registro de aluno e recupera o id
+    await Aluno.create(
+      {
+        nome: aluno.nome,
+        sobrenome: aluno.sobrenome,
+        responsavel: aluno.responsavel,
+        endereco: aluno.endereco,
+        telefone: aluno.telefone,
+        usuario_id: usuarioId
+      })
+      .then(novoAluno => {
+        console.log(novoAluno);
+        alunoId = novoAluno.id;
+      })
+      .catch(err => {
+        console.log("Erro ao tentar criar novo aluno: " + err)
+      })
+
+    // atribui o novo aluno a uma turma
+    await Matricula.create(
+      {
+        turma_id: aluno.turma,
+        aluno_id: alunoId,
+        situacao: "A"
+      })
+
+    res.status(201).json({msg: "OK"});
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
