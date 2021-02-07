@@ -79,7 +79,7 @@ const professorDetalhes = async (professorId) => {
             <td>${professor.nome} ${professor.sobrenome}</td>
             <td>${professor.telefone}</td>
             <td>${professor.usuario.email}</td>
-            <td>${disciplina}</td>
+            <td>${disciplina} #${professor.disciplinas[0].id}</td>
             <td>${professor.usuario_id}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">

@@ -4,7 +4,9 @@ const {sequelize, Professor, Disciplina} = require("../models");
 Professor.findOne(
     {   
         where: {id: 12},
-        include: [{association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}, 'usuario']
+        include: [
+            {association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}
+        ]
     }
     
     ).then(

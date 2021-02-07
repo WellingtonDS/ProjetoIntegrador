@@ -50,14 +50,16 @@ const turmasDetalhes = async (id) => {
   let listaProfessores;
   let listaAlunos;
   let professores = `<ul class="list-group">`;
-  let alunos = `<ul class="list-group">`
+  let alunos = `<ul class="list-group">`;
+  let professoresDisciplinas;
   
   let turmaContent = '';
   
   await fetch(`/admin/turmas/${id}/detalhes`)
     .then(response => response.json())
     .then(responseJson => {
-      turma = responseJson
+      turma = responseJson.turma;
+      professoresDisciplinas = responseJson.professoresDisciplinas;
     })
 
   listaProfessores = turma.professores_disciplinas;
@@ -70,6 +72,11 @@ const turmasDetalhes = async (id) => {
     alunos += `<li class="list-group-item">${aluno.nome} ${aluno.sobrenome}</li>`
   })
  
+  let opcoesProfessoresDisciplinas = "";
+  professoresDisciplinas.forEach(profDisciplina => {
+    opcoesProfessoresDisciplinas += `<option value="${profDisciplina.id}">${profDisciplina.professor.nome} ${profDisciplina.professor.sobrenome}/${profDisciplina.disciplina.nome}</option>`
+  })
+
   turmaContent = `
   <form id="formTurmaDeletar" action="/admin/turmas/${id}/deletar?_method=DELETE" method="POST">
     <table class="table-responsive">
@@ -98,6 +105,9 @@ const turmasDetalhes = async (id) => {
               <a class="botao botao-editar" href="#" data-toggle="modal" data-target="#turmaEditar">
                 Editar
               </a>&nbsp;
+              <a class="botao botao-enviar" href="#" data-toggle="modal" data-target="#turmaAddprofessor">
+                + Professor
+              </a>&nbsp;
               <button type="submit" class="botao botao-excluir">
                 Excluir
               </button>
@@ -107,6 +117,40 @@ const turmasDetalhes = async (id) => {
       </tbody>
     </table>
   </form>
+  <div class="modal fade" id="turmaAddprofessor" tabindex="-1" aria-labelledby="turmaAddprofessorLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="turmaAddprofessorLabel">Adicionar um(a) Professor(a) a essa Turma</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formTurmaAddProfessor" action="/admin/turmas/${turma.id}/add_professor" method="POST">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Professor/Disciplina</label>
+            <select class="form-control input-turma-add-professor" id="professor_disciplina" name="professor_disciplina_id" style="margin: 0;">
+              ${opcoesProfessoresDisciplinas}
+            </select>
+          </div>
+          <div id="btn-modal" class="btn-modal-enviar">
+            <p id="msgErroAddProfessor" class="msgErroModal">Erro ao tentar enviar as informações</p>
+            <p id="msgSucessoAddProfessor" class="msgSucessoModal">
+              Professor criada com sucesso
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+              </svg>
+            </p>
+            <button id="btnTurmaAddProfessorEnviar" type="submit" class="btn btn-success" >
+              Enviar
+            </button>
+          </div>    
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   <p class="mt-3">
     <a class="btn btn-success btn-sm" data-toggle="collapse" href="#collapseProfessores" role="button" aria-expanded="false" aria-controls="collapseProfessores">
       Professores <span class="badge badge-light badge-pill">${listaProfessores.length}</span>
@@ -135,6 +179,7 @@ const turmasDetalhes = async (id) => {
   inputsFormTurmaEditar[0].value = turma.serie;
   inputsFormTurmaEditar[1].value = turma.nivel;
   inputsFormTurmaEditar[2].value = turma.turno;
+
 }
 
 const confirmTurmasExcluir = (id) => {
@@ -151,7 +196,7 @@ const turmasMetodos = (tag) => {
   let formTurmaDeletar = document.getElementById('formTurmaDeletar')
   switch(tagContent){
     case 'detalhes':
-      turmasDetalhes(id);
+      turmasDetalhes(id);   
       break;
     case 'voltar':
       turmasIndex();
@@ -281,3 +326,5 @@ conteudoTurmas.addEventListener('click', (event) => {
   let tag = event.target;
   turmasMetodos(tag)
 })
+
+

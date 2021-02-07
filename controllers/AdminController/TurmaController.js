@@ -1,11 +1,12 @@
 const session = require('express-session');
-const { sequelize, Turma } = require('../../models');
+const { sequelize, Turma, ProfessorDisciplina, TurmaProfessoresDisciplinas } = require('../../models');
 const {Op} = require("sequelize");
 
 const TurmaController = {
   index: async (req, res) => {
     let turmas = await Turma.findAll(
-      {   
+      { 
+        where: {situacao: "A"},
         include: [
             {association: 'alunos', through: {atributes: 'matriculas'}},
             {association: 'professores_disciplinas', through: {atributes: 'turmas_professores_disciplinas'}, include: 'professor'}
@@ -53,7 +54,38 @@ const TurmaController = {
       return res.status(401).json({erro: "Turma não encontrada"})
     }
 
-    res.status(200).json(turma)
+    let professoresDisciplinas = await ProfessorDisciplina.findAll(
+      {
+        include: [
+            "professor",
+            "disciplina"
+        ]
+      })
+
+    res.status(200).json({turma, professoresDisciplinas})
+
+  },
+  addProfessor: async (req, res) => {
+    let {id} = req.params;
+    let {professor_disciplina_id} = req.body;
+    console.log(req.body);
+
+    let buscaRegistro = await TurmaProfessoresDisciplinas.findOne(
+      {
+        where: {
+          turma_id: id,
+          professores_disciplinas_id: professor_disciplina_id
+        }
+      });
+    
+    if(buscaRegistro == undefined){
+      await TurmaProfessoresDisciplinas.create({
+        turma_id: id,
+        professores_disciplinas_id: professor_disciplina_id,
+      })
+    }
+    
+    res.status(201).redirect('/admin');
 
   },
   criar: async (req, res) => {

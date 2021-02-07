@@ -85,6 +85,10 @@ table td {
   width: min(60vw,345px);
 }
 
+.inputRadio {
+  cursor: pointer;
+}
+
 .alert-erro {
   display: flex;
   justify-content: space-between;
@@ -216,6 +220,8 @@ select.form-control {
 
 #form-eventos {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #form-turma label, input {
