@@ -1,6 +1,7 @@
 const session = require('express-session');
-const { sequelize, Professor, Usuario } = require('../../models');
+const { sequelize, Professor, Usuario, ProfessorDisciplina } = require('../../models');
 const { Op } = require("sequelize");
+const bcrypt = require('bcrypt');
 
 const ProfessorController = {
   index: async (req, res) => {
@@ -10,6 +11,52 @@ const ProfessorController = {
       });
     res.status(200).json(professores);
 
+  },
+  criar: async (req, res) => {
+    let {nome, sobrenome, telefone, disciplina} = req.body;
+    let usuarioId;
+    let professorId;
+
+    // cria um novo usuario do tipo professor
+    await Usuario.create(
+      {
+        email: `${nome.toLowerCase()}.${sobrenome.toLowerCase()}${disciplina + nome.length}@rocketschool.com.br`,
+        senha: bcrypt.hashSync('123456', 10),
+        tipo: "P",
+        situacao: "A"
+      })
+      .then(novoUsuario => {
+        console.log(novoUsuario.get());
+        usuarioId = novoUsuario.id;
+      })
+      .catch(err => {
+        console.log("Erro ao tentar criar novo usuário: " + err)
+      })
+      
+    // insere um novo registro de professor
+    await Professor.create(
+      {
+        nome: nome,
+        sobrenome: sobrenome,
+        telefone: telefone,
+        usuario_id: usuarioId
+      })
+      .then(novoProfessor => {
+        console.log(novoProfessor);
+        professorId = novoProfessor.id;
+      })
+      .catch(err => {
+        console.log("Erro ao tentar criar novo professor: " + err)
+      })
+
+    // atribui um professor a uma disciplina
+    await ProfessorDisciplina.create(
+      {
+        professor_id: professorId,
+        disciplina_id: disciplina
+      })
+    
+    res.status(201).json({msg: "OK"})
   },
   detalhes: async (req, res) => {
     let {id} = req.params;
