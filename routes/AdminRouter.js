@@ -18,6 +18,7 @@ router.put('/tarefas/alterar', validarSession, TarefaController.alterar);
 router.get('/turmas', validarSession, TurmaController.index);
 router.post('/turmas/criar', validarSession, TurmaController.criar);
 router.get('/turmas/:id/detalhes', validarSession, TurmaController.detalhes);
+router.post('/turmas/:id/add_professor', validarSession, TurmaController.addProfessor);
 router.get('/turmas/buscar', validarSession, TurmaController.buscar);
 router.put('/turmas/:id/editar', validarSession, TurmaController.editar);
 router.delete('/turmas/:id/deletar', validarSession, TurmaController.deletar);
