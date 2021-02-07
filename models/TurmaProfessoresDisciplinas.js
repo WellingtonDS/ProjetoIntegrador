@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
             tableName: 'turmas_professores_disciplinas',
             timestamps: false
         });
+    
+    turmaProfessoresDisciplinas.associate = (models) => {
+        turmaProfessoresDisciplinas.belongsTo(models.Turma, {foreignKey: 'turma_id', as: 'turma'})
+    }
 
     return turmaProfessoresDisciplinas;
 }

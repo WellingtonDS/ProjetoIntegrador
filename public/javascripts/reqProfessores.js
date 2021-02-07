@@ -40,22 +40,22 @@ const professoresIndex = () => {
 const professorDetalhes = async (professorId) => {
   let tableProfessorContent = document.getElementById('conteudoProfessores');
   let professores = null;
+  let turmas;
+  let strTurmas = `<ul class="list-group">`;
   let professorContent = '';
 
   await fetch(`/admin/professores/${professorId}/detalhes`)
     .then(response => response.json())
     .then(responseJson => {
-      professor = responseJson;
+      professor = responseJson.professor;
+      turmas = responseJson.turmas;
     })
 
-  console.log(professor)
+    turmas.forEach(turma => {
+      strTurmas += `<li class="list-group-item">${turma.turma.serie} - Ensino ${turma.turma.nivel}</li>`
+    })
   
   let disciplina = professor.disciplinas[0].nome
-  // if(professor.Professores[0].nome == "undefined"){
-  //   disciplina = "Não há";
-  // } else {
-  //   disciplina = professor.Professores[0].nome;
-  // }
 
   // gerando string que será inserinda no html
   professorContent = `
@@ -96,8 +96,18 @@ const professorDetalhes = async (professorId) => {
       </tbody>
     </table>
   </form>
+  <p class="mt-3">
+    <a class="btn btn-success btn-sm" data-toggle="collapse" href="#collapseTurmas" role="button" aria-expanded="false" aria-controls="collapseTurmas">
+      Turmas <span class="badge badge-light badge-pill">${turmas.length}</span>
+    </a>
+  </p>
+  <div class="collapse mb-2" id="collapseTurmas">
+    <div id="professoresTurmasContainer" class="card card-body"></div>
+  </div>
   `
   tableProfessorContent.innerHTML = professorContent;
+  const professoresTurmasContainer = document.getElementById('professoresTurmasContainer');
+  professoresTurmasContainer.innerHTML = strTurmas + `</ul>`
   professorEditarLabel.innerText = `Editar professor #${professor.id}`;
   formProfessorEditar.setAttribute('action', `/admin/professores/${professor.id}/editar?_method=PUT`)
   inputsFormprofessoresEditar[0].value = professor.nome;

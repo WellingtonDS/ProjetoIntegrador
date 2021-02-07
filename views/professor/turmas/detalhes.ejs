@@ -45,9 +45,7 @@
                                 <td> <%= disciplina.id %> </td>
                                 <td> <%= disciplina.nome %> </td>
                                 <td> 
-                                  <a class="btn btn-secondary btn-sm" href="/professor/turmas/<%=turma.id%>/<%= disciplina.professoresDisciplinas[0].id %>/aulas/registrar"> <strong> Aula </strong></a>
-                                  <a class="btn btn-info btn-sm" href="/professor/formularioAvaliacao"><strong> Avaliação </strong></a>
-                                  <a class="btn btn-success btn-sm" href="/professor/registroNota"><strong> Notas </strong></a> 
+                                  <a class="btn btn-info btn-sm" href="/professor/turmas/<%=turma.id%>/<%= disciplina.professoresDisciplinas[0].id %>/aulas/registrar"> <strong> Aula </strong></a>
                                 </td>
                             </tr>
                         <% }) %>
@@ -60,23 +58,19 @@
           <div class="tab-pane fade" id="alunos" role="tabpanel" aria-labelledby="alunos-tab">
             <div class="row">
                 <div class="col-sm-8">
-                  <table class="table">
+                  <table class="table table-sm">
                     <thead>
                         <tr>
-                            <th>Matrícula</th>
+                            <th>#</th>
                             <th>Nome</th>
                             <th>Sobrenome</th>
-                            <th>Nota 1</th>
-                            <th>Nota 2</th>
-                            <th>Nota 3</th>
-                            <th>Nota 4</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% alunos.forEach(aluno => { %>
+                        <% alunos.forEach((aluno, index) => { %>
                           <% aluno = aluno.toJSON() %>  
                           <tr>
-                            <td><%= aluno.matricula[0].id %></td>
+                            <td><%= index + 1 %></td>
                             <td><%= aluno.nome %></td>
                             <td><%= aluno.sobrenome %></td>
                             <td></td>
