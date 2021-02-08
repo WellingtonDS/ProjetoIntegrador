@@ -13,6 +13,8 @@ router.get('/turmas', validarSession, TurmaController.listar);
 router.get('/turmas/:turma_id', validarSession, TurmaController.detalhes);
 router.get('/turmas/:turma_id/:professor_disciplina_id/aulas/registrar', validarSession, AulaController.registro);
 router.post('/turmas/:turma_id/:professor_disciplina_id/aulas/registrar', validarSession, AulaController.registrarAula);
+router.get('/aulas/criar', validarSession, AulaController.criacao);
+router.post('/aulas/criar', validarSession, AulaController.criar);
 router.get('/aulas/:aula_id/frequencia', validarSession, AulaController.registroFrequencia);
 router.post('/aulas/:aula_id/frequencia', validarSession, AulaController.registrarFrequencia);
 router.get('/aulas/sucesso', validarSession, AulaController.sucesso);
