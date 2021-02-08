@@ -1,5 +1,5 @@
 const session = require('express-session');
-const { sequelize, Professor, Usuario, ProfessorDisciplina, TurmaProfessoresDisciplinas } = require('../../models');
+const { sequelize, Professor, Aula, Usuario, ProfessorDisciplina, TurmaProfessoresDisciplinas } = require('../../models');
 const { Op } = require("sequelize");
 const bcrypt = require('bcrypt');
 
@@ -10,7 +10,6 @@ const ProfessorController = {
         include: [{association: 'disciplinas', through:{atributes: 'professores_disciplinas'}}, 'usuario']
       });
     res.status(200).json(professores);
-
   },
   criar: async (req, res) => {
     let {nome, sobrenome, telefone, disciplina, turma} = req.body;

@@ -41,7 +41,7 @@ const LoginController = {
             });
 
             req.session.usuario = admin;
-            res.redirect('/admin');
+            return res.redirect('/admin');
 
         }
 
@@ -76,7 +76,7 @@ const LoginController = {
             });
 
             req.session.usuario = professor;
-            res.redirect('/professor');
+            return res.redirect('/professor');
         }
 
         res.render('loginProfessor', {errors: listaDeErros.errors})
