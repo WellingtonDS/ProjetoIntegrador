@@ -29,7 +29,7 @@ Ainda em desenvolvimento, trata-se de uma aplicação que tem como objetivo gere
   - [Lucas Lauro](https://github.com/llauros)
 
 ## Como rodar o projeto :wrench:
-Antes de seguir os passos abaixo, certifique-se que tenha o MySQL em sua máquina, o projeto usa o usa como banco de dados.
+Antes de seguir os passos abaixo, certifique-se que tenha o MySQL em sua máquina.
 
   1. clone esse repositório;
   2. abra o projeto com o VS Code;
