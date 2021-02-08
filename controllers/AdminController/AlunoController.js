@@ -71,7 +71,10 @@ const AlunoController = {
         where: {id: id},
         include: [{association: 'turma', through: {atributes: 'matriculas'}}]
       })
-    res.status(200).json(aluno)
+
+    let turmas = await Turma.findAll();
+
+    res.status(200).json({aluno, turmas})
   },
   buscar: async (req, res) => {
     let {aluno} = req.query;
@@ -85,17 +88,50 @@ const AlunoController = {
   },
   editar: async (req, res) => {
     let {id} = req.params;
-    let {nome, sobrenome, responsavel, endereco, telefone, usuario_id, alunoId} = req.body;
-    
-    await Aluno.update({
-      nome:nome,
-      sobrenome: sobrenome,
-      responsavel: responsavel,
-      endereco: endereco,
-      telefone: telefone
-    }, {where: {id: id}})
+    let {nome, sobrenome, responsavel, endereco, telefone, usuario_id, alunoId, turma} = req.body;
 
-    res.redirect('/admin')
+    if(turma[0] == "S"){
+      await Aluno.update({
+        nome:nome,
+        sobrenome: sobrenome,
+        responsavel: responsavel,
+        endereco: endereco,
+        telefone: telefone
+      }, {where: {id: id}})
+
+    } else {
+      let turmaId = turma.split("-")[1];
+      let matricula = await Matricula.findOne(
+        {
+          where: {turma_id: turmaId, aluno_id: id}
+        })
+      // matriculando aluno via formulario de edição caso não haja registro
+      if(!matricula){
+
+        await Matricula.create(
+          {
+            turma_id: turmaId,
+            aluno_id: id,
+            situacao: "A"
+          })
+        
+        let turmaSerie = turma.split("/")[0];
+        await Turma.update({situacao: "A"}, {where: {serie: turmaSerie}})
+      } else {
+
+        await Matricula.update(
+          {
+            turma_id: turmaId,
+            aluno_id: id
+          }, {where: {id: matricula.id}});
+
+        let turmaSerie = turma.split("/")[0];
+        await Turma.update({situacao: "A"}, {where: {serie: turmaSerie}})
+        // await Turma.findOne({where: {serie: turmaSerie}}).then(resultado => console.log(resultado))
+      }
+    }
+
+    res.status(201).redirect('/admin');
 
   },
   deletar: async (req, res) => {

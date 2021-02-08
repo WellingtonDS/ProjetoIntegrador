@@ -104,6 +104,7 @@ const TurmaController = {
   editar: async (req, res) => {
     let { id } = req.params;
     let { serie, nivel, turno } = req.body;
+    
     await Turma.update({
       serie: serie,
       nivel: nivel,

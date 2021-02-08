@@ -72,7 +72,7 @@ const turmasDetalhes = async (id) => {
     alunos += `<li class="list-group-item">${aluno.nome} ${aluno.sobrenome}</li>`
   })
  
-  let opcoesProfessoresDisciplinas = "";
+  let opcoesProfessoresDisciplinas = `<option disabled selected hidden style="color: gray;">Selecione um(a) Professor(a)</option>`;;
   professoresDisciplinas.forEach(profDisciplina => {
     opcoesProfessoresDisciplinas += `<option value="${profDisciplina.id}">${profDisciplina.professor.nome} ${profDisciplina.professor.sobrenome}/${profDisciplina.disciplina.nome}</option>`
   })

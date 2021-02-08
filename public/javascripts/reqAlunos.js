@@ -41,12 +41,15 @@ const alunosDetalhes = async (alunoId) => {
   let tableAlunoContent = document.getElementById('conteudoAlunos');
   let aluno = null;
   let turma;
+  let turmas;
+  let turmasOptionGroup = `<option selected style="color: gray;">Selecione uma turma</option>`;
   let alunoContent = '';
 
   await fetch(`/admin/alunos/${alunoId}/detalhes`)
     .then(response => response.json())
     .then(responseJson => {
-      aluno = responseJson;
+      aluno = responseJson.aluno;
+      turmas = responseJson.turmas;
     })
 
   turma = aluno.turma;
@@ -56,6 +59,11 @@ const alunosDetalhes = async (alunoId) => {
   } else {
     turma = "Aluno(a) NÃO matriculado(a)"
   }
+
+  // gera a string html que será inserida no form editar aluno
+  turmas.forEach(turma => {
+    turmasOptionGroup += `<option id"turma-${turma.id}">${turma.serie}/${turma.nivel}/${turma.turno}-${turma.id}</option>`
+  })
 
   // gerando string que será inserinda no html
   alunoContent = `
@@ -67,7 +75,6 @@ const alunosDetalhes = async (alunoId) => {
           <th>Nome</th>
           <th>Responsável</th>
           <th>Telefone</th>
-          <th>Usuario Id</th>
           <th>Turma</th>
           <th class="center">Ações</th>
         </tr>
@@ -79,7 +86,6 @@ const alunosDetalhes = async (alunoId) => {
             <td>${aluno.nome} ${aluno.sobrenome}</td>
             <td>${aluno.responsavel}</td>
             <td>${aluno.endereco}</td>
-            <td>${aluno.usuario_id}</td>
             <td>${turma}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">
@@ -98,13 +104,15 @@ const alunosDetalhes = async (alunoId) => {
   </form>
   `
   tableAlunoContent.innerHTML = alunoContent;
-  alunoEditarLabel.innerText = `Editar aluno #${aluno.id}`;
+  const turmasAlunoEditar = document.getElementById('turmasAlunoEditar');
+  turmasAlunoEditar.innerHTML = turmasOptionGroup;
+  alunoEditarLabel.innerText = `Editar Aluno(a) #${aluno.id}`;
   formAlunosEditar.setAttribute('action', `/admin/alunos/${aluno.id}/editar?_method=PUT`)
   inputsFormAlunosEditar[0].value = aluno.nome;
   inputsFormAlunosEditar[1].value = aluno.sobrenome;
   inputsFormAlunosEditar[2].value = aluno.responsavel;
   inputsFormAlunosEditar[3].value = aluno.endereco;
-  inputsFormAlunosEditar[4].value = aluno.usuario_id;
+
 
 
 }

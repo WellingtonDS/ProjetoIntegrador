@@ -68,7 +68,6 @@ const professorDetalhes = async (professorId) => {
           <th>Telefone</th>
           <th>E-mail</th>
           <th>Disciplina</th>
-          <th>Usuario Id</th>
           <th class="center">Ações</th>
         </tr>
       </thead>
@@ -80,7 +79,6 @@ const professorDetalhes = async (professorId) => {
             <td>${professor.telefone}</td>
             <td>${professor.usuario.email}</td>
             <td>${disciplina} #${professor.disciplinas[0].id}</td>
-            <td>${professor.usuario_id}</td>
             <td>
               <a id="btnVoltar" class="botao botao-detalhes" href="#">
                 Voltar
@@ -108,13 +106,11 @@ const professorDetalhes = async (professorId) => {
   tableProfessorContent.innerHTML = professorContent;
   const professoresTurmasContainer = document.getElementById('professoresTurmasContainer');
   professoresTurmasContainer.innerHTML = strTurmas + `</ul>`
-  professorEditarLabel.innerText = `Editar professor #${professor.id}`;
+  professorEditarLabel.innerText = `Editar Professor(a) #${professor.id}`;
   formProfessorEditar.setAttribute('action', `/admin/professores/${professor.id}/editar?_method=PUT`)
   inputsFormprofessoresEditar[0].value = professor.nome;
   inputsFormprofessoresEditar[1].value = professor.sobrenome;
   inputsFormprofessoresEditar[2].value = professor.telefone;
-  inputsFormprofessoresEditar[3].value = professor.usuario_id;
-
 
 }
 
