@@ -15,31 +15,28 @@
     <!-- barra de navegação -->
     <%- include('../partialMenu', {professor}) %>
     <div class="container">
-        <div class="alert alert-success">
-            Aula registrada com sucesso!
-        </div>
         <div class="page-header">
             <h3>Registro de Frequência</h3>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <form action="/professor/aulas/<%=aula.id%>/frequencia" method="POST">
+                <form style="margin-bottom: 20px;" action="/professor/aulas/<%=aula.id%>/frequencia" method="POST">
                     <div class="form-group">
                         <label for="">Disciplina:</label>
                         <br>
-                        <input type="text" value="<%= aula.professor_disciplina.disciplina.nome %>">
+                        <input readonly="readonly" type="text" value="<%= aula.professor_disciplina.disciplina.nome %>">
                         <br><br>
                         <label for="">Turma:</label>
                         <br>
-                        <input type="text" value="<%= aula.turma.serie %>">
+                        <input readonly="readonly" type="text" value="<%= aula.turma.serie %>">
                         <br><br>
                         <label for="">Turno:</label>
                         <br>
-                        <input type="text" value="<%= aula.turma.turno%>">
+                        <input readonly="readonly" type="text" value="<%= aula.turma.turno%>">
                         <br><br>
                         <label for="">Descrição (assunto da aula):</label>
                         <br>
-                        <input name="descricao" id="descricao" class="form-control" rows="5" value="<%= aula.descricao%>"></input>
+                        <textarea readonly="readonly" name="descricao" id="descricao" class="form-control" rows="3" value=""><%= aula.descricao%></textarea>
                         <br> 
                         <h4>Alunos</h4>
                         <table class="table table-responsive-sm">
@@ -75,6 +72,7 @@
                     
                     <button type="submit" class="btn btn-success"><strong>Salvar</strong></button>
                     <a type="submit" class="btn btn-warning" onclick="history.back()">Voltar</a>
+                    
                 </form>
             </div>
         </div>

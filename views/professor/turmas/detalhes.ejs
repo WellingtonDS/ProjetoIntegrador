@@ -20,45 +20,15 @@
         <h3>Turma: <%= turma.serie %> (<%= turma.turno %>)</h3>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="disciplinas-tab" data-toggle="tab" href="#disciplinas" role="tab" aria-controls="disciplinas" aria-selected="true">Disciplinas</a>
-          </li>
-          <li class="nav-item" role="presentation">
             <a class="nav-link" id="alunos-tab" data-toggle="tab" href="#alunos" role="tab" aria-controls="alunos" aria-selected="false">Alunos</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="disciplinas" role="tabpanel" aria-labelledby="disciplinas-tab">
-            <div class="row">
-                <div class="col-sm-6"> 
-                  <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nome</th>
-                            <th>Registrar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% disciplinas.forEach(disciplina => { %>
-                            <% disciplina = disciplina.toJSON() %>
-                            <tr>
-                                <td> <%= disciplina.id %> </td>
-                                <td> <%= disciplina.nome %> </td>
-                                <td> 
-                                  <a class="btn btn-info btn-sm" href="/professor/turmas/<%=turma.id%>/<%= disciplina.professoresDisciplinas[0].id %>/aulas/registrar"> <strong> Aula </strong></a>
-                                </td>
-                            </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
-                </div>
-            </div>  
-            
-          </div>
+          
           <div class="tab-pane fade" id="alunos" role="tabpanel" aria-labelledby="alunos-tab">
             <div class="row">
                 <div class="col-sm-8">
-                  <table class="table table-sm">
+                  <table class="table table-responsive">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -73,19 +43,18 @@
                             <td><%= index + 1 %></td>
                             <td><%= aluno.nome %></td>
                             <td><%= aluno.sobrenome %></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                           </tr>
                        <% }) %>
+                       
                     </tbody>
+                    
                 </table>
                 </div>
             </div>   
           </div>
           
         </div>
+        
     </div>
    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

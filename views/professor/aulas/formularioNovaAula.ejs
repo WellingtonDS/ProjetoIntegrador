@@ -16,15 +16,37 @@
     <%- include('../partialMenu', {professor}) %>
     <div class="container">
         <div class="page-header">
-            <h3>Cadastro de Aula</h3>
+            <h3>Cadastrar nova aula</h3>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <div class="alert alert-success">
-                    Aula registrada com sucesso!
-                </div>
-                <a href="/professor" class="btn btn-success"><strong> Home </strong></a>
-                                
+                <form action="/professor/aulas/criar" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" value="<%= professorDisciplinaId %>" name="professorDisciplinaId">
+                        <label for="">Turma:</label>
+                        <br>
+                        <select name="turma" id="turma">
+                            <% turmas.forEach(turma => { %>
+                                <option value="<%= turma.turma.id %>">
+                                    <%= turma.turma.serie %>/<%= turma.turma.nivel %>/<%= turma.turma.turno %>
+                                </option>
+                            <% }) %>
+                        </select>
+                        <br><br>
+                        <label for="">Data:</label>
+                        <br>
+                        <input id="date" type="date" name="data">
+                        <br><br>
+                        <label for="">Descrição (assunto da aula):</label>
+                        <br>
+                        <textarea name="descricao" id="descricao" class="form-control" rows="5"></textarea>
+                        <br> 
+                        
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success"><strong>Salvar</strong></button>
+                    <a type="submit" class="btn btn-warning" onclick="history.back()">Voltar</a>
+                </form>
             </div>
         </div>
     </div>

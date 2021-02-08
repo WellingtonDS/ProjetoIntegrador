@@ -16,15 +16,12 @@
     <%- include('../partialMenu', {professor}) %>
     <div class="container">
         <div class="page-header">
-            <h3>Registro de Aula</h3>
+            <h3>Registro de Aula - <%= professorDisciplina.disciplina.nome %></h3>
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <form action="/professor/turmas/<%=turma.id%>/<%= professorDisciplina.id %>/aulas/registrar" method="POST">
                     <div class="form-group">
-                        <label for="">Disciplina:</label>
-                        <br>
-                        <input type="text" value="<%= professorDisciplina.disciplina.nome %>">
                         <br><br>
                         <label for="">Turma:</label>
                         <br>
@@ -42,9 +39,7 @@
                         <br>
                         <input name="descricao" id="descricao" class="form-control" rows="5"></input>
                         <br> 
-                        
                     </div>
-                    
                     <button type="submit" class="btn btn-success"><strong>Salvar</strong></button>
                     <a type="submit" class="btn btn-warning" onclick="history.back()">Voltar</a>
                 </form>
