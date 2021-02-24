@@ -2,7 +2,7 @@
 
 ## :small_blue_diamond:Sobre o projeto
 
-Ainda em desenvolvimento, trata-se de uma aplicação que tem como objetivo gerenciar uma escola fictícia de nível fundamental e médio.
+Trata-se de uma aplicação que tem como objetivo gerenciar uma escola fictícia de nível fundamental e médio. Foi desenvolvida durante o curso de Desenvolvimento Web Full Stack Node.js, oferecido pela tech school Digital House. 
 
 ## Tecnologias usadas :computer:
 
